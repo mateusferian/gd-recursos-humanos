@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -50,7 +51,7 @@ public class AtestadoController {
 
         private List<Atestado> mockListaAtestado(){
             List<Atestado> listaAtestado = new ArrayList<>();
-            listaAtestado.add(new Atestado(  1,  "Asma",this.colaboradorController.getColaboradores(3)));
+            listaAtestado.add(new Atestado(  1,  "Asma",new Date(2020-10-11),this.colaboradorController.getColaboradores(3)));
             return  listaAtestado;
         }
 }

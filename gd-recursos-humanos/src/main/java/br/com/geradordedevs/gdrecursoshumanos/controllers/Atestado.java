@@ -2,15 +2,18 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.controllers.Colaborador;
 
+import java.util.Date;
+
 public class Atestado {
     private int id;
     private String nome;
-    //data
+    private Date data;
     private Colaborador colaborador;
 
-    public Atestado(int id, String nome, Colaborador colaborador) {
+    public Atestado(int id, String nome, Date data, Colaborador colaborador) {
         this.id = id;
         this.nome = nome;
+        this.data = data;
         this.colaborador = colaborador;
     }
 
@@ -28,6 +31,14 @@ public class Atestado {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public Colaborador getColaborador() {
