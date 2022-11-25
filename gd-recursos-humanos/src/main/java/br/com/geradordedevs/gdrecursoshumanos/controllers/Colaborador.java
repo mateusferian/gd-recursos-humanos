@@ -23,12 +23,12 @@ public class Colaborador {
     private String telefone;
     private String email;
 
-    public Colaborador(int id, String nome, int idade, Date dataDeNascimento, TipoDocumento tipodocumento, String numeroDocumento, Cargo cargo, Departamento departamento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
+    public Colaborador(int id, String nome, int idade, Date dataDeNascimento, TipoDocumento tipoDocumento, String numeroDocumento, Cargo cargo, Departamento departamento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
-        this.tipodocumento = tipodocumento;
+        this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.cargo = cargo;
         this.departamento = departamento;
@@ -72,11 +72,11 @@ public class Colaborador {
     }
 
     public TipoDocumento getTipodocumento() {
-        return tipodocumento;
+        return tipoDocumento;
     }
 
     public void setTipodocumento(TipoDocumento tipodocumento) {
-        this.tipodocumento = tipodocumento;
+        this.tipoDocumento = tipodocumento;
     }
 
     public String getNumeroDocumento() {
