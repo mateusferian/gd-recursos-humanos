@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Atestados")
+@RequestMapping("/atestados")
 public class AtestadoController {
 
           @Autowired
