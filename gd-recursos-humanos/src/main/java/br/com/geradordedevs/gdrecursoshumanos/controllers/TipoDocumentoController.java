@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/tiposdocumentos")
+@RequestMapping ("/tipo-de-documentos")
 public class TipoDocumentoController {
 
     @GetMapping
