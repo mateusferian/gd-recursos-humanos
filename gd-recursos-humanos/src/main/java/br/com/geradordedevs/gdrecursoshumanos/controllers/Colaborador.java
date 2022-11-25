@@ -11,7 +11,7 @@ public class Colaborador {
     private int idade;
 
     private Date dataDeNascimento;
-    private TipoDocumento tipodocumento;
+    private TipoDocumento tipoDocumento;
     private String numeroDocumento;
 
     private Cargo cargo;
