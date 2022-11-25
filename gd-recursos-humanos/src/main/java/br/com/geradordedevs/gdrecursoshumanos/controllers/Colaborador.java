@@ -71,12 +71,12 @@ public class Colaborador {
         this.dataDeNascimento = dataDeNascimento;
     }
 
-    public TipoDocumento getTipodocumento() {
+    public TipoDocumento getTipoDocumento() {
         return tipoDocumento;
     }
 
-    public void setTipodocumento(TipoDocumento tipodocumento) {
-        this.tipoDocumento = tipodocumento;
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getNumeroDocumento() {
