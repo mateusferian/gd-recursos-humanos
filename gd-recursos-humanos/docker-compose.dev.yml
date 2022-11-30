@@ -5,19 +5,25 @@ services:
     container_name: gd-recursos-humanos-api
     entrypoint: [ "sh", "-c", "java -cp app:app/lib/* br.com.geradordedevs.gdrecursoshumanos.SistemaDeGestaoDeRecursosHumanosApplication" ]
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
-    depends_on:
-      - db
-  db:
-    image: mysql:5.7
+      - SPRING_DATASOURCE_URL=jdbc:mysql://gd-recursos-humanos-db:3306/db_gd_recursos_humanos?autoReconnect=true&useSSL=false
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=db-recurso
+      - DATABASE_USER=db_gd_recursos_humanos
+      - DATABASE_PASSWORD=123456
+      - DATABASE_NAME=db_gd_recursos_humanos
+      - DATABASE_PORT=3306
+  db-recurso:
+    image: mysql:8.0
     container_name: gd-recursos-humanos-db
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=db_gd_recursos_humanos
-      - MYSQL_USER=recursos
+      - MYSQL_USER=db_gd_recursos_humanos
       - MYSQL_PASSWORD=123456
     ports:
-      - '3306:3306'
+      - 3306:3306
     volumes:
       - ./data/db:/data/db
 

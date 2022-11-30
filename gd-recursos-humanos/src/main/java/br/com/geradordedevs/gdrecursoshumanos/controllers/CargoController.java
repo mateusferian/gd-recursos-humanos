@@ -1,62 +1,47 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cargos")
 public class CargoController {
 
-
+    @Autowired
+    private CargoRepository cargoRepository;
     @GetMapping
-    public List<Cargo> listar(){
-        return mockListaCargo();
+    public Iterable<CargoEntity> listar(){
+        return cargoRepository.findAll();
 
     }
     @GetMapping ("/{id}")
-    public Cargo consultar(@PathVariable int id ){
-        return mockListaCargo().get(id);
+    public Optional<CargoEntity> consultar(@PathVariable Long id ){
+        return cargoRepository.findById(id);
 
 
     }
 
     @PostMapping
-    public Cargo cadastrar(@RequestBody Cargo cargo){
+    public CargoEntity cadastrar(@RequestBody CargoEntity cargoEntity){
 
-        return cargo;
+        return cargoRepository.save(cargoEntity);
 
     }
     @PutMapping ("/{id}")
     //precisa arrumar essa parte//
-    public List<Cargo> alterar (@PathVariable int id,@RequestBody Cargo cargo){
-        List<Cargo> cargos = mockListaCargo();
-        cargos.remove(id);
-        cargos.add(cargo);
-        return cargos;
+    public CargoEntity alterar (@PathVariable Long id, @RequestBody CargoEntity cargoEntity){
+        cargoEntity.setId(id);
+        return cargoRepository.save(cargoEntity);
     }
 
     @DeleteMapping ("/{id}")
-    public void remover (@PathVariable int id){
-        List<Cargo> cargos = mockListaCargo();
-        cargos.remove(id);
-    }
-
-    private List<Cargo> mockListaCargo(){
-        List<Cargo> listaCargo = new ArrayList<>();
-        listaCargo.add(new Cargo(  1,  "Desenvolvedor backand"));
-        listaCargo.add(new Cargo(  2,  "Desenvolvedor frontand"));
-        listaCargo.add(new Cargo(  3,  "Desenvolvedor ful stack"));
-        return  listaCargo;
-    }
-    public Cargo getcargos(int id){
-        List<Cargo> cargos =  this.mockListaCargo();
-        for (Cargo cargo: cargos) {
-            if (cargo.getId() ==  id ){
-                return cargo;
-            }
-        }
-        return  null;
+    public void remover (@PathVariable Long id){
+        cargoRepository.deleteById(id);
     }
 }
