@@ -1,21 +1,22 @@
-package br.com.geradordedevs.gdrecursoshumanos.controllers;
+package br.com.geradordedevs.gdrecursoshumanos.entities;
 
 
-import javax.xml.crypto.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
-
-public class Colaborador {
-
-    private int id;
+@Entity
+public class ColaboradorEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
     private int idade;
-
     private Date dataDeNascimento;
-    private TipoDocumento tipoDocumento;
+
     private String numeroDocumento;
 
-    private Cargo cargo;
-    private Departamento departamento;
     private double salario;
 
     private Date dataInicio;
@@ -23,15 +24,12 @@ public class Colaborador {
     private String telefone;
     private String email;
 
-    public Colaborador(int id, String nome, int idade, Date dataDeNascimento, TipoDocumento tipoDocumento, String numeroDocumento, Cargo cargo, Departamento departamento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
+    public ColaboradorEntity(Long id, String nome, int idade, Date dataDeNascimento, String numeroDocumento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
-        this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
-        this.cargo = cargo;
-        this.departamento = departamento;
         this.salario = salario;
         this.dataInicio = dataInicio;
         this.ativo = ativo;
@@ -39,11 +37,14 @@ public class Colaborador {
         this.email = email;
     }
 
-    public int getId() {
+    public ColaboradorEntity() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -71,36 +72,12 @@ public class Colaborador {
         this.dataDeNascimento = dataDeNascimento;
     }
 
-    public TipoDocumento getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
     public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
-    }
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
     }
 
     public double getSalario() {
