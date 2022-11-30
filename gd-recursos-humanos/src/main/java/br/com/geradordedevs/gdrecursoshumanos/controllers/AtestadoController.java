@@ -47,9 +47,6 @@ public class AtestadoController {
             atestadoRepository.deleteById(id);
         }
 
-        private List<AtestadoEntity> mockListaAtestado(){
-            List<AtestadoEntity> listaAtestadoEntity = new ArrayList<>();
-          //  listaAtestado.add(new Atestado(  1,  "Asma",new Date(2020-10-11),this.colaboradorController.getColaboradores(3)));
-            return listaAtestadoEntity;
-        }
+
+
 }
