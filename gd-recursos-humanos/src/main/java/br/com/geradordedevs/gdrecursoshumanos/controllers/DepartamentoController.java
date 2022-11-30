@@ -1,65 +1,49 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
+import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping ("/departamentos")
 public class DepartamentoController {
+    @Autowired
+    private DepartamentoRepository departamentoRepository;
     @GetMapping
-    public List<Departamento> listar() {
-        return mockListaDepartamento();
+    public Iterable<DepartamentoEntity> listar() {
+        return departamentoRepository.findAll();
 
     }
 
     @GetMapping("/{id}")
-    public Departamento consultar(@PathVariable int id) {
-        return mockListaDepartamento().get(id);
+    public Optional<DepartamentoEntity> consultar(@PathVariable Long id) {
+        return departamentoRepository.findById(id);
 
 
     }
 
 
     @PostMapping
-    public Departamento cadastrar(@RequestBody Departamento departamento) {
-      // return  getverifica();
-
-        return departamento;
+    public DepartamentoEntity cadastrar(@RequestBody DepartamentoEntity departamentoEntity) {
+        return departamentoRepository.save(departamentoEntity);
 
     }
 
     @PutMapping("/{id}")
-    public List<Departamento> alterar(@PathVariable int id, @RequestBody Departamento departamento) {
-        List<Departamento> departamentos = mockListaDepartamento();
-        departamentos.remove(id);
-        departamentos.add(departamento);
-        return departamentos;
+    public DepartamentoEntity alterar(@PathVariable Long id, @RequestBody DepartamentoEntity departamentoEntity) {
+        departamentoEntity.setId(id);
+        return departamentoRepository.save(departamentoEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable int id) {
-        List<Departamento> departamentos = mockListaDepartamento();
-        departamentos.remove(id);
-    }
-
-    private List<Departamento> mockListaDepartamento() {
-        List<Departamento> listaDepartamento = new ArrayList<>();
-        listaDepartamento.add(new Departamento(1, "Analise de Sistema"));
-        listaDepartamento.add(new Departamento(2, "Desenvolvimento web"));
-        listaDepartamento.add(new Departamento(3, "Desenvolvimento de aplicativos"));
-        return listaDepartamento;
-    }
-
-    public Departamento getDepartamentos(int id) {
-        List<Departamento> departamentos = this.mockListaDepartamento();
-        for (Departamento departamento : departamentos) {
-            if (departamento.getId() == id) {
-                return departamento;
-            }
-        }
-        return null;
+    public void remover(@PathVariable Long id) {
+        departamentoRepository.deleteById(id);
     }
 
 }

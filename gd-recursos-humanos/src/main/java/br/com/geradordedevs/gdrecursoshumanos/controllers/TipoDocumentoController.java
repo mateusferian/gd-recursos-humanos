@@ -1,66 +1,46 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping ("/tipo-de-documentos")
 public class TipoDocumentoController {
+    @Autowired
+    private TipoDocumentoRepository tipoDocumentoRepository;
 
     @GetMapping
-    public List<TipoDocumento> listar(){
-        return mockListaTipoDocumento();
+    public Iterable<TipoDocumentoEntity> listar(){
+        return tipoDocumentoRepository.findAll();
 
     }
     @GetMapping ("/{id}")
-    public TipoDocumento consultar(@PathVariable int id ){
-        return mockListaTipoDocumento().get(id);
+    public Optional<TipoDocumentoEntity> consultar(@PathVariable Long id ){
+        return tipoDocumentoRepository.findById(id);
 
 
     }
 
 
     @PostMapping
-    public TipoDocumento cadastrar(@RequestBody TipoDocumento tipoDocumento){
+    public TipoDocumentoEntity cadastrar(@RequestBody TipoDocumentoEntity tipoDocumentoEntity){
 
-        return tipoDocumento;
+        return tipoDocumentoRepository.save(tipoDocumentoEntity);
 
     }
     @PutMapping ("/{id}")
-    //precisa arrumar essa parte//
-    public List<TipoDocumento> alterar (@PathVariable int id,@RequestBody TipoDocumento tipoDocumento){
-        List<TipoDocumento> tipoDocumentos = mockListaTipoDocumento();
-        tipoDocumentos.remove(id);
-        tipoDocumentos.add(tipoDocumento);
-        return tipoDocumentos;
+    public TipoDocumentoEntity alterar (@PathVariable Long id, @RequestBody TipoDocumentoEntity tipoDocumentoEntity){
+        tipoDocumentoEntity.setId(id);
+        return tipoDocumentoRepository.save(tipoDocumentoEntity);
     }
     @DeleteMapping ("/{id}")
-    public void  remover(@PathVariable  int id) {
-        List<TipoDocumento> tipoDocumentos = mockListaTipoDocumento();
-        tipoDocumentos.remove(id);
+    public void  remover(@PathVariable  Long id) {
+        tipoDocumentoRepository.deleteById(id);
     }
-
-    private List<TipoDocumento> mockListaTipoDocumento(){
-        List<TipoDocumento> listaTipoDocumento = new ArrayList<>();
-        listaTipoDocumento.add(new TipoDocumento(  1,  "RG"));
-        listaTipoDocumento.add(new TipoDocumento(  2,  "RG"));
-        listaTipoDocumento.add(new TipoDocumento(  3,  "RG"));
-        return  listaTipoDocumento;
-    }
-
-    public TipoDocumento getTipoDocumentos(int id){
-        List<TipoDocumento> tiposDocumentos = this.mockListaTipoDocumento();
-
-
-        for (TipoDocumento tipoDocumento: tiposDocumentos) {
-            if(tipoDocumento.getId() == id){
-                return tipoDocumento;
-            }
-        }
-
-        return null;
-    }
-
 }
