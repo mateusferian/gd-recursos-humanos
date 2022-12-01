@@ -3,6 +3,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
+import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,32 +16,33 @@ import java.util.Optional;
 public class ColaboradorController {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
+    @Autowired
+    private ColaboradorService colaboradorService;
 
     @GetMapping
     public Iterable<ColaboradorEntity> listar(){
-        return colaboradorRepository.findAll();
+        return colaboradorService.listar();
 
     }
     @GetMapping ("/{id}")
-public Optional<ColaboradorEntity> consultar(@PathVariable Long id ){
-        return colaboradorRepository.findById(id);
+public ColaboradorEntity consultar(@PathVariable Long id ){
+        return colaboradorService.consultar(id);
 }
 
 
  @PostMapping
     public ColaboradorEntity cadastrar(@RequestBody ColaboradorEntity colaboradorEntity){
-     return colaboradorRepository.save(colaboradorEntity);
+        return colaboradorService.cadastrar(colaboradorEntity);
     }
 
     @PutMapping ("/{id}")
     public ColaboradorEntity alterar (@PathVariable Long id, @RequestBody ColaboradorEntity colaboradorEntity){
-        colaboradorEntity.setId(id);
-        return colaboradorRepository.save(colaboradorEntity);
+        return  colaboradorService.alterar(id, colaboradorEntity);
     }
 
     @DeleteMapping ("/{id}")
     public void remover (@PathVariable Long id){
-        colaboradorRepository.deleteById(id);
+        colaboradorService.remover(id);
     }
 }
 
