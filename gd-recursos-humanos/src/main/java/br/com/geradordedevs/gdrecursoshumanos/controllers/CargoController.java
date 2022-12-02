@@ -35,7 +35,6 @@ public class CargoController {
     }
 
     @PutMapping ("/{id}")
-    //precisa arrumar essa parte//
     public CargoEntity alterar (@PathVariable Long id, @RequestBody CargoEntity cargoEntity){
         return cargoService.alterar(id, cargoEntity);
     }
