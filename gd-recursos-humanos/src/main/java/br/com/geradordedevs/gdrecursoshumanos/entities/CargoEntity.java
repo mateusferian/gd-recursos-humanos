@@ -18,5 +18,13 @@ public class CargoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+
+    public CargoEntity(Long id) {
+        this.id = id;
+    }
+
+    public CargoEntity(String nome) {
+        this.nome = nome;
+    }
 }
 
