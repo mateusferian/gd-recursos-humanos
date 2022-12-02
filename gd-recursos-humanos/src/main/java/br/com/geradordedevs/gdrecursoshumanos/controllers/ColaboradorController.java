@@ -24,13 +24,12 @@ public class ColaboradorController {
     @GetMapping
     public Iterable<ColaboradorEntity> listar(){
         return colaboradorService.listar();
-
     }
+
     @GetMapping ("/{id}")
 public ColaboradorEntity consultar(@PathVariable Long id ){
         return colaboradorService.consultar(id);
-}
-
+    }
 
  @PostMapping
     public ColaboradorEntity cadastrar(@RequestBody ColaboradorEntity colaboradorEntity){
@@ -46,6 +45,7 @@ public ColaboradorEntity consultar(@PathVariable Long id ){
     public void remover (@PathVariable Long id){
         colaboradorService.remover(id);
     }
+
     @GetMapping("/popular")
     public Iterable<ColaboradorEntity> popularBanco(){
         colaboradorService.popular();

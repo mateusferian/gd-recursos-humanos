@@ -23,30 +23,28 @@ public class TipoDocumentoController {
     @GetMapping
     public Iterable<TipoDocumentoEntity> listar(){
         return tipoDocumentoService.listar();
-
     }
+
     @GetMapping ("/{id}")
     public TipoDocumentoEntity consultar(@PathVariable Long id ){
         return tipoDocumentoService.consultar(id);
-
-
     }
-
 
     @PostMapping
     public TipoDocumentoEntity cadastrar(@RequestBody TipoDocumentoEntity tipoDocumentoEntity){
-
         return tipoDocumentoService.cadastrar(tipoDocumentoEntity);
-
     }
+
     @PutMapping ("/{id}")
     public TipoDocumentoEntity alterar (@PathVariable Long id, @RequestBody TipoDocumentoEntity tipoDocumentoEntity){
         return tipoDocumentoService.alterar(id, tipoDocumentoEntity);
     }
+
     @DeleteMapping ("/{id}")
     public void  remover(@PathVariable  Long id) {
         tipoDocumentoService.remover(id);
     }
+
     @GetMapping("/popular")
     public Iterable<TipoDocumentoEntity> popularBanco(){
         tipoDocumentoService.popular();

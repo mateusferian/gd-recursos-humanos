@@ -22,21 +22,16 @@ public class DepartamentoController {
     @GetMapping
     public Iterable<DepartamentoEntity> listar() {
         return departamentoService.listar();
-
     }
 
     @GetMapping("/{id}")
     public DepartamentoEntity consultar(@PathVariable Long id) {
         return departamentoService.consultar(id);
-
-
     }
-
 
     @PostMapping
     public DepartamentoEntity cadastrar(@RequestBody DepartamentoEntity departamentoEntity) {
         return departamentoService.cadastrar(departamentoEntity);
-
     }
 
     @PutMapping("/{id}")
@@ -48,10 +43,10 @@ public class DepartamentoController {
     public void remover(@PathVariable Long id) {
         departamentoService.remover(id);
     }
+
     @GetMapping("/popular")
     public Iterable<DepartamentoEntity> popularBanco(){
         departamentoService.popular();
         return departamentoService.listar();
     }
-
 }
