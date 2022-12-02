@@ -12,4 +12,5 @@ public interface DepartamentoService {
     DepartamentoEntity cadastrar(@RequestBody DepartamentoEntity departamentoEntity);
     DepartamentoEntity alterar(@PathVariable Long id, @RequestBody DepartamentoEntity departamentoEntity);
     void remover(@PathVariable Long id);
+    public void popular();
 }

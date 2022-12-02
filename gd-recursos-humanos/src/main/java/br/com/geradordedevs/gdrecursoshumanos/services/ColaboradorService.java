@@ -10,4 +10,5 @@ public interface ColaboradorService {
     ColaboradorEntity cadastrar(@RequestBody ColaboradorEntity colaboradorEntity);
     ColaboradorEntity alterar (@PathVariable Long id, @RequestBody ColaboradorEntity colaboradorEntity);
     void remover (@PathVariable Long id);
+    public void popular();
 }
