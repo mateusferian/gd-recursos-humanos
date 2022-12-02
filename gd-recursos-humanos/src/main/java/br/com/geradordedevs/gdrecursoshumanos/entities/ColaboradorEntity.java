@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Data
@@ -21,9 +18,13 @@ public class ColaboradorEntity {
     private String nome;
     private int idade;
     private Date dataDeNascimento;
-
+    @ManyToOne
+    private TipoDocumentoEntity tipoDucumento;
     private String numeroDocumento;
-
+    @ManyToOne
+    private CargoEntity cargoEntity;
+    @ManyToOne
+    private DepartamentoEntity departamentoEntity;
     private double salario;
 
     private Date dataInicio;
