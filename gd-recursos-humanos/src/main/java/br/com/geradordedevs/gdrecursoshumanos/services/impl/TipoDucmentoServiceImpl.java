@@ -1,5 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
+import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
@@ -31,5 +32,12 @@ public class TipoDucmentoServiceImpl implements TipoDocumentoService {
     @Override
     public void remover(Long id) {
        tipoDocumentoRepository.deleteById(id);
+    }
+
+    @Override
+    public void popular() {
+        cadastrar((new TipoDocumentoEntity("RG")));
+        cadastrar((new TipoDocumentoEntity("CPF")));
+        cadastrar((new TipoDocumentoEntity("CNJP")));
     }
 }
