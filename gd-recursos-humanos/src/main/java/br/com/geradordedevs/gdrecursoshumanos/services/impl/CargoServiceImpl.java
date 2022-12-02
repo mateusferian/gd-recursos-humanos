@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,12 @@ public class CargoServiceImpl implements CargoService {
     @Override
     public void remover(Long id) {
         cargoRepository.deleteById(id);
+    }
+
+    @Override
+    public void popular() {
+        cadastrar((new CargoEntity("administrador")));
+        cadastrar((new CargoEntity("vendedor")));
+        cadastrar((new CargoEntity("entregador")));
     }
 }
