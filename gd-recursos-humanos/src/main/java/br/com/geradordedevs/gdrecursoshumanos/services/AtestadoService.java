@@ -10,4 +10,5 @@ public interface AtestadoService {
     AtestadoEntity cadastrar(@RequestBody AtestadoEntity atestadoEntity);
     AtestadoEntity alterar (@PathVariable long id, @RequestBody AtestadoEntity atestadoEntity);
     void remover (@PathVariable Long id);
+    public void popular();
 }
