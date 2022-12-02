@@ -7,12 +7,14 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @Service
+@Slf4j
 public class ColaboradorServiceImpl implements ColaboradorService {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
@@ -20,24 +22,29 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 
     @Override
     public Iterable<ColaboradorEntity> listar() {
+        log.info("listando colaboradores");
         return colaboradorRepository.findAll();
     }
     @Override
     public ColaboradorEntity consultar(Long id) {
+        log.info("obtendo informações de colaborador {}", id);
         return  colaboradorRepository.findById(id).orElse(new ColaboradorEntity());
     }
     @Override
     public ColaboradorEntity cadastrar(ColaboradorEntity colaboradorEntity) {
+        log.info("cadastrando um novo produto {}", colaboradorEntity);
         return colaboradorRepository.save(colaboradorEntity);
     }
     @Override
     public ColaboradorEntity alterar(Long id, ColaboradorEntity colaboradorEntity) {
+        log.info("alterando o produto de id {} - novas informações: {}", id, colaboradorEntity);
         colaboradorEntity.setId(id);
         return colaboradorRepository.save(colaboradorEntity);
     }
 
     @Override
     public void remover(Long id) {
+        log.info("removendo o colaborador de id {}", id);
         colaboradorRepository.deleteById(id);
     }
 
