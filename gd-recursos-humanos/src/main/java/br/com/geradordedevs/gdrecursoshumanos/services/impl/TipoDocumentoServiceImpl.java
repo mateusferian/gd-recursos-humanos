@@ -1,6 +1,5 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class TipoDucmentoServiceImpl implements TipoDocumentoService {
+public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Autowired
     private TipoDocumentoRepository tipoDocumentoRepository;
 
