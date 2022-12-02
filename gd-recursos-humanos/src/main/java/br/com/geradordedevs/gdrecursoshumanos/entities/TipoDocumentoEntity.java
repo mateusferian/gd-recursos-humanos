@@ -18,4 +18,12 @@ public class TipoDocumentoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+
+    public TipoDocumentoEntity(Long id) {
+        this.id = id;
+    }
+
+    public TipoDocumentoEntity(String nome) {
+        this.nome = nome;
+    }
 }
