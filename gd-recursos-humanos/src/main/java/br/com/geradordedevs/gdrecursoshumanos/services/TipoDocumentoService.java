@@ -11,4 +11,5 @@ public interface TipoDocumentoService {
 
     TipoDocumentoEntity alterar (@PathVariable Long id, @RequestBody TipoDocumentoEntity tipoDocumentoEntity);
     void  remover(@PathVariable  Long id);
+    public void popular();
 }
