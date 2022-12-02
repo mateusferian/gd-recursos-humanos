@@ -50,8 +50,8 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 
     @Override
     public void popular() {
-        cadastrar(new ColaboradorEntity("jose",30,new Date(1923-11-22),new TipoDocumentoEntity(1L),"44.909.686-5",new CargoEntity(3L),new DepartamentoEntity(1L),4000,new Date(2017-13-10),true,"(11) 2152-1919","josepaulo@gmail.com"));
-        cadastrar(new ColaboradorEntity("Maria",30,new Date(1921-12-21),new TipoDocumentoEntity(2L),"44.909.686-5",new CargoEntity(1L),new DepartamentoEntity(2L),2000,new Date(2018-12-10),true,"(11) 2133-1919","maria@gmail.com"));
-        cadastrar(new ColaboradorEntity("Carlos",30,new Date(1922-10-15),new TipoDocumentoEntity(3L),"44.909.686-5",new CargoEntity(2L),new DepartamentoEntity(3L),1000,new Date(2019-11-10),true,"(11) 2153-1919","carlos@gmail.com"));
+        cadastrar(new ColaboradorEntity("jose",30,new Date(1923-11-22),new TipoDocumentoEntity(1L),"44.909.686-5",new CargoEntity(1L),new DepartamentoEntity(1L),4000,new Date(2017-13-10),true,"(11) 2152-1919","josepaulo@gmail.com"));
+        cadastrar(new ColaboradorEntity("Maria",30,new Date(1921-12-21),new TipoDocumentoEntity(2L),"145.201.330-68",new CargoEntity(2L),new DepartamentoEntity(2L),2000,new Date(2018-12-10),true,"(11) 2133-1919","maria@gmail.com"));
+        cadastrar(new ColaboradorEntity("Carlos",30,new Date(1922-10-15),new TipoDocumentoEntity(3L),"00.886.436/0001-20",new CargoEntity(3L),new DepartamentoEntity(3L),1000,new Date(2019-11-10),true,"(11) 2154-1919","carlos@gmail.com"));
     }
 }
