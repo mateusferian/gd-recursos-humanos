@@ -18,6 +18,12 @@ public class AtestadoEntity {
     private Date data;
     @ManyToOne
     private ColaboradorEntity colaborador;
+
+    public AtestadoEntity(String nome, Date data, ColaboradorEntity colaborador) {
+        this.nome = nome;
+        this.data = data;
+        this.colaborador = colaborador;
+    }
 }
 
 
