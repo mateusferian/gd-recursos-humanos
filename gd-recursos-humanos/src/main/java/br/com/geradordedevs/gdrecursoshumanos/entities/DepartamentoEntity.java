@@ -18,4 +18,12 @@ public class DepartamentoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id;
     private  String nome;
+
+    public DepartamentoEntity(Long id) {
+        this.id = id;
+    }
+
+    public DepartamentoEntity(String nome) {
+        this.nome = nome;
+    }
 }
