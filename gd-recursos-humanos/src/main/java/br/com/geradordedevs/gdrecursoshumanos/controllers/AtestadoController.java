@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,9 @@ public class AtestadoController {
         }
 
 
-
+    @GetMapping("/popular")
+    public Iterable<AtestadoEntity> popularBanco(){
+        atestadoService.popular();
+        return atestadoService.listar();
+    }
 }
