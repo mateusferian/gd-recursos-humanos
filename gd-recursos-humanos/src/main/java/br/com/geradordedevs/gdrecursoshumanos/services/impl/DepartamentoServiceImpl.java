@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,13 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Override
     public void remover(Long id) {
         departamentoRepository.deleteById(id);
+    }
+
+    @Override
+    public void popular() {
+        cadastrar((new DepartamentoEntity("adiministrativo")));
+        cadastrar((new DepartamentoEntity("vendas")));
+        cadastrar((new DepartamentoEntity("entregas")));
     }
 
 }
