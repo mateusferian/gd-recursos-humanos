@@ -26,12 +26,12 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
     @Override
     public DepartamentoEntity cadastrar(DepartamentoEntity departamentoEntity) {
-        log.info("cadastrando um novo produto {}", departamentoEntity);
+        log.info("cadastrando um novo departamento {}", departamentoEntity);
         return departamentoRepository.save(departamentoEntity);
     }
     @Override
     public DepartamentoEntity alterar(Long id, DepartamentoEntity departamentoEntity) {
-        log.info("alterando o produto de id {} - novas informações: {}", id, departamentoEntity);
+        log.info("alterando o departamento de id {} com novas informações: {}", id, departamentoEntity);
         departamentoEntity.setId(id);
         return departamentoRepository.save(departamentoEntity);
     }

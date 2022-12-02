@@ -29,12 +29,12 @@ public class AtestadoServiceImpl implements AtestadoService {
     }
     @Override
     public AtestadoEntity cadastrar(AtestadoEntity atestadoEntity) {
-        log.info("cadastrando um novo produto {}", atestadoEntity);
+        log.info("cadastrando um novo atestado {}", atestadoEntity);
         return  atestadoRepository.save(atestadoEntity);
     }
     @Override
     public AtestadoEntity alterar(long id, AtestadoEntity atestadoEntity) {
-        log.info("alterando o produto de id {} - novas informações: {}", id, atestadoEntity);
+        log.info("alterando o atestado de id {} com novas informações: {}", id, atestadoEntity);
         atestadoEntity.setId(id);
         return atestadoRepository.save(atestadoEntity);
     }

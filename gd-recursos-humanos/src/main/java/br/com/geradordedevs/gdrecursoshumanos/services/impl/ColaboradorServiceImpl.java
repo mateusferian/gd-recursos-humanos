@@ -32,12 +32,12 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     }
     @Override
     public ColaboradorEntity cadastrar(ColaboradorEntity colaboradorEntity) {
-        log.info("cadastrando um novo produto {}", colaboradorEntity);
+        log.info("cadastrando um novo colaborador {}", colaboradorEntity);
         return colaboradorRepository.save(colaboradorEntity);
     }
     @Override
     public ColaboradorEntity alterar(Long id, ColaboradorEntity colaboradorEntity) {
-        log.info("alterando o produto de id {} - novas informações: {}", id, colaboradorEntity);
+        log.info("alterando o colaborador de id {} com novas informações: {}", id, colaboradorEntity);
         colaboradorEntity.setId(id);
         return colaboradorRepository.save(colaboradorEntity);
     }

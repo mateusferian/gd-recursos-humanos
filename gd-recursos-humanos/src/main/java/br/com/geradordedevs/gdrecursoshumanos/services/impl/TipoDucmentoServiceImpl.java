@@ -26,12 +26,12 @@ public class TipoDucmentoServiceImpl implements TipoDocumentoService {
     }
     @Override
     public TipoDocumentoEntity cadastrar(TipoDocumentoEntity tipoDocumentoEntity) {
-        log.info("cadastrando um novo produto {}", tipoDocumentoEntity);
+        log.info("cadastrando um novo tipo de documento {}", tipoDocumentoEntity);
         return  tipoDocumentoRepository.save(tipoDocumentoEntity);
     }
     @Override
     public TipoDocumentoEntity alterar(Long id, TipoDocumentoEntity tipoDocumentoEntity) {
-        log.info("alterando o produto de id {} - novas informações: {}", id, tipoDocumentoEntity);
+        log.info("alterando o tipo de documento de id {} com novas informações: {}", id, tipoDocumentoEntity);
         tipoDocumentoEntity.setId(id);
         return  tipoDocumentoRepository.save(tipoDocumentoEntity);
     }

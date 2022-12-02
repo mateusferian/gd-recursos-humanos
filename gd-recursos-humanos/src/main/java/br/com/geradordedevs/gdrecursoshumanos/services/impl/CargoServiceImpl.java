@@ -25,12 +25,12 @@ public class CargoServiceImpl implements CargoService {
         return cargoRepository.findById(id).orElse(new CargoEntity());
     }
     public CargoEntity cadastrar(CargoEntity cargoEntity){
-        log.info("cadastrando um novo produto {}", cargoEntity);
+        log.info("cadastrando um novo cargo {}", cargoEntity);
         return cargoRepository.save(cargoEntity);
     }
     @Override
     public CargoEntity alterar(Long id, CargoEntity cargoEntity) {
-        log.info("alterando o produto de id {} - novas informações: {}", id, cargoEntity);
+        log.info("alterando o cargo de id {} com novas informações: {}", id, cargoEntity);
         cargoEntity.setId(id);
         return cargoRepository.save(cargoEntity);
     }
