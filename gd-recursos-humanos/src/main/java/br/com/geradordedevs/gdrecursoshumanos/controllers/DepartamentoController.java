@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
@@ -46,6 +47,11 @@ public class DepartamentoController {
     @DeleteMapping("/{id}")
     public void remover(@PathVariable Long id) {
         departamentoService.remover(id);
+    }
+    @GetMapping("/popular")
+    public Iterable<DepartamentoEntity> popularBanco(){
+        departamentoService.popular();
+        return departamentoService.listar();
     }
 
 }

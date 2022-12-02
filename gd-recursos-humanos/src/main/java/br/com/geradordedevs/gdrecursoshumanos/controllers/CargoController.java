@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class CargoController {
     @DeleteMapping ("/{id}")
     public void remover (@PathVariable Long id){
             cargoService.remover(id);
+    }
+    @GetMapping("/popular")
+    public Iterable<CargoEntity> popularBanco(){
+        cargoService.popular();
+        return cargoService.listar();
     }
 }
