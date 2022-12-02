@@ -22,9 +22,9 @@ public class ColaboradorEntity {
     private TipoDocumentoEntity tipoDucumento;
     private String numeroDocumento;
     @ManyToOne
-    private CargoEntity cargoEntity;
+    private CargoEntity cargo;
     @ManyToOne
-    private DepartamentoEntity departamentoEntity;
+    private DepartamentoEntity departamento;
     private double salario;
 
     private Date dataInicio;
@@ -36,14 +36,14 @@ public class ColaboradorEntity {
         this.id = id;
     }
 
-    public ColaboradorEntity(String nome, int idade, Date dataDeNascimento, TipoDocumentoEntity tipoDucumento, String numeroDocumento, CargoEntity cargoEntity, DepartamentoEntity departamentoEntity, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
+    public ColaboradorEntity(String nome, int idade, Date dataDeNascimento, TipoDocumentoEntity tipoDucumento, String numeroDocumento, CargoEntity cargo, DepartamentoEntity departamento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
         this.nome = nome;
         this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
         this.tipoDucumento = tipoDucumento;
         this.numeroDocumento = numeroDocumento;
-        this.cargoEntity = cargoEntity;
-        this.departamentoEntity = departamentoEntity;
+        this.cargo = cargo;
+        this.departamento = departamento;
         this.salario = salario;
         this.dataInicio = dataInicio;
         this.ativo = ativo;
