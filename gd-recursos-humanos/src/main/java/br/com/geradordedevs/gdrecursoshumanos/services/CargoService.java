@@ -9,5 +9,5 @@ public interface CargoService {
     CargoEntity cadastrar(CargoEntity cargoEntity);
     CargoEntity alterar(Long id, CargoEntity cargoEntity );
     void remover(Long id);
-    public void popular();
+     void popular();
 }
