@@ -16,8 +16,6 @@ import java.util.Optional;
 public class AtestadoController {
 
         @Autowired
-        public AtestadoRepository atestadoRepository;
-        @Autowired
         private AtestadoService atestadoService;
 
         @GetMapping

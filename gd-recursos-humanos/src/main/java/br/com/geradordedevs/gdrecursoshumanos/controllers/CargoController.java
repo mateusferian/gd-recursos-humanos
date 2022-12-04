@@ -16,8 +16,6 @@ import java.util.Optional;
 public class CargoController {
 
     @Autowired
-    private CargoRepository cargoRepository;
-    @Autowired
     private CargoService cargoService;
     @GetMapping
     public Iterable<CargoEntity> listar(){

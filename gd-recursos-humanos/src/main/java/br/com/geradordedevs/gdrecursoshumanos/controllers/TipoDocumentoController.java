@@ -16,8 +16,6 @@ import java.util.Optional;
 public class TipoDocumentoController {
 
     @Autowired
-    private TipoDocumentoRepository tipoDocumentoRepository;
-    @Autowired
     private TipoDocumentoService tipoDocumentoService;
 
     @GetMapping

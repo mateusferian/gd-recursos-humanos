@@ -15,8 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping ("/departamentos")
 public class DepartamentoController {
-    @Autowired
-    private DepartamentoRepository departamentoRepository;
+
     @Autowired
     private DepartamentoService departamentoService;
     @GetMapping

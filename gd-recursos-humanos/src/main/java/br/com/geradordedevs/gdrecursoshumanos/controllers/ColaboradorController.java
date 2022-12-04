@@ -16,8 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping ("/colaboradores")
 public class ColaboradorController {
-    @Autowired
-    private ColaboradorRepository colaboradorRepository;
+
     @Autowired
     private ColaboradorService colaboradorService;
 
