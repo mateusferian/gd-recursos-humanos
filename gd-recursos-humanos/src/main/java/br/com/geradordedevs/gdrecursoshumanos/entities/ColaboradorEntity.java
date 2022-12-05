@@ -1,12 +1,16 @@
 package br.com.geradordedevs.gdrecursoshumanos.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ColaboradorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +18,13 @@ public class ColaboradorEntity {
     private String nome;
     private int idade;
     private Date dataDeNascimento;
-
+    @ManyToOne
+    private TipoDocumentoEntity tipoDucumento;
     private String numeroDocumento;
-
+    @ManyToOne
+    private CargoEntity cargo;
+    @ManyToOne
+    private DepartamentoEntity departamento;
     private double salario;
 
     private Date dataInicio;
@@ -24,99 +32,22 @@ public class ColaboradorEntity {
     private String telefone;
     private String email;
 
-    public ColaboradorEntity(Long id, String nome, int idade, Date dataDeNascimento, String numeroDocumento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
+    public ColaboradorEntity(Long id) {
         this.id = id;
+    }
+
+    public ColaboradorEntity(String nome, int idade, Date dataDeNascimento, TipoDocumentoEntity tipoDucumento, String numeroDocumento, CargoEntity cargo, DepartamentoEntity departamento, double salario, Date dataInicio, boolean ativo, String telefone, String email) {
         this.nome = nome;
         this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
+        this.tipoDucumento = tipoDucumento;
         this.numeroDocumento = numeroDocumento;
+        this.cargo = cargo;
+        this.departamento = departamento;
         this.salario = salario;
         this.dataInicio = dataInicio;
         this.ativo = ativo;
         this.telefone = telefone;
-        this.email = email;
-    }
-
-    public ColaboradorEntity() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public Date getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(Date dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
-
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
-
-    public Date getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
     }
 }
