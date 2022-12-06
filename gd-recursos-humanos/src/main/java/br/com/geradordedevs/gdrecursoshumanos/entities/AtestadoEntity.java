@@ -1,50 +1,28 @@
 package br.com.geradordedevs.gdrecursoshumanos.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AtestadoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
     private Date data;
-   // private ColaboradorEntity colaboradorEntity;
+    @ManyToOne
+    private ColaboradorEntity colaborador;
 
-    public AtestadoEntity(Long id, String nome, Date data) {
-        this.id = id;
+    public AtestadoEntity(String nome, Date data, ColaboradorEntity colaborador) {
         this.nome = nome;
         this.data = data;
-    }
-
-    public AtestadoEntity() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
+        this.colaborador = colaborador;
     }
 }
 

@@ -1,7 +1,9 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
+import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,42 +16,36 @@ import java.util.Optional;
 public class AtestadoController {
 
         @Autowired
-        public AtestadoRepository atestadoRepository;
-
+        private AtestadoService atestadoService;
 
         @GetMapping
         public Iterable<AtestadoEntity> listar(){
-            return atestadoRepository.findAll();
+            return atestadoService.listar();
         }
-
 
         @GetMapping ("/{id}")
-        public Optional<AtestadoEntity> consultar(@PathVariable Long id ){
-            return atestadoRepository.findById(id);
+        public AtestadoEntity consultar(@PathVariable Long id ){
+            return atestadoService.consultar(id);
         }
-
 
         @PostMapping
         public AtestadoEntity cadastrar(@RequestBody AtestadoEntity atestadoEntity){
-            return atestadoRepository.save(atestadoEntity);
+            return atestadoService.cadastrar(atestadoEntity);
         }
-
 
         @PutMapping ("/{id}")
         public AtestadoEntity alterar (@PathVariable long id, @RequestBody AtestadoEntity atestadoEntity){
-            atestadoEntity.setId(id);
-            return atestadoRepository.save(atestadoEntity);
+            return  atestadoService.alterar(id, atestadoEntity);
         }
-
 
         @DeleteMapping ("/{id}")
         public void remover (@PathVariable Long id){
-            atestadoRepository.deleteById(id);
+            atestadoService.remover(id);
         }
 
-        private List<AtestadoEntity> mockListaAtestado(){
-            List<AtestadoEntity> listaAtestadoEntity = new ArrayList<>();
-          //  listaAtestado.add(new Atestado(  1,  "Asma",new Date(2020-10-11),this.colaboradorController.getColaboradores(3)));
-            return listaAtestadoEntity;
-        }
+         @GetMapping("/popular")
+        public Iterable<AtestadoEntity> popularBanco(){
+        atestadoService.popular();
+             return atestadoService.listar();
+    }
 }
