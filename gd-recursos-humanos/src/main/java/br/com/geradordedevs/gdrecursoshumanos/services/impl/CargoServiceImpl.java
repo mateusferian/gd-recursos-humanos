@@ -42,8 +42,8 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void popular() {
-        cadastrar((new CargoEntity("administrador")));
-        cadastrar((new CargoEntity("vendedor")));
-        cadastrar((new CargoEntity("entregador")));
+        cargoRepository.save((new CargoEntity("administrador")));
+        cargoRepository.save((new CargoEntity("vendedor")));
+        cargoRepository.save((new CargoEntity("entregador")));
     }
 }
