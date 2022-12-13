@@ -42,8 +42,8 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
 
     @Override
     public void popular() {
-        cadastrar((new TipoDocumentoEntity("RG")));
-        cadastrar((new TipoDocumentoEntity("CPF")));
-        cadastrar((new TipoDocumentoEntity("CNJP")));
+        tipoDocumentoRepository.save((new TipoDocumentoEntity("RG")));
+        tipoDocumentoRepository.save((new TipoDocumentoEntity("CPF")));
+        tipoDocumentoRepository.save((new TipoDocumentoEntity("CNJP")));
     }
 }
