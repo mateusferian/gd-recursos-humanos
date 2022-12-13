@@ -1,5 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
@@ -18,23 +20,23 @@ public class CargoController {
     @Autowired
     private CargoService cargoService;
     @GetMapping
-    public Iterable<CargoEntity> listar(){
+    public List<CargoResponseDTO> listar(){
         return cargoService.listar();
     }
 
     @GetMapping ("/{id}")
-    public CargoEntity consultar(@PathVariable Long id ){
+    public CargoResponseDTO consultar(@PathVariable Long id ){
         return cargoService.consultar(id);
     }
 
     @PostMapping
-    public CargoEntity cadastrar(@RequestBody CargoEntity cargoEntity){
-        return cargoService.cadastrar(cargoEntity);
+    public CargoResponseDTO cadastrar(@RequestBody CargoRequestDTO request){
+        return cargoService.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public CargoEntity alterar (@PathVariable Long id, @RequestBody CargoEntity cargoEntity){
-        return cargoService.alterar(id, cargoEntity);
+    public CargoResponseDTO alterar (@PathVariable Long id, @RequestBody CargoRequestDTO request){
+        return cargoService.alterar(id, request);
     }
 
     @DeleteMapping ("/{id}")
@@ -43,7 +45,7 @@ public class CargoController {
     }
 
     @GetMapping("/popular")
-    public Iterable<CargoEntity> popularBanco(){
+    public List<CargoResponseDTO> popularBanco(){
         cargoService.popular();
         return cargoService.listar();
     }
