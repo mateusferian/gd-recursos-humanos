@@ -1,13 +1,17 @@
 package br.com.geradordedevs.gdrecursoshumanos.services;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 
-public interface CargoService {
-    Iterable<CargoEntity> listar();
+import java.util.List;
 
-    CargoEntity consultar(Long id);
-    CargoEntity cadastrar(CargoEntity cargoEntity);
-    CargoEntity alterar(Long id, CargoEntity cargoEntity );
+public interface CargoService {
+    List<CargoResponseDTO> listar();
+
+    CargoResponseDTO consultar(Long id);
+    CargoResponseDTO cadastrar(CargoRequestDTO request);
+    CargoResponseDTO alterar(Long id, CargoRequestDTO request );
     void remover(Long id);
      void popular();
 }
