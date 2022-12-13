@@ -43,9 +43,9 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public void popular() {
-        cadastrar((new DepartamentoEntity("adiministrativo")));
-        cadastrar((new DepartamentoEntity("vendas")));
-        cadastrar((new DepartamentoEntity("entregas")));
+        departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
+        departamentoRepository.save((new DepartamentoEntity("vendas")));
+        departamentoRepository.save((new DepartamentoEntity("entregas")));
     }
 
 }
