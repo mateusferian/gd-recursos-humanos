@@ -1,15 +1,19 @@
 package br.com.geradordedevs.gdrecursoshumanos.services;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public interface TipoDocumentoService {
-    Iterable<TipoDocumentoEntity> listar();
-    TipoDocumentoEntity consultar(@PathVariable Long id );
-    TipoDocumentoEntity cadastrar(@RequestBody TipoDocumentoEntity tipoDocumentoEntity);
+import java.util.List;
 
-    TipoDocumentoEntity alterar (@PathVariable Long id, @RequestBody TipoDocumentoEntity tipoDocumentoEntity);
-    void  remover(@PathVariable  Long id);
+public interface TipoDocumentoService {
+    List<TipoDocumentoResponseDTO> listar();
+    TipoDocumentoResponseDTO consultar(Long id );
+    TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request);
+
+    TipoDocumentoResponseDTO alterar ( Long id,  TipoDocumentoRequestDTO request);
+    void  remover(  Long id);
      void popular();
 }
