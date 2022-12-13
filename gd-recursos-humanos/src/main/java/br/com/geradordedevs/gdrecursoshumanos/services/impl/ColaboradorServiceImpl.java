@@ -1,9 +1,12 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.mapper.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
@@ -11,35 +14,44 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
 public class ColaboradorServiceImpl implements ColaboradorService {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
+    @Autowired
+    private ColaboradorMapper mapper;
 
 
     @Override
-    public Iterable<ColaboradorEntity> listar() {
+    public List<ColaboradorResponseDTO> listar() {
         log.info("listando colaboradores");
-        return colaboradorRepository.findAll();
+        List<ColaboradorEntity> colaboradorEntities = new ArrayList<>();
+        for (ColaboradorEntity colaboradorEntity: colaboradorRepository.findAll()) {
+            colaboradorEntities.add(colaboradorEntity);
+        }
+        return mapper.paraListaDto(colaboradorEntities);
     }
     @Override
-    public ColaboradorEntity consultar(Long id) {
+    public ColaboradorResponseDTO consultar(Long id) {
         log.info("obtendo informações de colaborador {}", id);
-        return  colaboradorRepository.findById(id).orElse(new ColaboradorEntity());
+        return  mapper.paraDto(colaboradorRepository.findById(id).orElse(new ColaboradorEntity()));
     }
     @Override
-    public ColaboradorEntity cadastrar(ColaboradorEntity colaboradorEntity) {
-        log.info("cadastrando um novo colaborador {}", colaboradorEntity);
-        return colaboradorRepository.save(colaboradorEntity);
+    public ColaboradorResponseDTO cadastrar(ColaboradorRequestDTO request) {
+        log.info("cadastrando um novo colaborador {}", request);
+        return mapper.paraDto(colaboradorRepository.save(mapper.paraEntidade(request)));
     }
     @Override
-    public ColaboradorEntity alterar(Long id, ColaboradorEntity colaboradorEntity) {
-        log.info("alterando o colaborador de id {} com novas informações: {}", id, colaboradorEntity);
-        colaboradorEntity.setId(id);
-        return colaboradorRepository.save(colaboradorEntity);
+    public ColaboradorResponseDTO alterar(Long id, ColaboradorRequestDTO request) {
+        log.info("alterando o colaborador de id {} com novas informações: {}", id, request);
+        ColaboradorEntity colaborador = mapper.paraEntidade(request);
+        colaborador.setId(id);
+        return mapper.paraDto(colaboradorRepository.save(colaborador));
     }
 
     @Override
