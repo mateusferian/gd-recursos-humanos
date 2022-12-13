@@ -46,7 +46,7 @@ public class AtestadoServiceImpl implements AtestadoService {
 
     @Override
     public void popular() {
-        cadastrar(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
+        atestadoRepository.save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
     }
 
 }
