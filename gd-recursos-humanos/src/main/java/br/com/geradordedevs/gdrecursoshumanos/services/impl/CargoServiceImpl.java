@@ -56,6 +56,7 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void popular() {
+        log.info("populando o banco de dados de Cargos para teste");
         cargoRepository.save((new CargoEntity("administrador")));
         cargoRepository.save((new CargoEntity("vendedor")));
         cargoRepository.save((new CargoEntity("entregador")));
