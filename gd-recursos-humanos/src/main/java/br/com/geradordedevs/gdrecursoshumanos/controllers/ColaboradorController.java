@@ -1,6 +1,8 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
@@ -21,23 +23,23 @@ public class ColaboradorController {
     private ColaboradorService colaboradorService;
 
     @GetMapping
-    public Iterable<ColaboradorEntity> listar(){
+    public List<ColaboradorResponseDTO> listar(){
         return colaboradorService.listar();
     }
 
     @GetMapping ("/{id}")
-public ColaboradorEntity consultar(@PathVariable Long id ){
+public ColaboradorResponseDTO consultar(@PathVariable Long id ){
         return colaboradorService.consultar(id);
     }
 
  @PostMapping
-    public ColaboradorEntity cadastrar(@RequestBody ColaboradorEntity colaboradorEntity){
-        return colaboradorService.cadastrar(colaboradorEntity);
+    public ColaboradorResponseDTO cadastrar(@RequestBody ColaboradorRequestDTO request){
+        return colaboradorService.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public ColaboradorEntity alterar (@PathVariable Long id, @RequestBody ColaboradorEntity colaboradorEntity){
-        return  colaboradorService.alterar(id, colaboradorEntity);
+    public ColaboradorResponseDTO alterar (@PathVariable Long id, @RequestBody ColaboradorRequestDTO request){
+        return  colaboradorService.alterar(id, request);
     }
 
     @DeleteMapping ("/{id}")
@@ -46,7 +48,7 @@ public ColaboradorEntity consultar(@PathVariable Long id ){
     }
 
     @GetMapping("/popular")
-    public Iterable<ColaboradorEntity> popularBanco(){
+    public List<ColaboradorResponseDTO> popularBanco(){
         colaboradorService.popular();
         return colaboradorService.listar();
     }
