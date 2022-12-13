@@ -1,38 +1,52 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.mapper.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Slf4j
 public class CargoServiceImpl implements CargoService {
     @Autowired
     private CargoRepository cargoRepository;
+    @Autowired
+    private CargoMapper mapper;
 
     @Override
-    public Iterable<CargoEntity> listar() {
+    public List<CargoResponseDTO> listar() {
         log.info("listando cargos");
-        return cargoRepository.findAll();
+        List<CargoEntity> cargoEntities = new ArrayList<>();
+        for (CargoEntity cargoEntity: cargoRepository.findAll()) {
+            cargoEntities.add(cargoEntity);
+
+        }
+        return mapper.paraListaDto(cargoEntities);
     }
     @Override
-    public CargoEntity consultar(Long id) {
+    public CargoResponseDTO consultar(Long id) {
         log.info("obtendo informações de cargo {}", id);
-        return cargoRepository.findById(id).orElse(new CargoEntity());
+        return mapper.paraDto(cargoRepository.findById(id).orElse(new CargoEntity()));
     }
-    public CargoEntity cadastrar(CargoEntity cargoEntity){
-        log.info("cadastrando um novo cargo {}", cargoEntity);
-        return cargoRepository.save(cargoEntity);
+    public CargoResponseDTO cadastrar(CargoRequestDTO request){
+        log.info("cadastrando um novo cargo {}", request);
+        return mapper.paraDto(cargoRepository.save(mapper.paraEntidade(request)));
     }
     @Override
-    public CargoEntity alterar(Long id, CargoEntity cargoEntity) {
-        log.info("alterando o cargo de id {} com novas informações: {}", id, cargoEntity);
-        cargoEntity.setId(id);
-        return cargoRepository.save(cargoEntity);
+    public CargoResponseDTO alterar(Long id, CargoRequestDTO request) {
+        log.info("alterando o cargo de id {} com novas informações: {}", id, request);
+        CargoEntity cargo = mapper.paraEntidade(request);
+        cargo.setId(id);
+        return mapper.paraDto(cargoRepository.save(cargo));
     }
     @Override
     public void remover(Long id) {
