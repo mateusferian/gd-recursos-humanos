@@ -34,7 +34,6 @@ public class AtestadoMapper {
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(request.getColaboradorId()).get();
         atestadoEntity.setColaborador(colaboradorEntity);
         return atestadoEntity;
-
     }
     public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
@@ -42,5 +41,4 @@ public class AtestadoMapper {
                 .map(this::paraDto)
                 .collect(Collectors.toList());
     }
-
 }
