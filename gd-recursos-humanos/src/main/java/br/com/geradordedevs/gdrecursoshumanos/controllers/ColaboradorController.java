@@ -28,11 +28,11 @@ public class ColaboradorController {
     }
 
     @GetMapping ("/{id}")
-public ColaboradorResponseDTO consultar(@PathVariable Long id ){
+    public ColaboradorResponseDTO consultar(@PathVariable Long id ){
         return colaboradorService.consultar(id);
     }
 
- @PostMapping
+    @PostMapping
     public ColaboradorResponseDTO cadastrar(@RequestBody ColaboradorRequestDTO request){
         return colaboradorService.cadastrar(request);
     }
