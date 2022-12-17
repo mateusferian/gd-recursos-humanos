@@ -12,7 +12,6 @@ public interface TipoDocumentoService {
     List<TipoDocumentoResponseDTO> listar();
     TipoDocumentoResponseDTO consultar(Long id );
     TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request);
-
     TipoDocumentoResponseDTO alterar ( Long id,  TipoDocumentoRequestDTO request);
     void  remover(  Long id);
      void popular();
