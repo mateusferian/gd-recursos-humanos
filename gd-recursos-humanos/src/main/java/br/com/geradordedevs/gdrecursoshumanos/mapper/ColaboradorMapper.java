@@ -33,7 +33,7 @@ public class ColaboradorMapper {
     @Autowired
     private TipoDocumentoRepository tipoDocumentoRepository;
     public ColaboradorResponseDTO paraDto(ColaboradorEntity entidade){
-        log.info("convertendo entidade {} para Dto", entidade);
+        log.info("convertendo entidade {} para dto", entidade);
         ColaboradorResponseDTO colaboradorResponseDTO = new ColaboradorResponseDTO();
         colaboradorResponseDTO = mapper.map(entidade, ColaboradorResponseDTO.class);
         return colaboradorResponseDTO;

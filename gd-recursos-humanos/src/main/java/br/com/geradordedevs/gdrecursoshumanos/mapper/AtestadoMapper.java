@@ -23,7 +23,7 @@ public class AtestadoMapper {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
     public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
-        log.info("convertendo entidade {} para Dto", entidade);
+        log.info("convertendo entidade {} para dto", entidade);
         AtestadoResponseDTO atestadoResponseDTO = new AtestadoResponseDTO();
         atestadoResponseDTO = mapper.map(entidade, AtestadoResponseDTO.class);
         return  atestadoResponseDTO;

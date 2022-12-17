@@ -19,7 +19,7 @@ public class DepartamentoMapper {
     @Autowired
     private final ModelMapper mapper;
     public DepartamentoResponseDTO paraDto(DepartamentoEntity entidade){
-        log.info("convertendo entidade {} para Dto", entidade);
+        log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, DepartamentoResponseDTO.class);
     }
     public DepartamentoEntity paraEntidade(DepartamentoRequestDTO request){

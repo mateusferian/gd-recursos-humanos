@@ -19,7 +19,7 @@ public class CargoMapper {
     @Autowired
     private final ModelMapper mapper;
     public CargoResponseDTO paraDto(CargoEntity entidade){
-        log.info("convertendo entidade {} para Dto", entidade);
+        log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, CargoResponseDTO.class);
     }
     public CargoEntity paraEntidade(CargoRequestDTO request){

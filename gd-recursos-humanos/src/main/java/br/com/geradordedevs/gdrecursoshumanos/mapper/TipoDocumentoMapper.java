@@ -19,7 +19,7 @@ public class TipoDocumentoMapper {
     @Autowired
     private final ModelMapper mapper;
     public TipoDocumentoResponseDTO paraDto(TipoDocumentoEntity entidade){
-        log.info("convertendo entidade {} para Dto", entidade);
+        log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, TipoDocumentoResponseDTO.class);
     }
     public TipoDocumentoEntity paraEntidade(TipoDocumentoRequestDTO request){
