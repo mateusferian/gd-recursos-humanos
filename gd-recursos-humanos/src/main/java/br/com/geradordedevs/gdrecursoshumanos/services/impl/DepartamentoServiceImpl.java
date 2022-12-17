@@ -52,7 +52,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         log.info("removendo o departamento de id {}", id);
         departamentoRepository.deleteById(id);
     }
-
     @Override
     public void popular() {
         log.info("populando o banco de dados de departamentos para teste");
@@ -60,5 +59,4 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         departamentoRepository.save((new DepartamentoEntity("vendas")));
         departamentoRepository.save((new DepartamentoEntity("entregas")));
     }
-
 }

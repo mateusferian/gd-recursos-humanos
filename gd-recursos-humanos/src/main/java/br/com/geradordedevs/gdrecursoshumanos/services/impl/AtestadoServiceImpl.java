@@ -23,7 +23,6 @@ public class AtestadoServiceImpl implements AtestadoService {
     public AtestadoRepository atestadoRepository;
     @Autowired
     public AtestadoMapper mapper;
-
     @Override
     public List<AtestadoResponseDTO> listar() {
         log.info("listando atestados");
@@ -48,8 +47,6 @@ public class AtestadoServiceImpl implements AtestadoService {
         log.info("alterando o atestado de id {} com novas informacoes: {}", id, request);
         AtestadoEntity atestado = mapper.paraEntidade(request);
         atestado.setId(id);
-
-
         return mapper.paraDto(atestadoRepository.save(atestado));
     }
     @Override
@@ -57,11 +54,9 @@ public class AtestadoServiceImpl implements AtestadoService {
         log.info("removendo o atestado de id {}", id);
         atestadoRepository.deleteById(id);
     }
-
     @Override
     public void popular() {
         log.info("populando o banco de dados de atestados para teste");
         atestadoRepository.save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
     }
-
 }

@@ -20,14 +20,12 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     private TipoDocumentoRepository tipoDocumentoRepository;
     @Autowired
     private TipoDocumentoMapper mapper;
-
     @Override
     public List<TipoDocumentoResponseDTO> listar() {
         log.info("listando tipo de documentos");
         List<TipoDocumentoEntity> tipoDocumentoEntities = new ArrayList<>();
         for (TipoDocumentoEntity tipoDocumentoEntity: tipoDocumentoRepository.findAll()) {
             tipoDocumentoEntities.add(tipoDocumentoEntity);
-
         }
         return mapper.paraListaDto(tipoDocumentoEntities);
     }
@@ -46,7 +44,6 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
         log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, request);
             TipoDocumentoEntity tipoDocumento = mapper.paraEntidade(request);
             tipoDocumento.setId(id);
-
         return  mapper.paraDto(tipoDocumentoRepository.save(tipoDocumento));
     }
     @Override
@@ -54,7 +51,6 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
         log.info("removendo o tipo de documento de id {}", id);
        tipoDocumentoRepository.deleteById(id);
     }
-
     @Override
     public void popular() {
         log.info("populando o banco de dados de tipo de documentos para teste");

@@ -25,8 +25,6 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     private ColaboradorRepository colaboradorRepository;
     @Autowired
     private ColaboradorMapper mapper;
-
-
     @Override
     public List<ColaboradorResponseDTO> listar() {
         log.info("listando colaboradores");
@@ -53,13 +51,11 @@ public class ColaboradorServiceImpl implements ColaboradorService {
         colaborador.setId(id);
         return mapper.paraDto(colaboradorRepository.save(colaborador));
     }
-
     @Override
     public void remover(Long id) {
         log.info("removendo o colaborador de id {}", id);
         colaboradorRepository.deleteById(id);
     }
-
     @Override
     public void popular() {
         log.info("populando o banco de dados de colaboradores para teste");

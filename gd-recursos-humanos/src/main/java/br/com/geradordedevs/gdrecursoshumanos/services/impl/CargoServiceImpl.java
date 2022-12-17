@@ -21,14 +21,12 @@ public class CargoServiceImpl implements CargoService {
     private CargoRepository cargoRepository;
     @Autowired
     private CargoMapper mapper;
-
     @Override
     public List<CargoResponseDTO> listar() {
         log.info("listando cargos");
         List<CargoEntity> cargoEntities = new ArrayList<>();
         for (CargoEntity cargoEntity: cargoRepository.findAll()) {
             cargoEntities.add(cargoEntity);
-
         }
         return mapper.paraListaDto(cargoEntities);
     }
@@ -53,7 +51,6 @@ public class CargoServiceImpl implements CargoService {
         log.info("removendo o cargo de id {}", id);
         cargoRepository.deleteById(id);
     }
-
     @Override
     public void popular() {
         log.info("populando o banco de dados de cargos para teste");
