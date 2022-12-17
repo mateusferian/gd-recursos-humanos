@@ -25,7 +25,6 @@ public class DepartamentoMapper {
     public DepartamentoEntity paraEntidade(DepartamentoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, DepartamentoEntity.class);
-
     }
     public List<DepartamentoResponseDTO> paraListaDto(List<DepartamentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
