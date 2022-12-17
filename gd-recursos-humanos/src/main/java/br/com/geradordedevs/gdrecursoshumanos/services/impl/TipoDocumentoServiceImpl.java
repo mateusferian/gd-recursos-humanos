@@ -33,7 +33,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
     @Override
     public TipoDocumentoResponseDTO consultar(Long id) {
-        log.info("obtendo informações de tipo de documento {}", id);
+        log.info("obtendo informacoes de tipo de documento {}", id);
         return mapper.paraDto(tipoDocumentoRepository.findById(id).orElse(new TipoDocumentoEntity()));
     }
     @Override
@@ -43,7 +43,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
     @Override
     public TipoDocumentoResponseDTO alterar(Long id, TipoDocumentoRequestDTO request) {
-        log.info("alterando o tipo de documento de id {} com novas informações: {}", id, request);
+        log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, request);
             TipoDocumentoEntity tipoDocumento = mapper.paraEntidade(request);
             tipoDocumento.setId(id);
 
@@ -57,7 +57,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de Tipo de Documentos para teste");
+        log.info("populando o banco de dados de tipo de documentos para teste");
         tipoDocumentoRepository.save((new TipoDocumentoEntity("RG")));
         tipoDocumentoRepository.save((new TipoDocumentoEntity("CPF")));
         tipoDocumentoRepository.save((new TipoDocumentoEntity("CNJP")));

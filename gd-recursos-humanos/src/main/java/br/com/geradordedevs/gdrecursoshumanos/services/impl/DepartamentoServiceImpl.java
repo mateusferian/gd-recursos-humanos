@@ -32,7 +32,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
     @Override
     public DepartamentoResponseDTO consultar(Long id) {
-        log.info("obtendo informações de departamento {}", id);
+        log.info("obtendo informacoes de departamento {}", id);
         return  mapper.paraDto(departamentoRepository.findById(id).orElse(new DepartamentoEntity()));
     }
     @Override
@@ -42,7 +42,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
     @Override
     public DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request) {
-        log.info("alterando o departamento de id {} com novas informações: {}", id, request);
+        log.info("alterando o departamento de id {} com novas informacoes: {}", id, request);
         DepartamentoEntity departamento = mapper.paraEntidade(request);
         departamento.setId(id);
         return mapper.paraDto(departamentoRepository.save(departamento));
@@ -55,7 +55,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de Departamentos para teste");
+        log.info("populando o banco de dados de departamentos para teste");
         departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
         departamentoRepository.save((new DepartamentoEntity("vendas")));
         departamentoRepository.save((new DepartamentoEntity("entregas")));

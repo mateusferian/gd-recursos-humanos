@@ -34,7 +34,7 @@ public class CargoServiceImpl implements CargoService {
     }
     @Override
     public CargoResponseDTO consultar(Long id) {
-        log.info("obtendo informações de cargo {}", id);
+        log.info("obtendo informacoes de cargo {}", id);
         return mapper.paraDto(cargoRepository.findById(id).orElse(new CargoEntity()));
     }
     public CargoResponseDTO cadastrar(CargoRequestDTO request){
@@ -43,7 +43,7 @@ public class CargoServiceImpl implements CargoService {
     }
     @Override
     public CargoResponseDTO alterar(Long id, CargoRequestDTO request) {
-        log.info("alterando o cargo de id {} com novas informações: {}", id, request);
+        log.info("alterando o cargo de id {} com novas informacoes: {}", id, request);
         CargoEntity cargo = mapper.paraEntidade(request);
         cargo.setId(id);
         return mapper.paraDto(cargoRepository.save(cargo));
@@ -56,7 +56,7 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de Cargos para teste");
+        log.info("populando o banco de dados de cargos para teste");
         cargoRepository.save((new CargoEntity("administrador")));
         cargoRepository.save((new CargoEntity("vendedor")));
         cargoRepository.save((new CargoEntity("entregador")));
