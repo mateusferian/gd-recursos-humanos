@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface CargoService {
     List<CargoResponseDTO> listar();
-
     CargoResponseDTO consultar(Long id);
     CargoResponseDTO cadastrar(CargoRequestDTO request);
     CargoResponseDTO alterar(Long id, CargoRequestDTO request );
