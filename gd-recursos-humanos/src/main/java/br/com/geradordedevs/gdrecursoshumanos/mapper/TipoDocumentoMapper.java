@@ -25,7 +25,6 @@ public class TipoDocumentoMapper {
     public TipoDocumentoEntity paraEntidade(TipoDocumentoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, TipoDocumentoEntity.class);
-
     }
     public List<TipoDocumentoResponseDTO> paraListaDto(List<TipoDocumentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
