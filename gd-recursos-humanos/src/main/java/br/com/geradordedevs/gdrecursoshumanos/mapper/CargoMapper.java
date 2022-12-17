@@ -25,7 +25,6 @@ public class CargoMapper {
     public CargoEntity paraEntidade(CargoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, CargoEntity.class);
-
     }
     public List<CargoResponseDTO> paraListaDto(List<CargoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
