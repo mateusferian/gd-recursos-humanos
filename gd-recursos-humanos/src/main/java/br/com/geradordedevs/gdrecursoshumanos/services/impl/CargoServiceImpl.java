@@ -35,6 +35,7 @@ public class CargoServiceImpl implements CargoService {
         log.info("obtendo informacoes de cargo {}", id);
         return mapper.paraDto(cargoRepository.findById(id).orElse(new CargoEntity()));
     }
+    @Override
     public CargoResponseDTO cadastrar(CargoRequestDTO request){
         log.info("cadastrando um novo cargo {}", request);
         return mapper.paraDto(cargoRepository.save(mapper.paraEntidade(request)));
