@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 public class ColaboradorMapper {
     @Autowired
     private final ModelMapper mapper;
-
     public ColaboradorResponseDTO paraDto(ColaboradorEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, ColaboradorResponseDTO.class);
