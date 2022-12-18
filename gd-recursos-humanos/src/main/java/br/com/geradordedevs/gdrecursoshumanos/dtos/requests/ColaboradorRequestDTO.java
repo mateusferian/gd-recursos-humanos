@@ -11,7 +11,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class ColaboradorRequestDTO {
 
-    private Long id;
     private String nome;
     private int idade;
     private Date dataDeNascimento;
