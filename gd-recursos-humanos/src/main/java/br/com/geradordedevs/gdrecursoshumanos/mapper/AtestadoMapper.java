@@ -20,20 +20,13 @@ import java.util.stream.Collectors;
 public class AtestadoMapper {
     @Autowired
     private final ModelMapper mapper;
-    @Autowired
-    private ColaboradorRepository colaboradorRepository;
     public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
-        AtestadoResponseDTO atestadoResponseDTO = new AtestadoResponseDTO();
-        atestadoResponseDTO = mapper.map(entidade, AtestadoResponseDTO.class);
-        return  atestadoResponseDTO;
+        return   mapper.map(entidade, AtestadoResponseDTO.class);
     }
     public AtestadoEntity paraEntidade(AtestadoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
-        AtestadoEntity atestadoEntity =  mapper.map(request, AtestadoEntity.class);
-        ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(request.getColaboradorId()).get();
-        atestadoEntity.setColaborador(colaboradorEntity);
-        return atestadoEntity;
+        return mapper.map(request, AtestadoEntity.class);
     }
     public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
