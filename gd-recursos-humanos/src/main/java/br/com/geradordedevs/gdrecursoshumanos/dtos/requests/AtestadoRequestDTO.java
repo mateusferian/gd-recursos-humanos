@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AtestadoRequestDTO {
-
+    private Long id;
     private String nome;
     private Date data;
     private Long colaboradorId;
