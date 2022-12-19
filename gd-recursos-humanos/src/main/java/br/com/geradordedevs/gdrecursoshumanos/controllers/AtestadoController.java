@@ -1,5 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
@@ -19,23 +21,23 @@ public class AtestadoController {
         private AtestadoService atestadoService;
 
         @GetMapping
-        public Iterable<AtestadoEntity> listar(){
+        public List<AtestadoResponseDTO> listar(){
             return atestadoService.listar();
         }
 
         @GetMapping ("/{id}")
-        public AtestadoEntity consultar(@PathVariable Long id ){
+        public AtestadoResponseDTO consultar(@PathVariable Long id ){
             return atestadoService.consultar(id);
         }
 
         @PostMapping
-        public AtestadoEntity cadastrar(@RequestBody AtestadoEntity atestadoEntity){
-            return atestadoService.cadastrar(atestadoEntity);
+        public AtestadoResponseDTO cadastrar(@RequestBody AtestadoRequestDTO requesty){
+            return atestadoService.cadastrar(requesty);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoEntity alterar (@PathVariable long id, @RequestBody AtestadoEntity atestadoEntity){
-            return  atestadoService.alterar(id, atestadoEntity);
+        public AtestadoResponseDTO alterar (@PathVariable long id, @RequestBody AtestadoRequestDTO request){
+            return  atestadoService.alterar(id, request);
         }
 
         @DeleteMapping ("/{id}")
@@ -44,7 +46,7 @@ public class AtestadoController {
         }
 
          @GetMapping("/popular")
-        public Iterable<AtestadoEntity> popularBanco(){
+        public List<AtestadoResponseDTO> popularBanco(){
         atestadoService.popular();
              return atestadoService.listar();
     }
