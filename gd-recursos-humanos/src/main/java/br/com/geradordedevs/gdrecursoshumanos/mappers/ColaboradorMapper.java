@@ -1,8 +1,8 @@
-package br.com.geradordedevs.gdrecursoshumanos.mapper;
+package br.com.geradordedevs.gdrecursoshumanos.mappers;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
+import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -15,22 +15,22 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class TipoDocumentoMapper {
+public class ColaboradorMapper {
 
     @Autowired
     private final ModelMapper mapper;
 
-    public TipoDocumentoResponseDTO paraDto(TipoDocumentoEntity entidade){
+    public ColaboradorResponseDTO paraDto(ColaboradorEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, TipoDocumentoResponseDTO.class);
+        return  mapper.map(entidade, ColaboradorResponseDTO.class);
     }
 
-    public TipoDocumentoEntity paraEntidade(TipoDocumentoRequestDTO request){
+    public ColaboradorEntity  paraEntidade(ColaboradorRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
-        return  mapper.map(request, TipoDocumentoEntity.class);
+        return  mapper.map(request, ColaboradorEntity.class);
     }
 
-    public List<TipoDocumentoResponseDTO> paraListaDto(List<TipoDocumentoEntity> lista){
+    public List<ColaboradorResponseDTO> paraListaDto(List<ColaboradorEntity > lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         return  lista.stream()
                 .map(this::paraDto)

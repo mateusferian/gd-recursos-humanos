@@ -1,8 +1,8 @@
-package br.com.geradordedevs.gdrecursoshumanos.mapper;
+package br.com.geradordedevs.gdrecursoshumanos.mappers;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
+import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -15,22 +15,22 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class CargoMapper {
+public class AtestadoMapper {
 
     @Autowired
     private final ModelMapper mapper;
 
-    public CargoResponseDTO paraDto(CargoEntity entidade){
+    public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, CargoResponseDTO.class);
+        return   mapper.map(entidade, AtestadoResponseDTO.class);
     }
 
-    public CargoEntity paraEntidade(CargoRequestDTO request){
+    public AtestadoEntity paraEntidade(AtestadoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
-        return  mapper.map(request, CargoEntity.class);
+        return mapper.map(request, AtestadoEntity.class);
     }
 
-    public List<CargoResponseDTO> paraListaDto(List<CargoEntity> lista){
+    public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         return  lista.stream()
                 .map(this::paraDto)

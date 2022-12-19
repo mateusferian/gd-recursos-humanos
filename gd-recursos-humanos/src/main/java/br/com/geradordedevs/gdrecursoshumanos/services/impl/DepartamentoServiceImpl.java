@@ -3,7 +3,7 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.mapper.DepartamentoMapper;
+import br.com.geradordedevs.gdrecursoshumanos.mappers.DepartamentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import lombok.extern.slf4j.Slf4j;
