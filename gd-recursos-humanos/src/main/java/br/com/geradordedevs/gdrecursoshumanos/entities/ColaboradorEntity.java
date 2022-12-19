@@ -26,7 +26,6 @@ public class ColaboradorEntity {
     @ManyToOne
     private DepartamentoEntity departamento;
     private double salario;
-
     private Date dataInicio;
     private boolean ativo;
     private String telefone;
