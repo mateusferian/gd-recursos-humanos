@@ -20,6 +20,7 @@ public class DepartamentoController {
 
     @Autowired
     private DepartamentoService departamentoService;
+
     @GetMapping
     public List<DepartamentoResponseDTO> listar() {
         return departamentoService.listar();

@@ -19,6 +19,7 @@ public class CargoController {
 
     @Autowired
     private CargoService cargoService;
+
     @GetMapping
     public List<CargoResponseDTO> listar(){
         return cargoService.listar();
