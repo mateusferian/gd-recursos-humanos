@@ -14,5 +14,5 @@ public interface ColaboradorService {
     ColaboradorResponseDTO cadastrar( ColaboradorRequestDTO request);
     ColaboradorResponseDTO alterar ( Long id,  ColaboradorRequestDTO request);
     void remover ( Long id);
-     void popular();
+    void popular();
 }

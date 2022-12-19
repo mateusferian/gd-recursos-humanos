@@ -14,5 +14,5 @@ public interface TipoDocumentoService {
     TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request);
     TipoDocumentoResponseDTO alterar ( Long id,  TipoDocumentoRequestDTO request);
     void  remover(  Long id);
-     void popular();
+    void popular();
 }

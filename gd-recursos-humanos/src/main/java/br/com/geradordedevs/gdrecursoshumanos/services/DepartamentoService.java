@@ -15,5 +15,5 @@ public interface DepartamentoService {
     DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request);
     DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request);
     void remover( Long id);
-     void popular();
+    void popular();
 }

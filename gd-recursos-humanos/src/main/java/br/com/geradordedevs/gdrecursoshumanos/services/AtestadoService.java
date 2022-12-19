@@ -14,5 +14,5 @@ public interface AtestadoService {
     AtestadoResponseDTO cadastrar(AtestadoRequestDTO request);
     AtestadoResponseDTO alterar ( long id,  AtestadoRequestDTO request);
     void remover ( Long id);
-     void popular();
+    void popular();
 }

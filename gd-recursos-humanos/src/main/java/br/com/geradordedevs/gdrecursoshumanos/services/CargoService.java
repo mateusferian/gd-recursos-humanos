@@ -12,5 +12,5 @@ public interface CargoService {
     CargoResponseDTO cadastrar(CargoRequestDTO request);
     CargoResponseDTO alterar(Long id, CargoRequestDTO request );
     void remover(Long id);
-     void popular();
+    void popular();
 }
