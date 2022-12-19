@@ -1,5 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
@@ -18,24 +20,25 @@ public class DepartamentoController {
 
     @Autowired
     private DepartamentoService departamentoService;
+
     @GetMapping
-    public Iterable<DepartamentoEntity> listar() {
+    public List<DepartamentoResponseDTO> listar() {
         return departamentoService.listar();
     }
 
     @GetMapping("/{id}")
-    public DepartamentoEntity consultar(@PathVariable Long id) {
+    public DepartamentoResponseDTO consultar(@PathVariable Long id) {
         return departamentoService.consultar(id);
     }
 
     @PostMapping
-    public DepartamentoEntity cadastrar(@RequestBody DepartamentoEntity departamentoEntity) {
-        return departamentoService.cadastrar(departamentoEntity);
+    public DepartamentoResponseDTO cadastrar(@RequestBody DepartamentoRequestDTO request) {
+        return departamentoService.cadastrar(request);
     }
 
     @PutMapping("/{id}")
-    public DepartamentoEntity alterar(@PathVariable Long id, @RequestBody DepartamentoEntity departamentoEntity) {
-        return departamentoService.alterar(id,departamentoEntity);
+    public DepartamentoResponseDTO alterar(@PathVariable Long id, @RequestBody DepartamentoRequestDTO request) {
+        return departamentoService.alterar(id,request);
     }
 
     @DeleteMapping("/{id}")
@@ -44,7 +47,7 @@ public class DepartamentoController {
     }
 
     @GetMapping("/popular")
-    public Iterable<DepartamentoEntity> popularBanco(){
+    public List<DepartamentoResponseDTO> popularBanco(){
         departamentoService.popular();
         return departamentoService.listar();
     }

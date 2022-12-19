@@ -1,40 +1,58 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.mappers.DepartamentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Slf4j
 public class DepartamentoServiceImpl implements DepartamentoService {
+
     @Autowired
     private DepartamentoRepository departamentoRepository;
 
+    @Autowired
+    private DepartamentoMapper mapper;
+
     @Override
-    public Iterable<DepartamentoEntity> listar() {
+    public List<DepartamentoResponseDTO> listar() {
         log.info("listando departamentos");
-        return departamentoRepository.findAll();
+        List<DepartamentoEntity> departamentoEntities = new ArrayList<>();
+        for (DepartamentoEntity departamentoEntity: departamentoRepository.findAll()) {
+         departamentoEntities.add(departamentoEntity);
+        }
+        return mapper.paraListaDto(departamentoEntities);
     }
+
     @Override
-    public DepartamentoEntity consultar(Long id) {
-        log.info("obtendo informações de departamento {}", id);
-        return  departamentoRepository.findById(id).orElse(new DepartamentoEntity());
+    public DepartamentoResponseDTO consultar(Long id) {
+        log.info("obtendo informacoes de departamento {}", id);
+        return  mapper.paraDto(departamentoRepository.findById(id).orElse(new DepartamentoEntity()));
     }
+
     @Override
-    public DepartamentoEntity cadastrar(DepartamentoEntity departamentoEntity) {
-        log.info("cadastrando um novo departamento {}", departamentoEntity);
-        return departamentoRepository.save(departamentoEntity);
+    public DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request) {
+        log.info("cadastrando um novo departamento {}", request);
+        return mapper.paraDto(departamentoRepository.save(mapper.paraEntidade(request)));
     }
+
     @Override
-    public DepartamentoEntity alterar(Long id, DepartamentoEntity departamentoEntity) {
-        log.info("alterando o departamento de id {} com novas informações: {}", id, departamentoEntity);
-        departamentoEntity.setId(id);
-        return departamentoRepository.save(departamentoEntity);
+    public DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request) {
+        log.info("alterando o departamento de id {} com novas informacoes: {}", id, request);
+        DepartamentoEntity departamento = mapper.paraEntidade(request);
+        departamento.setId(id);
+        return mapper.paraDto(departamentoRepository.save(departamento));
     }
+
     @Override
     public void remover(Long id) {
         log.info("removendo o departamento de id {}", id);
@@ -43,9 +61,9 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public void popular() {
-        cadastrar((new DepartamentoEntity("adiministrativo")));
-        cadastrar((new DepartamentoEntity("vendas")));
-        cadastrar((new DepartamentoEntity("entregas")));
+        log.info("populando o banco de dados de departamentos para teste");
+        departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
+        departamentoRepository.save((new DepartamentoEntity("vendas")));
+        departamentoRepository.save((new DepartamentoEntity("entregas")));
     }
-
 }
