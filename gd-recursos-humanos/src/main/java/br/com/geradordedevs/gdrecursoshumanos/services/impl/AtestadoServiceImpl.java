@@ -19,10 +19,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class AtestadoServiceImpl implements AtestadoService {
+
     @Autowired
     public AtestadoRepository atestadoRepository;
+
     @Autowired
     public AtestadoMapper mapper;
+
     @Override
     public List<AtestadoResponseDTO> listar() {
         log.info("listando atestados");
@@ -32,16 +35,19 @@ public class AtestadoServiceImpl implements AtestadoService {
         }
         return mapper.paraListaDto(atestadoEntities);
     }
+
     @Override
     public AtestadoResponseDTO consultar(Long id) {
         log.info("obtendo informacoes de atestado {}", id);
         return mapper.paraDto(atestadoRepository.findById(id).orElse(new AtestadoEntity()));
     }
+
     @Override
     public AtestadoResponseDTO cadastrar(AtestadoRequestDTO request) {
         log.info("cadastrando um novo atestado {}", request);
         return  mapper.paraDto(atestadoRepository.save(mapper.paraEntidade(request)));
     }
+
     @Override
     public AtestadoResponseDTO alterar(long id, AtestadoRequestDTO request) {
         log.info("alterando o atestado de id {} com novas informacoes: {}", id, request);
@@ -49,11 +55,13 @@ public class AtestadoServiceImpl implements AtestadoService {
         atestado.setId(id);
         return mapper.paraDto(atestadoRepository.save(atestado));
     }
+
     @Override
     public void remover(Long id) {
         log.info("removendo o atestado de id {}", id);
         atestadoRepository.deleteById(id);
     }
+
     @Override
     public void popular() {
         log.info("populando o banco de dados de atestados para teste");

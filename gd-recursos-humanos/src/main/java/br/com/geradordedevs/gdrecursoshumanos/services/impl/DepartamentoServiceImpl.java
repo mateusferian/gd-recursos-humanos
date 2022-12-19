@@ -16,8 +16,10 @@ import java.util.List;
 @Service
 @Slf4j
 public class DepartamentoServiceImpl implements DepartamentoService {
+
     @Autowired
     private DepartamentoRepository departamentoRepository;
+
     @Autowired
     private DepartamentoMapper mapper;
 
@@ -30,16 +32,19 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         }
         return mapper.paraListaDto(departamentoEntities);
     }
+
     @Override
     public DepartamentoResponseDTO consultar(Long id) {
         log.info("obtendo informacoes de departamento {}", id);
         return  mapper.paraDto(departamentoRepository.findById(id).orElse(new DepartamentoEntity()));
     }
+
     @Override
     public DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request) {
         log.info("cadastrando um novo departamento {}", request);
         return mapper.paraDto(departamentoRepository.save(mapper.paraEntidade(request)));
     }
+
     @Override
     public DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request) {
         log.info("alterando o departamento de id {} com novas informacoes: {}", id, request);
@@ -47,11 +52,13 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         departamento.setId(id);
         return mapper.paraDto(departamentoRepository.save(departamento));
     }
+
     @Override
     public void remover(Long id) {
         log.info("removendo o departamento de id {}", id);
         departamentoRepository.deleteById(id);
     }
+
     @Override
     public void popular() {
         log.info("populando o banco de dados de departamentos para teste");

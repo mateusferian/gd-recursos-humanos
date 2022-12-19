@@ -21,10 +21,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class ColaboradorServiceImpl implements ColaboradorService {
+
     @Autowired
     private ColaboradorRepository colaboradorRepository;
+
     @Autowired
     private ColaboradorMapper mapper;
+
     @Override
     public List<ColaboradorResponseDTO> listar() {
         log.info("listando colaboradores");
@@ -34,16 +37,19 @@ public class ColaboradorServiceImpl implements ColaboradorService {
         }
         return mapper.paraListaDto(colaboradorEntities);
     }
+
     @Override
     public ColaboradorResponseDTO consultar(Long id) {
         log.info("obtendo informacoes de colaborador {}", id);
         return  mapper.paraDto(colaboradorRepository.findById(id).orElse(new ColaboradorEntity()));
     }
+
     @Override
     public ColaboradorResponseDTO cadastrar(ColaboradorRequestDTO request) {
         log.info("cadastrando um novo colaborador {}", request);
         return mapper.paraDto(colaboradorRepository.save(mapper.paraEntidade(request)));
     }
+
     @Override
     public ColaboradorResponseDTO alterar(Long id, ColaboradorRequestDTO request) {
         log.info("alterando o colaborador de id {} com novas informacoes: {}", id, request);
@@ -51,11 +57,13 @@ public class ColaboradorServiceImpl implements ColaboradorService {
         colaborador.setId(id);
         return mapper.paraDto(colaboradorRepository.save(colaborador));
     }
+
     @Override
     public void remover(Long id) {
         log.info("removendo o colaborador de id {}", id);
         colaboradorRepository.deleteById(id);
     }
+
     @Override
     public void popular() {
         log.info("populando o banco de dados de colaboradores para teste");

@@ -17,10 +17,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class CargoServiceImpl implements CargoService {
+
     @Autowired
     private CargoRepository cargoRepository;
+
     @Autowired
     private CargoMapper mapper;
+
     @Override
     public List<CargoResponseDTO> listar() {
         log.info("listando cargos");
@@ -30,16 +33,19 @@ public class CargoServiceImpl implements CargoService {
         }
         return mapper.paraListaDto(cargoEntities);
     }
+
     @Override
     public CargoResponseDTO consultar(Long id) {
         log.info("obtendo informacoes de cargo {}", id);
         return mapper.paraDto(cargoRepository.findById(id).orElse(new CargoEntity()));
     }
+
     @Override
     public CargoResponseDTO cadastrar(CargoRequestDTO request){
         log.info("cadastrando um novo cargo {}", request);
         return mapper.paraDto(cargoRepository.save(mapper.paraEntidade(request)));
     }
+
     @Override
     public CargoResponseDTO alterar(Long id, CargoRequestDTO request) {
         log.info("alterando o cargo de id {} com novas informacoes: {}", id, request);
@@ -47,11 +53,13 @@ public class CargoServiceImpl implements CargoService {
         cargo.setId(id);
         return mapper.paraDto(cargoRepository.save(cargo));
     }
+
     @Override
     public void remover(Long id) {
         log.info("removendo o cargo de id {}", id);
         cargoRepository.deleteById(id);
     }
+
     @Override
     public void popular() {
         log.info("populando o banco de dados de cargos para teste");
