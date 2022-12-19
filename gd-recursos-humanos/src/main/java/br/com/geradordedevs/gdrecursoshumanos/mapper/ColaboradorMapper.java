@@ -24,16 +24,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class ColaboradorMapper {
+
     @Autowired
     private final ModelMapper mapper;
+
     public ColaboradorResponseDTO paraDto(ColaboradorEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, ColaboradorResponseDTO.class);
     }
+
     public ColaboradorEntity  paraEntidade(ColaboradorRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, ColaboradorEntity.class);
     }
+
     public List<ColaboradorResponseDTO> paraListaDto(List<ColaboradorEntity > lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         return  lista.stream()

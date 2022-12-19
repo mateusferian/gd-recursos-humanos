@@ -18,16 +18,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class AtestadoMapper {
+
     @Autowired
     private final ModelMapper mapper;
+
     public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
         return   mapper.map(entidade, AtestadoResponseDTO.class);
     }
+
     public AtestadoEntity paraEntidade(AtestadoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return mapper.map(request, AtestadoEntity.class);
     }
+
     public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         return  lista.stream()

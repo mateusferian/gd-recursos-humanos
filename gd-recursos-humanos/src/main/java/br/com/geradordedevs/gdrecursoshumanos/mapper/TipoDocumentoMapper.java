@@ -16,16 +16,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class TipoDocumentoMapper {
+
     @Autowired
     private final ModelMapper mapper;
+
     public TipoDocumentoResponseDTO paraDto(TipoDocumentoEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
         return  mapper.map(entidade, TipoDocumentoResponseDTO.class);
     }
+
     public TipoDocumentoEntity paraEntidade(TipoDocumentoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, TipoDocumentoEntity.class);
     }
+
     public List<TipoDocumentoResponseDTO> paraListaDto(List<TipoDocumentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         return  lista.stream()
