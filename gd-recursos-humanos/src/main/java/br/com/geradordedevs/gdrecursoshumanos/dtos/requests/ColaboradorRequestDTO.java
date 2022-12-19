@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ColaboradorRequestDTO {
-
+    private Long id;
     private String nome;
     private int idade;
     private Date dataDeNascimento;
