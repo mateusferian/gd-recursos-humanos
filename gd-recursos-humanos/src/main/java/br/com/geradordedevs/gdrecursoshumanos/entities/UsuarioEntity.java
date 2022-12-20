@@ -20,4 +20,13 @@ public class UsuarioEntity {
     private String nome;
     private String email;
     private String senha;
+
+    @Override
+    public String toString() {
+        return "UsuarioEntity{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
