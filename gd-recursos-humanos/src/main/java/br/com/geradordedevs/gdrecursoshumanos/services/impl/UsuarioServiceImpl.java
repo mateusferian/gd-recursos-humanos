@@ -71,4 +71,30 @@ public class UsuarioServiceImpl  implements UsuarioService {
         log.info("removendo o usuario de id {}",id);
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    public AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO) {
+
+        if (passwordEncoder.matches(autenticacaoRequestDTO.getSenha(), usuarioRepository.findByEmail(autenticacaoRequestDTO.getEmail()).getSenha())) {
+            return new AutenticacaoResponseDTO(gerarTokenJWT(autenticacaoRequestDTO.getEmail()));
+        } else {
+            return new AutenticacaoResponseDTO();
+        }
+    }
+
+    private String gerarTokenJWT(String email) {
+        log.info("gerando token JWT para o email {}", email);
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("v4SA91O=WuM5i)ap3ErJ");
+            return JWT.create()
+                    .withIssuer("gd-recursos-humanos")
+                    .withClaim("sub", email)
+                    .withExpiresAt(new Date(Instant.now().toEpochMilli() + TimeUnit.HOURS.toMillis(1)))
+                    .sign(algorithm);
+
+        } catch (JWTCreationException exception) {
+            log.warn("erro ao tentar gerar o toker JWT");
+            return null;
+        }
+    }
 }
