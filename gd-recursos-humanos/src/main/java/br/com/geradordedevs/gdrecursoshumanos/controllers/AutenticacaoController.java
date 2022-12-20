@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/autenticacoes")
 public class AutenticacaoController {
     @Autowired
     private UsuarioService usuarioService;
     @PostMapping
-    public AutenticacaoResponseDTO autenticacao(@RequestBody AutenticacaoRequestDTO request){
+    public AutenticacaoResponseDTO autenticacao(@Valid @RequestBody AutenticacaoRequestDTO request){
       return usuarioService.autenticacao(request);
     }
 }

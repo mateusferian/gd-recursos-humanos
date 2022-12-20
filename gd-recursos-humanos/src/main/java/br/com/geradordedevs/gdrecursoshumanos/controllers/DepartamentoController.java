@@ -10,6 +10,7 @@ import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,12 +33,12 @@ public class DepartamentoController {
     }
 
     @PostMapping
-    public DepartamentoResponseDTO cadastrar(@RequestBody DepartamentoRequestDTO request) {
+    public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request) {
         return departamentoService.cadastrar(request);
     }
 
     @PutMapping("/{id}")
-    public DepartamentoResponseDTO alterar(@PathVariable Long id, @RequestBody DepartamentoRequestDTO request) {
+    public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request) {
         return departamentoService.alterar(id,request);
     }
 

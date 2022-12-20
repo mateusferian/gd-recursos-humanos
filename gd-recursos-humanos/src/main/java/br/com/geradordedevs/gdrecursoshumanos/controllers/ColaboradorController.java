@@ -11,6 +11,7 @@ import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,12 +34,12 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ColaboradorResponseDTO cadastrar(@RequestBody ColaboradorRequestDTO request){
+    public ColaboradorResponseDTO cadastrar(@Valid @RequestBody ColaboradorRequestDTO request){
         return colaboradorService.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public ColaboradorResponseDTO alterar (@PathVariable Long id, @RequestBody ColaboradorRequestDTO request){
+    public ColaboradorResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody ColaboradorRequestDTO request){
         return  colaboradorService.alterar(id, request);
     }
 

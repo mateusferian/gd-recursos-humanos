@@ -9,6 +9,7 @@ import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +32,12 @@ public class TipoDocumentoController {
     }
 
     @PostMapping
-    public TipoDocumentoResponseDTO cadastrar(@RequestBody TipoDocumentoRequestDTO request){
+    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request){
         return tipoDocumentoService.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO alterar (@PathVariable Long id, @RequestBody TipoDocumentoRequestDTO request){
+    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request){
         return tipoDocumentoService.alterar(id, request);
     }
 

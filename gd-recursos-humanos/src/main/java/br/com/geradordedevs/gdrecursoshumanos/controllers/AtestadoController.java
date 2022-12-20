@@ -9,6 +9,7 @@ import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +32,12 @@ public class AtestadoController {
         }
 
         @PostMapping
-        public AtestadoResponseDTO cadastrar(@RequestBody AtestadoRequestDTO requesty){
+        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty){
             return atestadoService.cadastrar(requesty);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO alterar (@PathVariable long id, @RequestBody AtestadoRequestDTO request){
+        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request){
             return  atestadoService.alterar(id, request);
         }
 

@@ -6,6 +6,7 @@ import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,12 +27,12 @@ public class UsuarioController {
     }
     
     @PostMapping
-    public  UsuarioResponseDTO cadastrar(@RequestBody UsuarioRequestDTO request){
+    public  UsuarioResponseDTO cadastrar(@Valid @RequestBody UsuarioRequestDTO request){
         return  usuarioService.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public  UsuarioResponseDTO alterar(@PathVariable Long id, @RequestBody UsuarioRequestDTO request){
+    public  UsuarioResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request){
         return  usuarioService.alterar(id, request);
     }
 
