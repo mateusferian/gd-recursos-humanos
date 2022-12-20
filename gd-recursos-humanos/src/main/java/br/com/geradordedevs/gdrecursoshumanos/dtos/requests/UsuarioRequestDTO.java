@@ -12,4 +12,12 @@ public class UsuarioRequestDTO {
     private String nome;
     private String email;
     private String senha;
+
+    @Override
+    public String toString() {
+        return "UsuarioRequestDTO{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
