@@ -3,12 +3,14 @@ package br.com.geradordedevs.gdrecursoshumanos.mappers;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,9 +32,11 @@ public class AtestadoMapper {
         return mapper.map(request, AtestadoEntity.class);
     }
 
-    public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
+    public List<AtestadoResponseDTO> paraListaDto(Iterable<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
-        return  lista.stream()
+        List<AtestadoEntity> resultado = new ArrayList<>();
+        lista.forEach(resultado::add);
+        return  resultado.stream()
                 .map(this::paraDto)
                 .collect(Collectors.toList());
     }

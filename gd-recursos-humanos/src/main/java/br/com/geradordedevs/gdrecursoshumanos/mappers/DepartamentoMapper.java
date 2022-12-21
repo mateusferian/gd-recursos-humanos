@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +31,11 @@ public class DepartamentoMapper {
         return  mapper.map(request, DepartamentoEntity.class);
     }
 
-    public List<DepartamentoResponseDTO> paraListaDto(List<DepartamentoEntity> lista){
+    public List<DepartamentoResponseDTO> paraListaDto(Iterable<DepartamentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
-        return  lista.stream()
+        List<DepartamentoEntity> resultado = new ArrayList<>();
+        lista.forEach(resultado::add);
+        return  resultado.stream()
                 .map(this::paraDto)
                 .collect(Collectors.toList());
     }
