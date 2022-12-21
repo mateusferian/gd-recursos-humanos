@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface ColaboradorService {
-    List<ColaboradorResponseDTO> listar();
-    ColaboradorResponseDTO consultar(Long id );
-    ColaboradorResponseDTO cadastrar( ColaboradorRequestDTO request);
-    ColaboradorResponseDTO alterar ( Long id,  ColaboradorRequestDTO request);
+    Iterable<ColaboradorEntity> listar();
+    ColaboradorEntity consultar(Long id );
+    ColaboradorEntity cadastrar( ColaboradorEntity entity);
+    ColaboradorEntity alterar ( Long id,  ColaboradorEntity entity);
     void remover ( Long id);
     void popular();
 }

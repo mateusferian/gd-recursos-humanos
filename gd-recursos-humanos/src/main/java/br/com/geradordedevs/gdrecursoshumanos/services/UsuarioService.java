@@ -6,14 +6,15 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
+import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 
 import java.util.List;
 
 public interface UsuarioService {
-    List<UsuarioResponseDTO> listar();
-    UsuarioResponseDTO consultar(Long id );
-    UsuarioResponseDTO cadastrar( UsuarioRequestDTO request);
-    UsuarioResponseDTO alterar ( Long id, UsuarioRequestDTO request);
+    Iterable<UsuarioEntity> listar();
+    UsuarioEntity consultar(Long id );
+    UsuarioEntity cadastrar( UsuarioEntity entity);
+    UsuarioEntity alterar ( Long id, UsuarioEntity entity);
     void  remover(  Long id);
     AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO);
 }
