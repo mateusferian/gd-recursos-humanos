@@ -14,7 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AtestadoRequestDTO {
-    private Long id;
 
     @NotBlank(message = "{campo.em.branco}")
     @Size(min = 3,max = 40, message = "{tamanho.invalido}")
@@ -25,5 +24,5 @@ public class AtestadoRequestDTO {
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
-    private Long colaboradorId;
+    private Long colaborador;
 }
