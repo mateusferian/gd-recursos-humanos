@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.*;
 import java.util.Date;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class ColaboradorRequestDTO {
-    private Long id;
 
     @NotBlank(message = "{campo.em.branco}")
     @Size(min = 3,max = 40, message = "{tamanho.invalido}")
@@ -26,18 +26,18 @@ public class ColaboradorRequestDTO {
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{idade.abaixo.do.minimo}")
-    private Long tipoDocumentoId;
+    private Long tipoDocumento;
 
     @Size(min = 10,max = 20, message = "{tamanho.invalido}")
     private String numeroDocumento;
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
-    private Long cargoId;
+    private Long cargo;
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
-    private Long departamentoId;
+    private Long departamento;
 
     @Min(value = 1000, message = "{salario.abaixo.do.minimo}")
     private double salario;
