@@ -24,37 +24,29 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
 
-    @Autowired
-    private ColaboradorMapper mapper;
-
     @Override
-    public List<ColaboradorResponseDTO> listar() {
+    public Iterable<ColaboradorEntity> listar() {
         log.info("listando colaboradores");
-        List<ColaboradorEntity> colaboradorEntities = new ArrayList<>();
-        for (ColaboradorEntity colaboradorEntity: colaboradorRepository.findAll()) {
-            colaboradorEntities.add(colaboradorEntity);
-        }
-        return mapper.paraListaDto(colaboradorEntities);
+        return colaboradorRepository.findAll();
     }
 
     @Override
-    public ColaboradorResponseDTO consultar(Long id) {
+    public ColaboradorEntity consultar(Long id) {
         log.info("obtendo informacoes de colaborador {}", id);
-        return  mapper.paraDto(colaboradorRepository.findById(id).orElse(new ColaboradorEntity()));
+        return colaboradorRepository.findById(id).orElse(new ColaboradorEntity());
     }
 
     @Override
-    public ColaboradorResponseDTO cadastrar(ColaboradorRequestDTO request) {
-        log.info("cadastrando um novo colaborador {}", request);
-        return mapper.paraDto(colaboradorRepository.save(mapper.paraEntidade(request)));
+    public ColaboradorEntity cadastrar(ColaboradorEntity entity) {
+        log.info("cadastrando um novo colaborador {}", entity);
+        return colaboradorRepository.save(entity);
     }
 
     @Override
-    public ColaboradorResponseDTO alterar(Long id, ColaboradorRequestDTO request) {
-        log.info("alterando o colaborador de id {} com novas informacoes: {}", id, request);
-        ColaboradorEntity colaborador = mapper.paraEntidade(request);
-        colaborador.setId(id);
-        return mapper.paraDto(colaboradorRepository.save(colaborador));
+    public ColaboradorEntity alterar(Long id, ColaboradorEntity entity) {
+        log.info("alterando o colaborador de id {} com novas informacoes: {}", id, entity);
+        entity.setId(id);
+        return colaboradorRepository.save(entity);
     }
 
     @Override

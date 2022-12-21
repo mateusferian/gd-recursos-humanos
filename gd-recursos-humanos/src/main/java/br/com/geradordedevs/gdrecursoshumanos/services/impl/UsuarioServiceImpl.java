@@ -31,39 +31,32 @@ public class UsuarioServiceImpl  implements UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private UsuarioMapper mapper;
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public List<UsuarioResponseDTO> listar() {
-        List<UsuarioEntity> usuarioEntities = new ArrayList<>();
-        for (UsuarioEntity usuarioEntity: usuarioRepository.findAll()) {
-            usuarioEntities.add(usuarioEntity);
-        }
-        return mapper.paraListaDto(usuarioEntities);
+    public Iterable<UsuarioEntity> listar() {
+        return usuarioRepository.findAll();
     }
 
     @Override
-    public UsuarioResponseDTO consultar(Long id) {
+    public UsuarioEntity consultar(Long id) {
         log.info("obtendo informacoes de usuario {}",id);
-        return mapper.paraDto(usuarioRepository.findById(id).orElse(new UsuarioEntity()));
+        return usuarioRepository.findById(id).orElse(new UsuarioEntity());
     }
 
     @Override
-    public UsuarioResponseDTO cadastrar(UsuarioRequestDTO request) {
-        log.info("cadastrando um novo usuario {}",request);
-        UsuarioEntity usuario = mapper.paraEntidade(request);
-        usuario.setSenha(passwordEncoder.encode(request.getSenha()));
-        return mapper.paraDto(usuarioRepository.save(usuario));
+    public UsuarioEntity cadastrar(UsuarioEntity entity) {
+        log.info("cadastrando um novo usuario {}",entity);
+        entity.setSenha(passwordEncoder.encode(entity.getSenha()));
+        return usuarioRepository.save(entity);
     }
 
     @Override
-    public UsuarioResponseDTO alterar(Long id, UsuarioRequestDTO request) {
-        log.info("alterando usuario de id {} com novas informacoes: {}",id,request);
-            UsuarioEntity usuario = mapper.paraEntidade(request);
-            usuario.setId(id);
-        return mapper.paraDto(usuarioRepository.save(usuario));
+    public UsuarioEntity alterar(Long id, UsuarioEntity entity) {
+        log.info("alterando usuario de id {} com novas informacoes: {}",id,entity);
+        entity.setId(id);
+        entity.setSenha(passwordEncoder.encode(entity.getSenha()));
+        return usuarioRepository.save(entity);
     }
 
     @Override
