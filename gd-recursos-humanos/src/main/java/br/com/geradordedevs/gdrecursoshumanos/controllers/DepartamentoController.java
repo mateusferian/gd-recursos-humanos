@@ -4,6 +4,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestD
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.facedes.DepartamentoFacede;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
@@ -20,36 +21,35 @@ import java.util.Optional;
 public class DepartamentoController {
 
     @Autowired
-    private DepartamentoService departamentoService;
+    private DepartamentoFacede departamentoFacede;
 
     @GetMapping
     public List<DepartamentoResponseDTO> listar() {
-        return departamentoService.listar();
+        return departamentoFacede.listar();
     }
 
     @GetMapping("/{id}")
     public DepartamentoResponseDTO consultar(@PathVariable Long id) {
-        return departamentoService.consultar(id);
+        return departamentoFacede.consultar(id);
     }
 
     @PostMapping
     public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request) {
-        return departamentoService.cadastrar(request);
+        return departamentoFacede.cadastrar(request);
     }
 
     @PutMapping("/{id}")
     public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request) {
-        return departamentoService.alterar(id,request);
+        return departamentoFacede.alterar(id,request);
     }
 
     @DeleteMapping("/{id}")
     public void remover(@PathVariable Long id) {
-        departamentoService.remover(id);
+        departamentoFacede.remover(id);
     }
 
     @GetMapping("/popular")
-    public List<DepartamentoResponseDTO> popularBanco(){
-        departamentoService.popular();
-        return departamentoService.listar();
+    public void popularBanco(){
+        departamentoFacede.popular();
     }
 }
