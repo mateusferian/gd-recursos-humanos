@@ -13,5 +13,5 @@ public class AtestadoResponseDTO {
     private Long id;
     private String nome;
     private Date data;
-    private Long colaboradorId;
+    private ColaboradorResponseDTO colaborador;
 }
