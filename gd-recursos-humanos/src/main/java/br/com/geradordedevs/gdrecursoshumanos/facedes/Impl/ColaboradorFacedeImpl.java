@@ -12,6 +12,7 @@ import java.util.List;
 
 @Component
 public class ColaboradorFacedeImpl implements ColaboradorFacede {
+
     @Autowired
     private ColaboradorMapper mapper;
 
