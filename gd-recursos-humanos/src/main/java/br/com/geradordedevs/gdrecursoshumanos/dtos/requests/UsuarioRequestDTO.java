@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -17,6 +18,8 @@ public class UsuarioRequestDTO {
     @Size(min = 3,max = 40, message = "{tamanho.invalido}")
     private String nome;
 
+    @NotNull(message = "{campo.nulo}")
+    @Size(min = 3,max = 40, message = "{tamanho.invalido}")
     @Email(message = "{email.invalido}")
     private String email;
 
