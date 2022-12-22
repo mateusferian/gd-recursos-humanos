@@ -35,6 +35,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
 
     @Override
     public Iterable<UsuarioEntity> listar() {
+        log.info("listando usuarios");
         return usuarioRepository.findAll();
     }
 
