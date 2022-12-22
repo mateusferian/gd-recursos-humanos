@@ -25,7 +25,7 @@ public class ColaboradorRequestDTO {
     private Date dataDeNascimento;
 
     @NotNull(message = "{campo.nulo}")
-    @Min(value = 1, message = "{idade.abaixo.do.minimo}")
+    @Min(value = 1, message = "{id.abaixo.do.minimo}")
     private Long tipoDocumento;
 
     @NotBlank(message = "{campo.em.branco}")
@@ -38,7 +38,7 @@ public class ColaboradorRequestDTO {
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
-    @Max(value = 70, message = "{idade.acima.do.maximo}")
+    @Max(value = 70, message = "{id.acima.do.maximo}")
     private Long departamento;
 
     @Min(value = 1000, message = "{salario.abaixo.do.minimo}")
