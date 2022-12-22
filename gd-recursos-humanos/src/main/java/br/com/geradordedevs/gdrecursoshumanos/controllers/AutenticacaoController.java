@@ -15,8 +15,10 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/autenticacoes")
 public class AutenticacaoController {
+
     @Autowired
     private UsuarioFacede usuarioFacede;
+
     @PostMapping
     public AutenticacaoResponseDTO autenticacao(@Valid @RequestBody AutenticacaoRequestDTO request){
       return usuarioFacede.autenticacao(request);
