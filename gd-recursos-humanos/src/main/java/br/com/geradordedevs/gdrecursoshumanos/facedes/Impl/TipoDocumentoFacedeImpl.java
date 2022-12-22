@@ -12,6 +12,7 @@ import java.util.List;
 
 @Component
 public class TipoDocumentoFacedeImpl implements TipoDocumentoFacede{
+
     @Autowired
     private TipoDocumentoMapper mapper;
 
