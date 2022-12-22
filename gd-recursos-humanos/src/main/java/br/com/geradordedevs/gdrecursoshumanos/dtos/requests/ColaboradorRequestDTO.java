@@ -26,6 +26,7 @@ public class ColaboradorRequestDTO {
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
+    @Max(value = 70, message = "{id.acima.do.maximo}")
     private Long tipoDocumento;
 
     @NotBlank(message = "{campo.em.branco}")
@@ -34,6 +35,7 @@ public class ColaboradorRequestDTO {
 
     @NotNull(message = "{campo.nulo}")
     @Min(value = 1, message = "{id.abaixo.do.minimo}")
+    @Max(value = 70, message = "{id.acima.do.maximo}")
     private Long cargo;
 
     @NotNull(message = "{campo.nulo}")
