@@ -20,37 +20,29 @@ public class CargoServiceImpl implements CargoService {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @Autowired
-    private CargoMapper mapper;
-
     @Override
-    public List<CargoResponseDTO> listar() {
+    public Iterable<CargoEntity> listar() {
         log.info("listando cargos");
-        List<CargoEntity> cargoEntities = new ArrayList<>();
-        for (CargoEntity cargoEntity: cargoRepository.findAll()) {
-            cargoEntities.add(cargoEntity);
-        }
-        return mapper.paraListaDto(cargoEntities);
+        return cargoRepository.findAll();
     }
 
     @Override
-    public CargoResponseDTO consultar(Long id) {
+    public CargoEntity consultar(Long id) {
         log.info("obtendo informacoes de cargo {}", id);
-        return mapper.paraDto(cargoRepository.findById(id).orElse(new CargoEntity()));
+        return cargoRepository.findById(id).orElse(new CargoEntity());
     }
 
     @Override
-    public CargoResponseDTO cadastrar(CargoRequestDTO request){
-        log.info("cadastrando um novo cargo {}", request);
-        return mapper.paraDto(cargoRepository.save(mapper.paraEntidade(request)));
+    public CargoEntity cadastrar(CargoEntity entity){
+        log.info("cadastrando um novo cargo {}", entity);
+        return cargoRepository.save(entity);
     }
 
     @Override
-    public CargoResponseDTO alterar(Long id, CargoRequestDTO request) {
-        log.info("alterando o cargo de id {} com novas informacoes: {}", id, request);
-        CargoEntity cargo = mapper.paraEntidade(request);
-        cargo.setId(id);
-        return mapper.paraDto(cargoRepository.save(cargo));
+    public CargoEntity alterar(Long id, CargoEntity entity) {
+        log.info("alterando o cargo de id {} com novas informacoes: {}", id, entity);
+        entity.setId(id);
+        return cargoRepository.save(entity);
     }
 
     @Override

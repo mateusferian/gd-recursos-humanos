@@ -7,10 +7,10 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import java.util.List;
 
 public interface CargoService {
-    List<CargoResponseDTO> listar();
-    CargoResponseDTO consultar(Long id);
-    CargoResponseDTO cadastrar(CargoRequestDTO request);
-    CargoResponseDTO alterar(Long id, CargoRequestDTO request );
+    Iterable<CargoEntity> listar();
+    CargoEntity consultar(Long id);
+    CargoEntity cadastrar(CargoEntity entity);
+    CargoEntity alterar(Long id, CargoEntity entity);
     void remover(Long id);
     void popular();
 }

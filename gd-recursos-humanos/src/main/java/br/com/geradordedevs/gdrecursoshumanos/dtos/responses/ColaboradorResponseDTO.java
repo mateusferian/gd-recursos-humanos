@@ -18,10 +18,10 @@ public class ColaboradorResponseDTO {
     private String nome;
     private int idade;
     private Date dataDeNascimento;
-    private Long tipoDocumentoId;
+    private TipoDocumentoResponseDTO tipoDocumento;
     private String numeroDocumento;
-    private Long cargoId;
-    private Long departamentoId;
+    private CargoResponseDTO cargo;
+    private DepartamentoResponseDTO departamento;
     private double salario;
     private Date dataInicio;
     private boolean ativo;
