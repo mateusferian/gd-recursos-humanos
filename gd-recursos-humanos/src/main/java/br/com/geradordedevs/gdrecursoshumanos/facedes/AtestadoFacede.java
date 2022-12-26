@@ -9,7 +9,7 @@ public interface AtestadoFacede {
     List<AtestadoResponseDTO> listar();
     AtestadoResponseDTO consultar(Long id );
     AtestadoResponseDTO cadastrar(AtestadoRequestDTO request);
-    AtestadoResponseDTO alterar ( long id,  AtestadoRequestDTO request);
+    AtestadoResponseDTO alterar ( Long id,  AtestadoRequestDTO request);
     void remover ( Long id);
     void popular();
 }
