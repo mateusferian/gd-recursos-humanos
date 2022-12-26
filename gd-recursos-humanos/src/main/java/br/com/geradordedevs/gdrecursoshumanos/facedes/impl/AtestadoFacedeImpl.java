@@ -34,7 +34,7 @@ public class AtestadoFacedeImpl implements AtestadoFacede {
     }
 
     @Override
-    public AtestadoResponseDTO alterar(long id, AtestadoRequestDTO request) {
+    public AtestadoResponseDTO alterar(Long id, AtestadoRequestDTO request) {
         return mapper.paraDto(atestadoService.alterar(id,mapper.paraEntidade(request)));
     }
 
