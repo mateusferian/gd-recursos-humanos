@@ -20,37 +20,29 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Autowired
     private DepartamentoRepository departamentoRepository;
 
-    @Autowired
-    private DepartamentoMapper mapper;
-
     @Override
-    public List<DepartamentoResponseDTO> listar() {
+    public Iterable<DepartamentoEntity> listar() {
         log.info("listando departamentos");
-        List<DepartamentoEntity> departamentoEntities = new ArrayList<>();
-        for (DepartamentoEntity departamentoEntity: departamentoRepository.findAll()) {
-         departamentoEntities.add(departamentoEntity);
-        }
-        return mapper.paraListaDto(departamentoEntities);
+        return departamentoRepository.findAll();
     }
 
     @Override
-    public DepartamentoResponseDTO consultar(Long id) {
+    public DepartamentoEntity consultar(Long id) {
         log.info("obtendo informacoes de departamento {}", id);
-        return  mapper.paraDto(departamentoRepository.findById(id).orElse(new DepartamentoEntity()));
+        return  departamentoRepository.findById(id).orElse(new DepartamentoEntity());
     }
 
     @Override
-    public DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request) {
-        log.info("cadastrando um novo departamento {}", request);
-        return mapper.paraDto(departamentoRepository.save(mapper.paraEntidade(request)));
+    public DepartamentoEntity cadastrar(DepartamentoEntity entity) {
+        log.info("cadastrando um novo departamento {}", entity);
+        return departamentoRepository.save(entity);
     }
 
     @Override
-    public DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request) {
-        log.info("alterando o departamento de id {} com novas informacoes: {}", id, request);
-        DepartamentoEntity departamento = mapper.paraEntidade(request);
-        departamento.setId(id);
-        return mapper.paraDto(departamentoRepository.save(departamento));
+    public DepartamentoEntity alterar(Long id, DepartamentoEntity entity) {
+        log.info("alterando o departamento de id {} com novas informacoes: {}", id, entity);
+        entity.setId(id);
+        return departamentoRepository.save(entity);
     }
 
     @Override

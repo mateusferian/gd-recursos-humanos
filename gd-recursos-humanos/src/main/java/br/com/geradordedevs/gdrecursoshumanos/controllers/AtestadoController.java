@@ -4,11 +4,13 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.facedes.AtestadoFacede;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,36 +20,35 @@ import java.util.Optional;
 public class AtestadoController {
 
         @Autowired
-        private AtestadoService atestadoService;
+        private AtestadoFacede atestadoFacede;
 
         @GetMapping
         public List<AtestadoResponseDTO> listar(){
-            return atestadoService.listar();
+            return atestadoFacede.listar();
         }
 
         @GetMapping ("/{id}")
         public AtestadoResponseDTO consultar(@PathVariable Long id ){
-            return atestadoService.consultar(id);
+            return atestadoFacede.consultar(id);
         }
 
         @PostMapping
-        public AtestadoResponseDTO cadastrar(@RequestBody AtestadoRequestDTO requesty){
-            return atestadoService.cadastrar(requesty);
+        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty){
+            return atestadoFacede.cadastrar(requesty);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO alterar (@PathVariable long id, @RequestBody AtestadoRequestDTO request){
-            return  atestadoService.alterar(id, request);
+        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request){
+            return  atestadoFacede.alterar(id, request);
         }
 
         @DeleteMapping ("/{id}")
         public void remover (@PathVariable Long id){
-            atestadoService.remover(id);
+            atestadoFacede.remover(id);
         }
 
          @GetMapping("/popular")
-        public List<AtestadoResponseDTO> popularBanco(){
-        atestadoService.popular();
-             return atestadoService.listar();
+        public void popularBanco(){
+             atestadoFacede.popular();
     }
 }

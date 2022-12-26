@@ -3,12 +3,16 @@ package br.com.geradordedevs.gdrecursoshumanos.mappers;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
+import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
+import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +24,9 @@ public class AtestadoMapper {
     @Autowired
     private final ModelMapper mapper;
 
+    @Autowired
+    private ColaboradorRepository colaboradorRepository;
+
     public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
         log.info("convertendo entidade {} para dto", entidade);
         return   mapper.map(entidade, AtestadoResponseDTO.class);
@@ -27,12 +34,18 @@ public class AtestadoMapper {
 
     public AtestadoEntity paraEntidade(AtestadoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
-        return mapper.map(request, AtestadoEntity.class);
+
+        AtestadoEntity atestadoEntity = mapper.map(request, AtestadoEntity.class);
+        atestadoEntity.setColaborador(colaboradorRepository.findById(request.getColaborador()).orElse(new ColaboradorEntity()));
+
+        return atestadoEntity;
     }
 
-    public List<AtestadoResponseDTO> paraListaDto(List<AtestadoEntity> lista){
+    public List<AtestadoResponseDTO> paraListaDto(Iterable<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
-        return  lista.stream()
+        List<AtestadoEntity> resultado = new ArrayList<>();
+        lista.forEach(resultado::add);
+        return  resultado.stream()
                 .map(this::paraDto)
                 .collect(Collectors.toList());
     }

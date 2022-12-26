@@ -22,37 +22,29 @@ public class AtestadoServiceImpl implements AtestadoService {
     @Autowired
     public AtestadoRepository atestadoRepository;
 
-    @Autowired
-    public AtestadoMapper mapper;
-
     @Override
-    public List<AtestadoResponseDTO> listar() {
+    public Iterable<AtestadoEntity> listar() {
         log.info("listando atestados");
-        List<AtestadoEntity> atestadoEntities = new ArrayList<>();
-        for (AtestadoEntity atestadoEntity: atestadoRepository.findAll()) {
-            atestadoEntities.add(atestadoEntity);
-        }
-        return mapper.paraListaDto(atestadoEntities);
+        return atestadoRepository.findAll();
     }
 
     @Override
-    public AtestadoResponseDTO consultar(Long id) {
+    public AtestadoEntity consultar(Long id) {
         log.info("obtendo informacoes de atestado {}", id);
-        return mapper.paraDto(atestadoRepository.findById(id).orElse(new AtestadoEntity()));
+        return atestadoRepository.findById(id).orElse(new AtestadoEntity());
     }
 
     @Override
-    public AtestadoResponseDTO cadastrar(AtestadoRequestDTO request) {
-        log.info("cadastrando um novo atestado {}", request);
-        return  mapper.paraDto(atestadoRepository.save(mapper.paraEntidade(request)));
+    public AtestadoEntity cadastrar(AtestadoEntity entity) {
+        log.info("cadastrando um novo atestado {}", entity);
+        return atestadoRepository.save(entity);
     }
 
     @Override
-    public AtestadoResponseDTO alterar(long id, AtestadoRequestDTO request) {
-        log.info("alterando o atestado de id {} com novas informacoes: {}", id, request);
-        AtestadoEntity atestado = mapper.paraEntidade(request);
-        atestado.setId(id);
-        return mapper.paraDto(atestadoRepository.save(atestado));
+    public AtestadoEntity alterar(long id, AtestadoEntity entity) {
+        log.info("alterando o atestado de id {} com novas informacoes: {}", id, entity);
+        entity.setId(id);
+        return atestadoRepository.save(entity);
     }
 
     @Override

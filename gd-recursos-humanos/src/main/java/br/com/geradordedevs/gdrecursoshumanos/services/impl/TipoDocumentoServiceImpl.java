@@ -20,37 +20,29 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Autowired
     private TipoDocumentoRepository tipoDocumentoRepository;
 
-    @Autowired
-    private TipoDocumentoMapper mapper;
-
     @Override
-    public List<TipoDocumentoResponseDTO> listar() {
+    public Iterable<TipoDocumentoEntity> listar() {
         log.info("listando tipo de documentos");
-        List<TipoDocumentoEntity> tipoDocumentoEntities = new ArrayList<>();
-        for (TipoDocumentoEntity tipoDocumentoEntity: tipoDocumentoRepository.findAll()) {
-            tipoDocumentoEntities.add(tipoDocumentoEntity);
-        }
-        return mapper.paraListaDto(tipoDocumentoEntities);
+        return tipoDocumentoRepository.findAll();
     }
 
     @Override
-    public TipoDocumentoResponseDTO consultar(Long id) {
+    public TipoDocumentoEntity consultar(Long id) {
         log.info("obtendo informacoes de tipo de documento {}", id);
-        return mapper.paraDto(tipoDocumentoRepository.findById(id).orElse(new TipoDocumentoEntity()));
+        return tipoDocumentoRepository.findById(id).orElse(new TipoDocumentoEntity());
     }
 
     @Override
-    public TipoDocumentoResponseDTO cadastrar(TipoDocumentoRequestDTO request) {
-        log.info("cadastrando um novo tipo de documento {}",request);
-        return  mapper.paraDto(tipoDocumentoRepository.save(mapper.paraEntidade(request)));
+    public TipoDocumentoEntity cadastrar(TipoDocumentoEntity entity) {
+        log.info("cadastrando um novo tipo de documento {}",entity);
+        return  tipoDocumentoRepository.save(entity);
     }
 
     @Override
-    public TipoDocumentoResponseDTO alterar(Long id, TipoDocumentoRequestDTO request) {
-        log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, request);
-            TipoDocumentoEntity tipoDocumento = mapper.paraEntidade(request);
-            tipoDocumento.setId(id);
-        return  mapper.paraDto(tipoDocumentoRepository.save(tipoDocumento));
+    public TipoDocumentoEntity alterar(Long id, TipoDocumentoEntity entity) {
+        log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, entity);
+        entity.setId(id);
+        return  tipoDocumentoRepository.save(entity);
     }
 
     @Override

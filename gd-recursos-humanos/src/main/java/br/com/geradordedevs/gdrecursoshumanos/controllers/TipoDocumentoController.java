@@ -4,11 +4,13 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequest
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.facedes.TipoDocumentoFacede;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,36 +20,35 @@ import java.util.Optional;
 public class TipoDocumentoController {
 
     @Autowired
-    private TipoDocumentoService tipoDocumentoService;
+    private TipoDocumentoFacede tipoDocumentoFacede;
 
     @GetMapping
     public List<TipoDocumentoResponseDTO> listar(){
-        return tipoDocumentoService.listar();
+        return tipoDocumentoFacede.listar();
     }
 
     @GetMapping ("/{id}")
     public TipoDocumentoResponseDTO consultar(@PathVariable Long id ){
-        return tipoDocumentoService.consultar(id);
+        return tipoDocumentoFacede.consultar(id);
     }
 
     @PostMapping
-    public TipoDocumentoResponseDTO cadastrar(@RequestBody TipoDocumentoRequestDTO request){
-        return tipoDocumentoService.cadastrar(request);
+    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request){
+        return tipoDocumentoFacede.cadastrar(request);
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO alterar (@PathVariable Long id, @RequestBody TipoDocumentoRequestDTO request){
-        return tipoDocumentoService.alterar(id, request);
+    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request){
+        return tipoDocumentoFacede.alterar(id, request);
     }
 
     @DeleteMapping ("/{id}")
     public void  remover(@PathVariable  Long id) {
-        tipoDocumentoService.remover(id);
+        tipoDocumentoFacede.remover(id);
     }
 
     @GetMapping("/popular")
-    public List<TipoDocumentoResponseDTO> popularBanco(){
-        tipoDocumentoService.popular();
-        return tipoDocumentoService.listar();
+    public void popularBanco(){
+        tipoDocumentoFacede.popular();
     }
 }
