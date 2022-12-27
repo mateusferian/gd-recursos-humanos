@@ -23,32 +23,32 @@ public class AtestadoController {
         private AtestadoFacede atestadoFacede;
 
         @GetMapping
-        public List<AtestadoResponseDTO> listar(){
-            return atestadoFacede.listar();
+        public List<AtestadoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.listar(token);
         }
 
         @GetMapping ("/{id}")
-        public AtestadoResponseDTO consultar(@PathVariable Long id ){
-            return atestadoFacede.consultar(id);
+        public AtestadoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+            return atestadoFacede.consultar(id,token);
         }
 
         @PostMapping
-        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty){
-            return atestadoFacede.cadastrar(requesty);
+        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty,@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.cadastrar(requesty,token);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request){
-            return  atestadoFacede.alterar(id, request);
+        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+            return  atestadoFacede.alterar(id, request,token);
         }
 
         @DeleteMapping ("/{id}")
-        public void remover (@PathVariable Long id){
-            atestadoFacede.remover(id);
+        public void remover (@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+            atestadoFacede.remover(id,token);
         }
 
          @GetMapping("/popular")
-        public void popularBanco(){
-             atestadoFacede.popular();
+        public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+             atestadoFacede.popular(token);
     }
 }
