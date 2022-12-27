@@ -6,10 +6,10 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoRespon
 import java.util.List;
 
 public interface TipoDocumentoFacede {
-    List<TipoDocumentoResponseDTO> listar();
-    TipoDocumentoResponseDTO consultar(Long id );
-    TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request);
-    TipoDocumentoResponseDTO alterar ( Long id,  TipoDocumentoRequestDTO request);
-    void  remover(  Long id);
-    void popular();
+    List<TipoDocumentoResponseDTO> listar(String token);
+    TipoDocumentoResponseDTO consultar(Long id,String token);
+    TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request,String token);
+    TipoDocumentoResponseDTO alterar ( Long id,  TipoDocumentoRequestDTO request,String token);
+    void  remover(  Long id,String token);
+    void popular(String token);
 }
