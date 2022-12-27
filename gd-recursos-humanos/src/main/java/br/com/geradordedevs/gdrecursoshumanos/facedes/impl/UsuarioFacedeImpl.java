@@ -44,9 +44,4 @@ public class UsuarioFacedeImpl implements UsuarioFacede {
     public void remover(Long id) {
         usuarioService.remover(id);
     }
-
-    @Override
-    public AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO) {
-        return usuarioService.autenticacao(autenticacaoRequestDTO);
-    }
 }
