@@ -18,13 +18,13 @@ public class UsuarioController {
     UsuarioFacede usuarioFacede;
 
     @GetMapping
-    public List<UsuarioResponseDTO> listar(){
-        return usuarioFacede.listar();
+    public List<UsuarioResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
+        return usuarioFacede.listar(token);
     }
 
     @GetMapping ("/{id}")
-    public UsuarioResponseDTO consultar(@PathVariable Long id){
-        return  usuarioFacede.consultar(id);
+    public UsuarioResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.consultar(id,token);
     }
     
     @PostMapping
@@ -33,12 +33,12 @@ public class UsuarioController {
     }
 
     @PutMapping ("/{id}")
-    public  UsuarioResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request){
-        return  usuarioFacede.alterar(id, request);
+    public  UsuarioResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.alterar(id, request,token);
     }
 
     @DeleteMapping("/{id}")
-    public  void  remover(@PathVariable Long id){
-        usuarioFacede.remover(id);
+    public  void  remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        usuarioFacede.remover(id,token);
     }
 }
