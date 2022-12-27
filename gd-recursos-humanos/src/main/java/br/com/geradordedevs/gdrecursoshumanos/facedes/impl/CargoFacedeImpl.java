@@ -30,27 +30,32 @@ public class CargoFacedeImpl implements CargoFacede {
     }
 
     @Override
-    public CargoResponseDTO consultar(Long id) {
+    public CargoResponseDTO consultar(Long id,String token) {
+        tokenService.validar(token);
         return mapper.paraDto(cargoService.consultar(id));
     }
 
     @Override
-    public CargoResponseDTO cadastrar(CargoRequestDTO request) {
+    public CargoResponseDTO cadastrar(CargoRequestDTO request,String token) {
+        tokenService.validar(token);
         return mapper.paraDto(cargoService.cadastrar(mapper.paraEntidade(request)));
     }
 
     @Override
-    public CargoResponseDTO alterar(Long id, CargoRequestDTO request) {
+    public CargoResponseDTO alterar(Long id, CargoRequestDTO request,String token) {
+        tokenService.validar(token);
         return mapper.paraDto(cargoService.alterar(id,mapper.paraEntidade(request)));
     }
 
     @Override
-    public void remover(Long id) {
+    public void remover(Long id,String token) {
+        tokenService.validar(token);
         cargoService.remover(id);
     }
 
     @Override
-    public void popular() {
+    public void popular(String token) {
+        tokenService.validar(token);
         cargoService.popular();
     }
 }
