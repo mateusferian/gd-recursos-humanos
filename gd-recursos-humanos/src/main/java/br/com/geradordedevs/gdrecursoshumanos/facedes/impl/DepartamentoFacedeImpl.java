@@ -56,6 +56,5 @@ public class DepartamentoFacedeImpl implements DepartamentoFacede {
     public void popular(String token) {
         tokenService.validar(token);
         departamentoService.popular();
-
     }
 }
