@@ -23,8 +23,8 @@ public class CargoController {
     private CargoFacede cargoFacede;
 
     @GetMapping
-    public List<CargoResponseDTO> listar(){
-        return cargoFacede.listar();
+    public List<CargoResponseDTO> listar(@RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.listar(token);
     }
 
     @GetMapping ("/{id}")
