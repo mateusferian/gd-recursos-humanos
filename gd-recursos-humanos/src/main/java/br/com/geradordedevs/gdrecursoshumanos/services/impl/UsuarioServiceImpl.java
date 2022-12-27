@@ -44,7 +44,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
     @Override
     public UsuarioEntity consultar(Long id) {
         log.info("obtendo informacoes de usuario {}",id);
-        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS));
+        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
     }
 
     @Override
