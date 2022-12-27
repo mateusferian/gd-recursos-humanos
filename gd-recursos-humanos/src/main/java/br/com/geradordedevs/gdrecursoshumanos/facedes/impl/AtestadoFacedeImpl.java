@@ -5,6 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO
 import br.com.geradordedevs.gdrecursoshumanos.facedes.AtestadoFacede;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
+import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,9 @@ public class AtestadoFacedeImpl implements AtestadoFacede {
     @Autowired
     private AtestadoService atestadoService;
 
+    @Autowired
+    private ColaboradorService colaboradorService;
+
     @Override
     public List<AtestadoResponseDTO> listar() {
         return mapper.paraListaDto(atestadoService.listar());
@@ -30,6 +34,7 @@ public class AtestadoFacedeImpl implements AtestadoFacede {
 
     @Override
     public AtestadoResponseDTO cadastrar(AtestadoRequestDTO request) {
+        colaboradorService.consultar(request.getColaborador());
         return mapper.paraDto(atestadoService.cadastrar(mapper.paraEntidade(request)));
     }
 
