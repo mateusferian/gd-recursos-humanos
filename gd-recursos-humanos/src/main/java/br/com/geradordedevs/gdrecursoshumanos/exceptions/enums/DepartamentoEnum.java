@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum DepartamentoEnum {
+
     DEPARTAMENTO_NAO_ENCONTRADO("DEPARTAMENTO_NAO_ENCONTRADO", "Departamento não encontrado", 404);
 
     private String code;

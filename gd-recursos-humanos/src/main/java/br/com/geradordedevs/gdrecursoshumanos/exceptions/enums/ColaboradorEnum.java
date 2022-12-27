@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum ColaboradorEnum {
+
     COLABORADOR_NAO_ENCONTRADO("COLABORADOR_NAO_ENCONTRADO", "Colaborador não encontrado", 404);
 
     private String code;

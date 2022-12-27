@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum AtestadoEnum {
+
     ATESTADO_NAO_ENCONTRADO("ATESTADO_NAO_ENCONTRADO", "Atestado não encontrado", 404);
 
     private String code;

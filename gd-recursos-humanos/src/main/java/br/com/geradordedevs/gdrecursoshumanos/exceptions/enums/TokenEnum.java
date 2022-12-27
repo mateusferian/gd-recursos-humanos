@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum TokenEnum {
+
     TOKEN_INVALIDO("TOKEN_INVALIDO", "Token inválido", 401),
     TOKEN_OBRIGATORIO("TOKEN_OBRIGATORIO", "Token obrigatório", 401);
 
