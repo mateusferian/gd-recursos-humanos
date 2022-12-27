@@ -76,7 +76,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
         UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
         if (usuarioEntity == null ||
         !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
-            log.warn("usuario ou senha do email {} é invalido",request.getEmail());
+            log.warn("usuario ou senha do email {} e invalido",request.getEmail());
             throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
         }
     }
