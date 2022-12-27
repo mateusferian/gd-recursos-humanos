@@ -16,4 +16,5 @@ public interface UsuarioService {
     UsuarioEntity cadastrar( UsuarioEntity entity);
     UsuarioEntity alterar ( Long id, UsuarioEntity entity);
     void  remover(  Long id);
+    void validarUsuarioSenha(AutenticacaoRequestDTO request);
 }
