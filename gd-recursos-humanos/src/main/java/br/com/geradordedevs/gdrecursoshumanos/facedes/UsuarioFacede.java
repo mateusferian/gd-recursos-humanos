@@ -13,5 +13,4 @@ public interface UsuarioFacede {
     UsuarioResponseDTO cadastrar( UsuarioRequestDTO request);
     UsuarioResponseDTO alterar ( Long id, UsuarioRequestDTO request);
     void  remover(  Long id);
-    AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO);
 }
