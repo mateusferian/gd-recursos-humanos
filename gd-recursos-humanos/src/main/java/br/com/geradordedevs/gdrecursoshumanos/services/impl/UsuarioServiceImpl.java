@@ -69,4 +69,15 @@ public class UsuarioServiceImpl  implements UsuarioService {
         consultar(id);
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    public void validarUsuarioSenha(AutenticacaoRequestDTO request) {
+        log.info("validando usuario e senha do email: {}",request.getEmail());
+        UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
+        if (usuarioEntity == null ||
+        !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
+            log.warn("usuario ou senha do email {} é invalido",request.getEmail());
+            throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
+        }
+    }
 }
