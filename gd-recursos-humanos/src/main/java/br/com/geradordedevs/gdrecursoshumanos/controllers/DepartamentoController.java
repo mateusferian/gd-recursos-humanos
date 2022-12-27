@@ -24,32 +24,32 @@ public class DepartamentoController {
     private DepartamentoFacede departamentoFacede;
 
     @GetMapping
-    public List<DepartamentoResponseDTO> listar() {
-        return departamentoFacede.listar();
+    public List<DepartamentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.listar(token);
     }
 
     @GetMapping("/{id}")
-    public DepartamentoResponseDTO consultar(@PathVariable Long id) {
-        return departamentoFacede.consultar(id);
+    public DepartamentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.consultar(id,token);
     }
 
     @PostMapping
-    public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request) {
-        return departamentoFacede.cadastrar(request);
+    public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.cadastrar(request,token);
     }
 
     @PutMapping("/{id}")
-    public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request) {
-        return departamentoFacede.alterar(id,request);
+    public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.alterar(id,request,token);
     }
 
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable Long id) {
-        departamentoFacede.remover(id);
+    public void remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        departamentoFacede.remover(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(){
-        departamentoFacede.popular();
+    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+        departamentoFacede.popular(token);
     }
 }
