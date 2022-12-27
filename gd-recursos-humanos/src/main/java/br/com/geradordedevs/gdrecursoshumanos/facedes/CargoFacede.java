@@ -8,7 +8,7 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import java.util.List;
 
 public interface CargoFacede {
-    List<CargoResponseDTO> listar();
+    List<CargoResponseDTO> listar(String token);
     CargoResponseDTO consultar(Long id);
     CargoResponseDTO cadastrar(CargoRequestDTO request);
     CargoResponseDTO alterar(Long id, CargoRequestDTO request);
