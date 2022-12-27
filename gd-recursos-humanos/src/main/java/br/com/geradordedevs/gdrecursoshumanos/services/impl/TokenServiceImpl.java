@@ -26,7 +26,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public String gerarToken(String email) {
-        log.info("gerando token JWT para o email {}", email);
+        log.info("gerando token jwt para o email {}", email);
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
@@ -38,7 +38,7 @@ public class TokenServiceImpl implements TokenService {
                     .sign(algorithm);
 
         } catch (JWTCreationException exception) {
-            log.warn("erro ao tentar gerar o token JWT");
+            log.warn("erro ao tentar gerar o token jwt");
             throw new TokenException(TokenEnum.TOKEN_INVALIDO);
         }
     }
