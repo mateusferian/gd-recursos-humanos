@@ -48,7 +48,7 @@ public class TokenServiceImpl implements TokenService {
     public JwtResponseDTO validar(String token) {
         
         if (token == null) {
-            log.warn("token não enviado");
+            log.warn("token nao enviado");
             throw new TokenException(TokenEnum.TOKEN_OBRIGATORIO);
         }
 
@@ -67,7 +67,7 @@ public class TokenServiceImpl implements TokenService {
             return new JwtResponseDTO(email, dataExpiracao);
 
         } catch (JWTVerificationException exception) {
-            log.warn("erro na verificação do token: {}", token);
+            log.warn("erro na verificacao do token: {}", token);
             throw new TokenException(TokenEnum.TOKEN_INVALIDO);
         }
     }
