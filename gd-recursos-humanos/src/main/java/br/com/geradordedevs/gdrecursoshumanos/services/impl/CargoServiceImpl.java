@@ -3,6 +3,8 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.CargoException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.CargoEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
@@ -29,7 +31,7 @@ public class CargoServiceImpl implements CargoService {
     @Override
     public CargoEntity consultar(Long id) {
         log.info("obtendo informacoes de cargo {}", id);
-        return cargoRepository.findById(id).orElse(new CargoEntity());
+        return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.CARGO_NAO_ENCONTRADO));
     }
 
     @Override
@@ -41,6 +43,7 @@ public class CargoServiceImpl implements CargoService {
     @Override
     public CargoEntity alterar(Long id, CargoEntity entity) {
         log.info("alterando o cargo de id {} com novas informacoes: {}", id, entity);
+        consultar(id);
         entity.setId(id);
         return cargoRepository.save(entity);
     }
@@ -48,6 +51,7 @@ public class CargoServiceImpl implements CargoService {
     @Override
     public void remover(Long id) {
         log.info("removendo o cargo de id {}", id);
+        consultar(id);
         cargoRepository.deleteById(id);
     }
 
