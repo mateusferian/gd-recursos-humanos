@@ -4,6 +4,8 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.AtestadoException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.AtestadoEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
@@ -31,7 +33,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     @Override
     public AtestadoEntity consultar(Long id) {
         log.info("obtendo informacoes de atestado {}", id);
-        return atestadoRepository.findById(id).orElse(new AtestadoEntity());
+        return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.ATESTADO_NAO_ENCONTRADO));
     }
 
     @Override
@@ -43,6 +45,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     @Override
     public AtestadoEntity alterar(long id, AtestadoEntity entity) {
         log.info("alterando o atestado de id {} com novas informacoes: {}", id, entity);
+        consultar(id);
         entity.setId(id);
         return atestadoRepository.save(entity);
     }
@@ -50,6 +53,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     @Override
     public void remover(Long id) {
         log.info("removendo o atestado de id {}", id);
+        consultar(id);
         atestadoRepository.deleteById(id);
     }
 

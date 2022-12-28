@@ -6,10 +6,10 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponse
 import java.util.List;
 
 public interface ColaboradorFacede {
-    List<ColaboradorResponseDTO> listar();
-    ColaboradorResponseDTO consultar(Long id );
-    ColaboradorResponseDTO cadastrar( ColaboradorRequestDTO request);
-    ColaboradorResponseDTO alterar ( Long id,  ColaboradorRequestDTO request);
-    void remover ( Long id);
-    void popular();
+    List<ColaboradorResponseDTO> listar(String token);
+    ColaboradorResponseDTO consultar(Long id,String token );
+    ColaboradorResponseDTO cadastrar( ColaboradorRequestDTO request,String token);
+    ColaboradorResponseDTO alterar ( Long id,  ColaboradorRequestDTO request,String token);
+    void remover ( Long id,String token);
+    void popular(String token);
 }
