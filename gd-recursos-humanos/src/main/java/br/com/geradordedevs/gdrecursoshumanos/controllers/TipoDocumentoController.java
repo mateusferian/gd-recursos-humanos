@@ -23,32 +23,32 @@ public class TipoDocumentoController {
     private TipoDocumentoFacede tipoDocumentoFacede;
 
     @GetMapping
-    public List<TipoDocumentoResponseDTO> listar(){
-        return tipoDocumentoFacede.listar();
+    public List<TipoDocumentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.listar(token);
     }
 
     @GetMapping ("/{id}")
-    public TipoDocumentoResponseDTO consultar(@PathVariable Long id ){
-        return tipoDocumentoFacede.consultar(id);
+    public TipoDocumentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+        return tipoDocumentoFacede.consultar(id,token);
     }
 
     @PostMapping
-    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request){
-        return tipoDocumentoFacede.cadastrar(request);
+    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.cadastrar(request,token);
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request){
-        return tipoDocumentoFacede.alterar(id, request);
+    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.alterar(id, request,token);
     }
 
     @DeleteMapping ("/{id}")
-    public void  remover(@PathVariable  Long id) {
-        tipoDocumentoFacede.remover(id);
+    public void  remover(@PathVariable  Long id,@RequestHeader(required = false,value = "token")String token) {
+        tipoDocumentoFacede.remover(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(){
-        tipoDocumentoFacede.popular();
+    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+        tipoDocumentoFacede.popular(token);
     }
 }

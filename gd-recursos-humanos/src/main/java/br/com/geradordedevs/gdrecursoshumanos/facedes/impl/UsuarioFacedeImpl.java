@@ -6,6 +6,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoRespons
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.facedes.UsuarioFacede;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.UsuarioMapper;
+import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,13 +21,18 @@ public class UsuarioFacedeImpl implements UsuarioFacede {
     @Autowired
     private UsuarioMapper mapper;
 
+    @Autowired
+    private TokenService tokenService;
+
     @Override
-    public List<UsuarioResponseDTO> listar() {
+    public List<UsuarioResponseDTO> listar(String token) {
+        tokenService.validar(token);
         return mapper.paraListaDto(usuarioService.listar());
     }
 
     @Override
-    public UsuarioResponseDTO consultar(Long id) {
+    public UsuarioResponseDTO consultar(Long id,String token) {
+        tokenService.validar(token);
         return mapper.paraDto(usuarioService.consultar(id));
     }
 
@@ -36,17 +42,14 @@ public class UsuarioFacedeImpl implements UsuarioFacede {
     }
 
     @Override
-    public UsuarioResponseDTO alterar(Long id, UsuarioRequestDTO request) {
+    public UsuarioResponseDTO alterar(Long id, UsuarioRequestDTO request,String token) {
+        tokenService.validar(token);
         return mapper.paraDto(usuarioService.alterar(id,mapper.paraEntidade(request)));
     }
 
     @Override
-    public void remover(Long id) {
+    public void remover(Long id,String token) {
+        tokenService.validar(token);
         usuarioService.remover(id);
-    }
-
-    @Override
-    public AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO) {
-        return usuarioService.autenticacao(autenticacaoRequestDTO);
     }
 }

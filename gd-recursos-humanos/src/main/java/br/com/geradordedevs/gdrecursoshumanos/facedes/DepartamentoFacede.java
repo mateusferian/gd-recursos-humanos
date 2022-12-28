@@ -6,10 +6,10 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoRespons
 import java.util.List;
 
 public interface DepartamentoFacede {
-    List<DepartamentoResponseDTO> listar();
-    DepartamentoResponseDTO consultar(Long id);
-    DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request);
-    DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request);
-    void remover( Long id);
-    void popular();
+    List<DepartamentoResponseDTO> listar(String token);
+    DepartamentoResponseDTO consultar(Long id,String token);
+    DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request,String token);
+    DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request,String token);
+    void remover( Long id,String token);
+    void popular(String token);
 }

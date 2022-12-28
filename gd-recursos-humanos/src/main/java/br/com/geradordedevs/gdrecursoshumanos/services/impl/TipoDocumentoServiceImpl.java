@@ -3,6 +3,8 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.TipoDocumentoException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.TipoDocumentoEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.TipoDocumentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
@@ -29,7 +31,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Override
     public TipoDocumentoEntity consultar(Long id) {
         log.info("obtendo informacoes de tipo de documento {}", id);
-        return tipoDocumentoRepository.findById(id).orElse(new TipoDocumentoEntity());
+        return tipoDocumentoRepository.findById(id).orElseThrow(() -> new TipoDocumentoException(TipoDocumentoEnum.TIPO_DOCUMENTO_NAO_ENCONTRADO));
     }
 
     @Override
@@ -41,12 +43,14 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Override
     public TipoDocumentoEntity alterar(Long id, TipoDocumentoEntity entity) {
         log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, entity);
+        consultar(id);
         entity.setId(id);
         return  tipoDocumentoRepository.save(entity);
     }
 
     @Override
     public void remover(Long id) {
+        consultar(id);
         log.info("removendo o tipo de documento de id {}", id);
        tipoDocumentoRepository.deleteById(id);
     }

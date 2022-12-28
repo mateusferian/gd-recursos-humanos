@@ -6,6 +6,8 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.ColaboradorException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.ColaboradorEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
@@ -33,7 +35,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     @Override
     public ColaboradorEntity consultar(Long id) {
         log.info("obtendo informacoes de colaborador {}", id);
-        return colaboradorRepository.findById(id).orElse(new ColaboradorEntity());
+        return colaboradorRepository.findById(id).orElseThrow(() -> new ColaboradorException(ColaboradorEnum.COLABORADOR_NAO_ENCONTRADO));
     }
 
     @Override
@@ -45,6 +47,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     @Override
     public ColaboradorEntity alterar(Long id, ColaboradorEntity entity) {
         log.info("alterando o colaborador de id {} com novas informacoes: {}", id, entity);
+        consultar(id);
         entity.setId(id);
         return colaboradorRepository.save(entity);
     }
@@ -52,6 +55,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     @Override
     public void remover(Long id) {
         log.info("removendo o colaborador de id {}", id);
+        consultar(id);
         colaboradorRepository.deleteById(id);
     }
 

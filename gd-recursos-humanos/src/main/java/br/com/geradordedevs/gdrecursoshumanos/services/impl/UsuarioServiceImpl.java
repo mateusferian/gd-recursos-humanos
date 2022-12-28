@@ -6,6 +6,8 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoRespons
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.UsuarioException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.UsuarioEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.UsuarioMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.UsuarioRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
@@ -42,7 +44,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
     @Override
     public UsuarioEntity consultar(Long id) {
         log.info("obtendo informacoes de usuario {}",id);
-        return usuarioRepository.findById(id).orElse(new UsuarioEntity());
+        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
     }
 
     @Override
@@ -55,6 +57,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
     @Override
     public UsuarioEntity alterar(Long id, UsuarioEntity entity) {
         log.info("alterando usuario de id {} com novas informacoes: {}",id,entity);
+        consultar(id);
         entity.setId(id);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
@@ -63,32 +66,18 @@ public class UsuarioServiceImpl  implements UsuarioService {
     @Override
     public void remover(Long id) {
         log.info("removendo o usuario de id {}",id);
+        consultar(id);
         usuarioRepository.deleteById(id);
     }
 
     @Override
-    public AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO autenticacaoRequestDTO) {
-
-        if (passwordEncoder.matches(autenticacaoRequestDTO.getSenha(), usuarioRepository.findByEmail(autenticacaoRequestDTO.getEmail()).getSenha())) {
-            return new AutenticacaoResponseDTO(gerarTokenJWT(autenticacaoRequestDTO.getEmail()));
-        } else {
-            return new AutenticacaoResponseDTO();
-        }
-    }
-
-    private String gerarTokenJWT(String email) {
-        log.info("gerando token JWT para o email {}", email);
-        try {
-            Algorithm algorithm = Algorithm.HMAC256("v4SA91O=WuM5i)ap3ErJ");
-            return JWT.create()
-                    .withIssuer("gd-recursos-humanos")
-                    .withClaim("sub", email)
-                    .withExpiresAt(new Date(Instant.now().toEpochMilli() + TimeUnit.HOURS.toMillis(1)))
-                    .sign(algorithm);
-
-        } catch (JWTCreationException exception) {
-            log.warn("erro ao tentar gerar o toker JWT");
-            return null;
+    public void validarUsuarioSenha(AutenticacaoRequestDTO request) {
+        log.info("validando usuario e senha do email: {}",request.getEmail());
+        UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
+        if (usuarioEntity == null ||
+        !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
+            log.warn("usuario ou senha do email {} e invalido",request.getEmail());
+            throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
         }
     }
 }

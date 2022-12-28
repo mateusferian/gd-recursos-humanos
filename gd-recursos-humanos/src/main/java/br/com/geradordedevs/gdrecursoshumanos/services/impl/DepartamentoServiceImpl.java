@@ -3,6 +3,8 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.DepartamentoException;
+import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.DepartamentoEnum;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.DepartamentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
@@ -29,7 +31,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Override
     public DepartamentoEntity consultar(Long id) {
         log.info("obtendo informacoes de departamento {}", id);
-        return  departamentoRepository.findById(id).orElse(new DepartamentoEntity());
+        return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTAMENTO_NAO_ENCONTRADO));
     }
 
     @Override
@@ -41,6 +43,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Override
     public DepartamentoEntity alterar(Long id, DepartamentoEntity entity) {
         log.info("alterando o departamento de id {} com novas informacoes: {}", id, entity);
+        consultar(id);
         entity.setId(id);
         return departamentoRepository.save(entity);
     }
@@ -48,6 +51,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Override
     public void remover(Long id) {
         log.info("removendo o departamento de id {}", id);
+        consultar(id);
         departamentoRepository.deleteById(id);
     }
 

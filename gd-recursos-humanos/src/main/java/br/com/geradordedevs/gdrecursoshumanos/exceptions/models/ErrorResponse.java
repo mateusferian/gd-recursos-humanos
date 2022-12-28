@@ -10,8 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ErrorResponse {
     private  Long timestamp;
-    private  String status;
-    private  int code;
+    private Integer status;
+    private String code;
     private String message;
     private List<ErrorObject> erros;
 }
