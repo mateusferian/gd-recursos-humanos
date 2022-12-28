@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum UsuarioEnum {
 
-    USUARIO_OU_SENHA_INVALIDOS("USUARIO_OU_SENHA_INVALIDOS", "Usuario ou senha invalidos", 404),
+    USUARIO_OU_SENHA_INVALIDOS("USUARIO_OU_SENHA_INVALIDOS", "Usuario ou senha invalidos", 400),
     USUARIO_NAO_ENCONTRADO("USUARIO_NAO_ENCONTRADO","Usuario não encontrado",404);
 
     private String code;
