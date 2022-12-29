@@ -19,7 +19,6 @@ public class UsuarioRequestDTO {
     private String nome;
 
     @NotNull(message = "{campo.nulo}")
-    @Size(min = 3,max = 40, message = "{tamanho.invalido}")
     @Email(message = "{email.invalido}")
     private String email;
 
