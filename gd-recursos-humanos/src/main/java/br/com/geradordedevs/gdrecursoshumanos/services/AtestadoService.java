@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface AtestadoService {
-    Iterable<AtestadoEntity> listar();
-    AtestadoEntity consultar(Long id );
-    AtestadoEntity cadastrar(AtestadoEntity entity);
-    AtestadoEntity alterar ( long id,  AtestadoEntity entity);
-    void remover ( Long id);
+    Iterable<AtestadoEntity> findAll();
+    AtestadoEntity findById(Long id );
+    AtestadoEntity save(AtestadoEntity entity);
+    AtestadoEntity updateById ( long id,  AtestadoEntity entity);
+    void deleteById ( Long id);
     void popular();
 }

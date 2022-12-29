@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DepartamentoService {
-    Iterable<DepartamentoEntity> listar();
-    DepartamentoEntity consultar(Long id);
-    DepartamentoEntity cadastrar(DepartamentoEntity entity);
-    DepartamentoEntity alterar(Long id, DepartamentoEntity entity);
-    void remover( Long id);
+    Iterable<DepartamentoEntity> findAll();
+    DepartamentoEntity findById(Long id);
+    DepartamentoEntity save(DepartamentoEntity entity);
+    DepartamentoEntity updateById(Long id, DepartamentoEntity entity);
+    void deleteById( Long id);
     void popular();
 }

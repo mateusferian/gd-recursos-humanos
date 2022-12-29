@@ -11,10 +11,10 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 import java.util.List;
 
 public interface UsuarioService {
-    Iterable<UsuarioEntity> listar();
-    UsuarioEntity consultar(Long id );
-    UsuarioEntity cadastrar( UsuarioEntity entity);
-    UsuarioEntity alterar ( Long id, UsuarioEntity entity);
-    void  remover(  Long id);
-    void validarUsuarioSenha(AutenticacaoRequestDTO request);
+    Iterable<UsuarioEntity> findAll();
+    UsuarioEntity findById(Long id );
+    UsuarioEntity save( UsuarioEntity entity);
+    UsuarioEntity updateById ( Long id, UsuarioEntity entity);
+    void deleteById(  Long id);
+    void validateUserPassword(AutenticacaoRequestDTO request);
 }

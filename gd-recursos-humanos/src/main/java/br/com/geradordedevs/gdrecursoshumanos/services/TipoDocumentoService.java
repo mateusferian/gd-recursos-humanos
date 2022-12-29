@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface TipoDocumentoService {
-    Iterable<TipoDocumentoEntity> listar();
-    TipoDocumentoEntity consultar(Long id );
-    TipoDocumentoEntity cadastrar( TipoDocumentoEntity entity);
-    TipoDocumentoEntity alterar ( Long id,  TipoDocumentoEntity entity);
-    void  remover(  Long id);
+    Iterable<TipoDocumentoEntity> findAll();
+    TipoDocumentoEntity findById(Long id );
+    TipoDocumentoEntity save( TipoDocumentoEntity entity);
+    TipoDocumentoEntity updateById ( Long id,  TipoDocumentoEntity entity);
+    void  deleteById(  Long id);
     void popular();
 }
