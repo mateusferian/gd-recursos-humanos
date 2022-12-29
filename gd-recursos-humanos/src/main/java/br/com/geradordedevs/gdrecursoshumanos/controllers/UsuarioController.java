@@ -17,27 +17,27 @@ public class UsuarioController {
     UsuarioFacade usuarioFacede;
 
     @GetMapping
-    public List<UsuarioResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-        return usuarioFacede.listar(token);
+    public List<UsuarioResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+        return usuarioFacede.findAll(token);
     }
 
     @GetMapping ("/{id}")
-    public UsuarioResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-        return  usuarioFacede.consultar(id,token);
+    public UsuarioResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.findById(id,token);
     }
     
     @PostMapping
-    public  UsuarioResponseDTO cadastrar(@Valid @RequestBody UsuarioRequestDTO request){
-        return  usuarioFacede.cadastrar(request);
+    public  UsuarioResponseDTO save(@Valid @RequestBody UsuarioRequestDTO request){
+        return  usuarioFacede.save(request);
     }
 
     @PutMapping ("/{id}")
-    public  UsuarioResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return  usuarioFacede.alterar(id, request,token);
+    public  UsuarioResponseDTO updateById(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.updateById(id, request,token);
     }
 
     @DeleteMapping("/{id}")
-    public  void  remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-        usuarioFacede.remover(id,token);
+    public  void  deleteById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        usuarioFacede.deleteById(id,token);
     }
 }

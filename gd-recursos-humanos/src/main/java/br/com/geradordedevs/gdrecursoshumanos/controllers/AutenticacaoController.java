@@ -19,7 +19,7 @@ public class AutenticacaoController {
     private TokenFacade tokenFacede;
 
     @PostMapping
-    public AutenticacaoResponseDTO autenticacao(@Valid @RequestBody AutenticacaoRequestDTO request){
-      return tokenFacede.autenticacao(request);
+    public AutenticacaoResponseDTO authentication(@Valid @RequestBody AutenticacaoRequestDTO request){
+      return tokenFacede.authentication(request);
     }
 }

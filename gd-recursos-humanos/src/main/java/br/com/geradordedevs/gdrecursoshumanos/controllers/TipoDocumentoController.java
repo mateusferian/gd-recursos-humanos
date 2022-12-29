@@ -17,32 +17,32 @@ public class TipoDocumentoController {
     private TipoDocumentoFacade tipoDocumentoFacede;
 
     @GetMapping
-    public List<TipoDocumentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.listar(token);
+    public List<TipoDocumentoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.findAll(token);
     }
 
     @GetMapping ("/{id}")
-    public TipoDocumentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
-        return tipoDocumentoFacede.consultar(id,token);
+    public TipoDocumentoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+        return tipoDocumentoFacede.findById(id,token);
     }
 
     @PostMapping
-    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.cadastrar(request,token);
+    public TipoDocumentoResponseDTO save(@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.save(request,token);
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.alterar(id, request,token);
+    public TipoDocumentoResponseDTO updateById (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.updateById(id, request,token);
     }
 
     @DeleteMapping ("/{id}")
-    public void  remover(@PathVariable  Long id,@RequestHeader(required = false,value = "token")String token) {
-        tipoDocumentoFacede.remover(id,token);
+    public void  deleteById(@PathVariable  Long id,@RequestHeader(required = false,value = "token")String token) {
+        tipoDocumentoFacede.deleteById(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+    public void popularbank(@RequestHeader(required = false,value = "token")String token){
         tipoDocumentoFacede.popular(token);
     }
 }

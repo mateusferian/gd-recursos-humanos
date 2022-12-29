@@ -17,32 +17,32 @@ public class CargoController {
     private CargoFacade cargoFacede;
 
     @GetMapping
-    public List<CargoResponseDTO> listar(@RequestHeader(required = false, value = "token") String token){
-        return cargoFacede.listar(token);
+    public List<CargoResponseDTO> findAll(@RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.findAll(token);
     }
 
     @GetMapping ("/{id}")
-    public CargoResponseDTO consultar(@PathVariable Long id, @RequestHeader(required = false, value = "token") String token){
-        return cargoFacede.consultar(id,token);
+    public CargoResponseDTO findById(@PathVariable Long id, @RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.findById(id,token);
     }
 
     @PostMapping
-    public CargoResponseDTO cadastrar(@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
-        return cargoFacede.cadastrar(request,token);
+    public CargoResponseDTO save(@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.save(request,token);
     }
 
     @PutMapping ("/{id}")
-    public CargoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
-        return cargoFacede.alterar(id, request,token);
+    public CargoResponseDTO updateById (@PathVariable Long id,@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.updateById(id, request,token);
     }
 
     @DeleteMapping ("/{id}")
-    public void remover (@PathVariable Long id,@RequestHeader(required = false, value = "token") String token){
-        cargoFacede.remover(id,token);
+    public void deleteById (@PathVariable Long id,@RequestHeader(required = false, value = "token") String token){
+        cargoFacede.deleteById(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(@RequestHeader(required = false, value = "token") String token){
+    public void popularbank(@RequestHeader(required = false, value = "token") String token){
         cargoFacede.popular(token);
     }
 }

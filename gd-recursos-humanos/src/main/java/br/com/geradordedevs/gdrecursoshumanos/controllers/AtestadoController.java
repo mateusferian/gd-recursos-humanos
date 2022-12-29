@@ -17,32 +17,32 @@ public class AtestadoController {
         private AtestadoFacade atestadoFacede;
 
         @GetMapping
-        public List<AtestadoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-            return atestadoFacede.listar(token);
+        public List<AtestadoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.findAll(token);
         }
 
         @GetMapping ("/{id}")
-        public AtestadoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
-            return atestadoFacede.consultar(id,token);
+        public AtestadoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+            return atestadoFacede.findById(id,token);
         }
 
         @PostMapping
-        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty,@RequestHeader(required = false,value = "token")String token){
-            return atestadoFacede.cadastrar(requesty,token);
+        public AtestadoResponseDTO save(@Valid @RequestBody AtestadoRequestDTO requesty,@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.save(requesty,token);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-            return  atestadoFacede.alterar(id, request,token);
+        public AtestadoResponseDTO updateById (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+            return  atestadoFacede.updateById(id, request,token);
         }
 
         @DeleteMapping ("/{id}")
-        public void remover (@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-            atestadoFacede.remover(id,token);
+        public void deleteById (@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+            atestadoFacede.deleteById(id,token);
         }
 
          @GetMapping("/popular")
-        public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+        public void popularbank(@RequestHeader(required = false,value = "token")String token){
              atestadoFacede.popular(token);
     }
 }

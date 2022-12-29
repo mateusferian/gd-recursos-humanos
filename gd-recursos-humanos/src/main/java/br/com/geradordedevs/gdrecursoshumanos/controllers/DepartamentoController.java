@@ -17,32 +17,32 @@ public class DepartamentoController {
     private DepartamentoFacade departamentoFacede;
 
     @GetMapping
-    public List<DepartamentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.listar(token);
+    public List<DepartamentoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.findAll(token);
     }
 
     @GetMapping("/{id}")
-    public DepartamentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.consultar(id,token);
+    public DepartamentoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.findById(id,token);
     }
 
     @PostMapping
-    public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.cadastrar(request,token);
+    public DepartamentoResponseDTO save(@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.save(request,token);
     }
 
     @PutMapping("/{id}")
-    public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.alterar(id,request,token);
+    public DepartamentoResponseDTO updateById(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.updateById(id,request,token);
     }
 
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
-        departamentoFacede.remover(id,token);
+    public void deleteById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        departamentoFacede.deleteById(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
+    public void popularbank(@RequestHeader(required = false,value = "token")String token){
         departamentoFacede.popular(token);
     }
 }
