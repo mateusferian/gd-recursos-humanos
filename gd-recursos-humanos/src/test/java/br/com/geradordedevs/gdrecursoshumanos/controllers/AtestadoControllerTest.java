@@ -37,37 +37,37 @@ public class AtestadoControllerTest {
 
     private final String ROUTE_CERTIFICATE = "/atestados";
     private  final  String CERTIFICATE_ROUTE_PARAMETER ="/atestados/1";
-    private  final  String CERTIFICATE_POPULAR_ROUTE ="/atestados/popular";
+    private  final  String COLLABORATOR_POPULAR_ROUTE ="/atestados/popular";
 
-    private  final String NOME_ATESTADO="covid";
-    private  final  Date DATA_ATESTADO=new Date(121,10,17);
-    private final  Long ID_COLABORADOR = 1l;
+    private  final String CERTIFIED_NAME="covid";
+    private  final  Date DATA_CERTIFICATE=new Date(121,10,17);
+    private final  Long ID_COLLABORATOR = 1l;
 
     private  AtestadoRequestDTO returnCorrectAttestation(){
-        return  new AtestadoRequestDTO(NOME_ATESTADO,DATA_ATESTADO,ID_COLABORADOR);
+        return  new AtestadoRequestDTO(CERTIFIED_NAME,DATA_CERTIFICATE,ID_COLLABORATOR);
     }
 
     private  AtestadoRequestDTO returnAttestationWithNameMin(){
-        return  new AtestadoRequestDTO("ma",DATA_ATESTADO,ID_COLABORADOR);
+        return  new AtestadoRequestDTO("ma",DATA_CERTIFICATE,ID_COLLABORATOR);
     }
 
     private  AtestadoRequestDTO returnAttestationWithNameMax(){
-        return  new AtestadoRequestDTO("mateusmateusmateusmateusmateusmateusmateu",DATA_ATESTADO,ID_COLABORADOR);
+        return  new AtestadoRequestDTO("mateusmateusmateusmateusmateusmateusmateu",DATA_CERTIFICATE,ID_COLLABORATOR);
     }
     private  AtestadoRequestDTO returnAttestationWithNameNull(){
-        return  new AtestadoRequestDTO("    ",DATA_ATESTADO,ID_COLABORADOR);
+        return  new AtestadoRequestDTO("    ",DATA_CERTIFICATE,ID_COLLABORATOR);
     }
 
     private  AtestadoRequestDTO returnAttestationWithDateNull(){
-        return  new AtestadoRequestDTO(NOME_ATESTADO,null,ID_COLABORADOR);
+        return  new AtestadoRequestDTO(CERTIFIED_NAME,null,ID_COLLABORATOR);
     }
 
     private  AtestadoRequestDTO returnCollaboratorWithIdCollaboratornNought(){
-        return  new AtestadoRequestDTO(NOME_ATESTADO,DATA_ATESTADO,0L);
+        return  new AtestadoRequestDTO(CERTIFIED_NAME,DATA_CERTIFICATE,0L);
     }
 
     private  AtestadoRequestDTO returnCollaboratorWithIdCollaboratornNull(){
-        return  new AtestadoRequestDTO(NOME_ATESTADO,DATA_ATESTADO,null);
+        return  new AtestadoRequestDTO(CERTIFIED_NAME,DATA_CERTIFICATE,null);
     }
 
     @Test
@@ -151,7 +151,7 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithNameMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString(returnAttestationWithNameMin()))
         ).andExpect(status().isBadRequest());
@@ -160,7 +160,7 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithNameMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString(returnAttestationWithNameMax()))
         ).andExpect(status().isBadRequest());
@@ -169,7 +169,7 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithNameNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString(returnAttestationWithNameNull()))
         ).andExpect(status().isBadRequest());
@@ -179,7 +179,7 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithDateNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString(returnAttestationWithDateNull()))
         ).andExpect(status().isBadRequest());
@@ -189,7 +189,7 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithIdNoughtMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString(returnCollaboratorWithIdCollaboratornNought()))
         ).andExpect(status().isBadRequest());
@@ -198,23 +198,23 @@ public class AtestadoControllerTest {
     @Test
     public void updateAttestationWithIdNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROUTE_CERTIFICATE)
+        mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(ow.writeValueAsString((returnCollaboratorWithIdCollaboratornNull())))
         ).andExpect(status().isBadRequest());
     }
 
-    //remover
+    //delete
     @Test
-    public void deleteByIdDepartamentoDeveRetornarOk() throws Exception{
+    public void deleteByIdAttestationMustReturnOk() throws Exception{
         mockMvc.perform(delete(CERTIFICATE_ROUTE_PARAMETER))
                 .andExpect(status().isOk());
     }
 
     //popular
     @Test
-    public void PopularBanckAttestationMustReturnOk() throws Exception{
-        mockMvc.perform(get(CERTIFICATE_POPULAR_ROUTE))
+    public void popularBanckAttestationMustReturnOk() throws Exception{
+        mockMvc.perform(get(COLLABORATOR_POPULAR_ROUTE))
                 .andExpect(status().isOk());
     }
 }
