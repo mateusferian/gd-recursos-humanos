@@ -21,22 +21,22 @@ public class DepartamentoMapper {
     @Autowired
     private final ModelMapper mapper;
 
-    public DepartamentoResponseDTO paraDto(DepartamentoEntity entidade){
-        log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, DepartamentoResponseDTO.class);
+    public DepartamentoResponseDTO toDto(DepartamentoEntity entity){
+        log.info("convertendo entidade {} para dto", entity);
+        return  mapper.map(entity, DepartamentoResponseDTO.class);
     }
 
-    public DepartamentoEntity paraEntidade(DepartamentoRequestDTO request){
+    public DepartamentoEntity toEntity(DepartamentoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, DepartamentoEntity.class);
     }
 
-    public List<DepartamentoResponseDTO> paraListaDto(Iterable<DepartamentoEntity> lista){
+    public List<DepartamentoResponseDTO> toDtoList(Iterable<DepartamentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         List<DepartamentoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
-                .map(this::paraDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 }

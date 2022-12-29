@@ -36,12 +36,12 @@ public class ColaboradorMapper {
     @Autowired
     private TipoDocumentoRepository tipoDocumentoRepository;
 
-    public ColaboradorResponseDTO paraDto(ColaboradorEntity entidade){
-        log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, ColaboradorResponseDTO.class);
+    public ColaboradorResponseDTO toDto(ColaboradorEntity entity){
+        log.info("convertendo entidade {} para dto", entity);
+        return  mapper.map(entity, ColaboradorResponseDTO.class);
     }
 
-    public ColaboradorEntity  paraEntidade(ColaboradorRequestDTO request){
+    public ColaboradorEntity  toEntity(ColaboradorRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
 
         ColaboradorEntity colaboradorEntity =mapper.map(request,ColaboradorEntity.class);
@@ -53,12 +53,12 @@ public class ColaboradorMapper {
         return colaboradorEntity;
     }
 
-    public List<ColaboradorResponseDTO> paraListaDto(Iterable<ColaboradorEntity > lista){
+    public List<ColaboradorResponseDTO> toDtoList(Iterable<ColaboradorEntity > lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         List<ColaboradorEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
-                .map(this::paraDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 }

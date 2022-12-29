@@ -21,22 +21,22 @@ public class TipoDocumentoMapper {
     @Autowired
     private final ModelMapper mapper;
 
-    public TipoDocumentoResponseDTO paraDto(TipoDocumentoEntity entidade){
-        log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, TipoDocumentoResponseDTO.class);
+    public TipoDocumentoResponseDTO toDto(TipoDocumentoEntity entity){
+        log.info("convertendo entidade {} para dto", entity);
+        return  mapper.map(entity, TipoDocumentoResponseDTO.class);
     }
 
-    public TipoDocumentoEntity paraEntidade(TipoDocumentoRequestDTO request){
+    public TipoDocumentoEntity toEntity(TipoDocumentoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
         return  mapper.map(request, TipoDocumentoEntity.class);
     }
 
-    public List<TipoDocumentoResponseDTO> paraListaDto(Iterable<TipoDocumentoEntity> lista){
+    public List<TipoDocumentoResponseDTO> toDtoList(Iterable<TipoDocumentoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         List<TipoDocumentoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
-                .map(this::paraDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 }

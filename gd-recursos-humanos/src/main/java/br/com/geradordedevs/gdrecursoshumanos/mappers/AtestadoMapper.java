@@ -27,12 +27,12 @@ public class AtestadoMapper {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
 
-    public AtestadoResponseDTO paraDto(AtestadoEntity entidade){
-        log.info("convertendo entidade {} para dto", entidade);
-        return   mapper.map(entidade, AtestadoResponseDTO.class);
+    public AtestadoResponseDTO toDto(AtestadoEntity entity){
+        log.info("convertendo entidade {} para dto", entity);
+        return   mapper.map(entity, AtestadoResponseDTO.class);
     }
 
-    public AtestadoEntity paraEntidade(AtestadoRequestDTO request){
+    public AtestadoEntity toEntity(AtestadoRequestDTO request){
         log.info("convertendo dto {} para entidade", request);
 
         AtestadoEntity atestadoEntity = mapper.map(request, AtestadoEntity.class);
@@ -41,12 +41,12 @@ public class AtestadoMapper {
         return atestadoEntity;
     }
 
-    public List<AtestadoResponseDTO> paraListaDto(Iterable<AtestadoEntity> lista){
+    public List<AtestadoResponseDTO> toDtoList(Iterable<AtestadoEntity> lista){
         log.info("convertendo lista de entidade {} para lista de dto", lista);
         List<AtestadoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
-                .map(this::paraDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 }
