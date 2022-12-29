@@ -9,7 +9,7 @@ public interface DepartamentoFacade {
     List<DepartamentoResponseDTO> findAll(String token);
     DepartamentoResponseDTO findById(Long id,String token);
     DepartamentoResponseDTO save(DepartamentoRequestDTO request,String token);
-    DepartamentoResponseDTO updateById(Long id, DepartamentoRequestDTO request,String token);
+    DepartamentoResponseDTO update(Long id, DepartamentoRequestDTO request,String token);
     void deleteById( Long id,String token);
     void popular(String token);
 }

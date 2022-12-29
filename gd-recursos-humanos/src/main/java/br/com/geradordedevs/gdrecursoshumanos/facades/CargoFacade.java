@@ -9,7 +9,7 @@ public interface CargoFacade {
     List<CargoResponseDTO> findAll(String token);
     CargoResponseDTO findById(Long id,String token);
     CargoResponseDTO save(CargoRequestDTO request,String token);
-    CargoResponseDTO updateById(Long id, CargoRequestDTO request,String token);
+    CargoResponseDTO update(Long id, CargoRequestDTO request,String token);
     void deleteById(Long id,String token);
     void popular(String token);
 }
