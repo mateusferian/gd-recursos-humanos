@@ -33,7 +33,6 @@ public class CargoControllerTest {
     private final String ROTA_CARGOS = "/cargos";
     private  final  String ROTA_CARGOS_PARAMETRO ="/cargos/1";
     private  final  String ROTA_CARGOS_POPULAR ="/cargos/popular";
-    
     @Test
     public void listarCargosDeveRetornarOk() throws Exception{
         mockMvc.perform(get(ROTA_CARGOS))
@@ -118,6 +117,7 @@ public class CargoControllerTest {
                 .content(ow.writeValueAsString(new CargoRequestDTO("    ")))
         ).andExpect(status().isBadRequest());
     }
+
 
     @Test
     public void RemoverCargoDeveRetornarOk() throws Exception{
