@@ -24,38 +24,38 @@ public class CargoFacedeImpl implements CargoFacade {
 
 
     @Override
-    public List<CargoResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(cargoService.listar());
+    public List<CargoResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(cargoService.findAll());
     }
 
     @Override
-    public CargoResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(cargoService.consultar(id));
+    public CargoResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(cargoService.findById(id));
     }
 
     @Override
-    public CargoResponseDTO cadastrar(CargoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(cargoService.cadastrar(mapper.paraEntidade(request)));
+    public CargoResponseDTO save(CargoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(cargoService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public CargoResponseDTO alterar(Long id, CargoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(cargoService.alterar(id,mapper.paraEntidade(request)));
+    public CargoResponseDTO updateById(Long id, CargoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(cargoService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        cargoService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        cargoService.deleteById(id);
     }
 
     @Override
     public void popular(String token) {
-        tokenService.validar(token);
+        tokenService.validate(token);
         cargoService.popular();
     }
 }

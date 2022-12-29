@@ -23,31 +23,31 @@ public class UsuarioFacedeImpl implements UsuarioFacade {
     private TokenService tokenService;
 
     @Override
-    public List<UsuarioResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(usuarioService.listar());
+    public List<UsuarioResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(usuarioService.findAll());
     }
 
     @Override
-    public UsuarioResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(usuarioService.consultar(id));
+    public UsuarioResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(usuarioService.findById(id));
     }
 
     @Override
-    public UsuarioResponseDTO cadastrar(UsuarioRequestDTO request) {
-        return mapper.paraDto(usuarioService.cadastrar(mapper.paraEntidade(request)));
+    public UsuarioResponseDTO save(UsuarioRequestDTO request) {
+        return mapper.toDto(usuarioService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public UsuarioResponseDTO alterar(Long id, UsuarioRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(usuarioService.alterar(id,mapper.paraEntidade(request)));
+    public UsuarioResponseDTO updateById(Long id, UsuarioRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(usuarioService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        usuarioService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        usuarioService.deleteById(id);
     }
 }

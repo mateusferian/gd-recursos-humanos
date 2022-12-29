@@ -24,38 +24,38 @@ public class TipoDocumentoFacedeImpl implements TipoDocumentoFacade {
     private TokenService tokenService;
 
     @Override
-    public List<TipoDocumentoResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(tipoDocumentoService.listar());
+    public List<TipoDocumentoResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(tipoDocumentoService.findAll());
     }
 
     @Override
-    public TipoDocumentoResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(tipoDocumentoService.consultar(id));
+    public TipoDocumentoResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(tipoDocumentoService.findById(id));
     }
 
     @Override
-    public TipoDocumentoResponseDTO cadastrar(TipoDocumentoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(tipoDocumentoService.cadastrar(mapper.paraEntidade(request)));
+    public TipoDocumentoResponseDTO save(TipoDocumentoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(tipoDocumentoService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public TipoDocumentoResponseDTO alterar(Long id, TipoDocumentoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(tipoDocumentoService.alterar(id,mapper.paraEntidade(request)));
+    public TipoDocumentoResponseDTO updateById(Long id, TipoDocumentoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(tipoDocumentoService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        tipoDocumentoService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        tipoDocumentoService.deleteById(id);
     }
 
     @Override
     public void popular(String token) {
-        tokenService.validar(token);
+        tokenService.validate(token);
         tipoDocumentoService.popular();
     }
 }

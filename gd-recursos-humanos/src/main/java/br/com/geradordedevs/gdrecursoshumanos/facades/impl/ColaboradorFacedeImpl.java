@@ -32,48 +32,48 @@ public class ColaboradorFacedeImpl implements ColaboradorFacade {
     private TokenService tokenService;
 
     @Override
-    public List<ColaboradorResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(colaboradorService.listar());
+    public List<ColaboradorResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(colaboradorService.findAll());
     }
 
     @Override
-    public ColaboradorResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(colaboradorService.consultar(id));
+    public ColaboradorResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(colaboradorService.findById(id));
     }
 
     @Override
-    public ColaboradorResponseDTO cadastrar(ColaboradorRequestDTO request,String token) {
+    public ColaboradorResponseDTO save(ColaboradorRequestDTO request,String token) {
 
-        tokenService.validar(token);
-        cargoService.consultar(request.getCargo());
-        departamentoService.consultar(request.getDepartamento());
-        tipoDocumentoService.consultar(request.getTipoDocumento());
+        tokenService.validate(token);
+        cargoService.findById(request.getCargo());
+        departamentoService.findById(request.getDepartamento());
+        tipoDocumentoService.findById(request.getTipoDocumento());
 
-        return mapper.paraDto(colaboradorService.cadastrar(mapper.paraEntidade(request)));
+        return mapper.toDto(colaboradorService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public ColaboradorResponseDTO alterar(Long id, ColaboradorRequestDTO request,String token) {
+    public ColaboradorResponseDTO updateById(Long id, ColaboradorRequestDTO request,String token) {
 
-        tokenService.validar(token);
-        cargoService.consultar(request.getCargo());
-        departamentoService.consultar(request.getDepartamento());
-        tipoDocumentoService.consultar(request.getTipoDocumento());
+        tokenService.validate(token);
+        cargoService.findById(request.getCargo());
+        departamentoService.findById(request.getDepartamento());
+        tipoDocumentoService.findById(request.getTipoDocumento());
 
-        return mapper.paraDto(colaboradorService.alterar(id,mapper.paraEntidade(request)));
+        return mapper.toDto(colaboradorService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        colaboradorService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        colaboradorService.deleteById(id);
     }
 
     @Override
     public void popular(String token) {
-        tokenService.validar(token);
+        tokenService.validate(token);
         colaboradorService.popular();
     }
 }

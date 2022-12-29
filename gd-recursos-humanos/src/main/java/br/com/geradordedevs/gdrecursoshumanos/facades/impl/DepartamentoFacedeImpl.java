@@ -23,38 +23,38 @@ public class DepartamentoFacedeImpl implements DepartamentoFacade {
     private TokenService tokenService;
 
     @Override
-    public List<DepartamentoResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(departamentoService.listar());
+    public List<DepartamentoResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(departamentoService.findAll());
     }
 
     @Override
-    public DepartamentoResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(departamentoService.consultar(id));
+    public DepartamentoResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(departamentoService.findById(id));
     }
 
     @Override
-    public DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(departamentoService.cadastrar(mapper.paraEntidade(request)));
+    public DepartamentoResponseDTO save(DepartamentoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(departamentoService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public DepartamentoResponseDTO alterar(Long id, DepartamentoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(departamentoService.alterar(id,mapper.paraEntidade(request)));
+    public DepartamentoResponseDTO updateById(Long id, DepartamentoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(departamentoService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        departamentoService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        departamentoService.deleteById(id);
     }
 
     @Override
     public void popular(String token) {
-        tokenService.validar(token);
+        tokenService.validate(token);
         departamentoService.popular();
     }
 }

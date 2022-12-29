@@ -18,8 +18,8 @@ public class TokenfacedeImpl implements TokenFacade {
     private TokenService tokenService;
 
     @Override
-    public AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO request) {
-        usuarioService.validarUsuarioSenha(request);
-        return new AutenticacaoResponseDTO(tokenService.gerarToken(request.getEmail()));
+    public AutenticacaoResponseDTO authentication(AutenticacaoRequestDTO request) {
+        usuarioService.validateUserPassword(request);
+        return new AutenticacaoResponseDTO(tokenService.generateToken(request.getEmail()));
     }
 }

@@ -27,39 +27,39 @@ public class AtestadoFacedeImpl implements AtestadoFacade {
     private TokenService tokenService;
 
     @Override
-    public List<AtestadoResponseDTO> listar(String token) {
-        tokenService.validar(token);
-        return mapper.paraListaDto(atestadoService.listar());
+    public List<AtestadoResponseDTO> findAll(String token) {
+        tokenService.validate(token);
+        return mapper.toDtoList(atestadoService.findAll());
     }
 
     @Override
-    public AtestadoResponseDTO consultar(Long id,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(atestadoService.consultar(id));
+    public AtestadoResponseDTO findById(Long id,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(atestadoService.findById(id));
     }
 
     @Override
-    public AtestadoResponseDTO cadastrar(AtestadoRequestDTO request,String token) {
-        tokenService.validar(token);
-        colaboradorService.consultar(request.getColaborador());
-        return mapper.paraDto(atestadoService.cadastrar(mapper.paraEntidade(request)));
+    public AtestadoResponseDTO save(AtestadoRequestDTO request,String token) {
+        tokenService.validate(token);
+        colaboradorService.findById(request.getColaborador());
+        return mapper.toDto(atestadoService.save(mapper.toEntity(request)));
     }
 
     @Override
-    public AtestadoResponseDTO alterar(Long id, AtestadoRequestDTO request,String token) {
-        tokenService.validar(token);
-        return mapper.paraDto(atestadoService.alterar(id,mapper.paraEntidade(request)));
+    public AtestadoResponseDTO updateById(Long id, AtestadoRequestDTO request,String token) {
+        tokenService.validate(token);
+        return mapper.toDto(atestadoService.updateById(id,mapper.toEntity(request)));
     }
 
     @Override
-    public void remover(Long id,String token) {
-        tokenService.validar(token);
-        atestadoService.remover(id);
+    public void deleteById(Long id,String token) {
+        tokenService.validate(token);
+        atestadoService.deleteById(id);
     }
 
     @Override
     public void popular(String token) {
-        tokenService.validar(token);
+        tokenService.validate(token);
         atestadoService.popular();
     }
 }
