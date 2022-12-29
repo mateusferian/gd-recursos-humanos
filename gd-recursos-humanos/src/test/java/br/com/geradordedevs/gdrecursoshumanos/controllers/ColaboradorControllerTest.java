@@ -489,7 +489,7 @@ public class ColaboradorControllerTest {
 
     //update
     @Test
-    public void upadeCollaboratorMustReturnOk() throws Exception {
+    public void updateCollaboratorMustReturnOk() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -498,7 +498,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithNameMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithNameMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -507,7 +507,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithNameMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithNameMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -516,7 +516,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithNullMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithNullMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -526,7 +526,7 @@ public class ColaboradorControllerTest {
 
     //age
     @Test
-    public void upadeCollaboratorWithAgeMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithAgeMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -535,7 +535,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithAgeMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithAgeMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -545,7 +545,7 @@ public class ColaboradorControllerTest {
 
     //date
     @Test
-    public void upadeCollaboratorWithBirthDateNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithBirthDateNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -555,7 +555,7 @@ public class ColaboradorControllerTest {
 
     //document Type
     @Test
-    public void upadeCollaboratorWithDocumentTypeNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentTypeNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -564,7 +564,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDocumentTypeMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentTypeMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -573,7 +573,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDocumentTypeMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentTypeMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -583,7 +583,7 @@ public class ColaboradorControllerTest {
 
     //document number
     @Test
-    public void upadeCollaboratorWithDocumentNumberNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentNumberNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -592,7 +592,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDocumentNumberMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentNumberMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -601,7 +601,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDocumentNumberMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDocumentNumberMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -611,7 +611,7 @@ public class ColaboradorControllerTest {
 
     //office
     @Test
-    public void upadeCollaboratorWithOfiiceMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithOfiiceMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -620,7 +620,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithOfficeMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithOfficeMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -629,7 +629,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithOfficeNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithOfficeNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -639,7 +639,7 @@ public class ColaboradorControllerTest {
 
     //departament
     @Test
-    public void upadeCollaboratorWithDepartamentMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDepartamentMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -648,7 +648,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDepartamentMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDepartamentMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -657,7 +657,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithDepartamentNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithDepartamentNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -667,7 +667,7 @@ public class ColaboradorControllerTest {
 
     //salary
     @Test
-    public void upadeCollaboratorWithSalaryMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithSalaryMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -676,7 +676,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithSalaryMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithSalaryMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -686,7 +686,7 @@ public class ColaboradorControllerTest {
 
     //start date
     @Test
-    public void upadeCollaboratorWithStartDateNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithStartDateNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -696,7 +696,7 @@ public class ColaboradorControllerTest {
 
     //telephone
     @Test
-    public void upadeCollaboratorWithTelephoneMinMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithTelephoneMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -705,7 +705,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithTelephoneMaxMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithTelephoneMaxMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -714,7 +714,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithTelephoneNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithTelephoneNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -724,7 +724,7 @@ public class ColaboradorControllerTest {
 
     //email
     @Test
-    public void upadeCollaboratorWithEmailNullMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithEmailNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -733,7 +733,7 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void upadeCollaboratorWithEmailInvalidMustReturnBadRequest() throws Exception {
+    public void updateCollaboratorWithEmailInvalidMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(COLLABORATOR_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
