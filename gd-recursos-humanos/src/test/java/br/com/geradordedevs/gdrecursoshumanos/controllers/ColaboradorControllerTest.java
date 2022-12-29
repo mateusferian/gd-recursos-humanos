@@ -89,7 +89,7 @@ public class ColaboradorControllerTest {
                 SALARY, START_DATE, ACTIVE, TELEPHONE, EMAIL);
     }
 
-    //birthdate
+    //hdate
     public ColaboradorRequestDTO returnsCollaboratorWithBirthDateNull() {
         return new ColaboradorRequestDTO(NAME_COLLABORATOR, AGE_COLLABORATOR, null,
                 ID_DOCUMENT_TYPE, DOCUMENT_NUMBER, OFFICE, DEPARTMENT,
@@ -115,7 +115,7 @@ public class ColaboradorControllerTest {
                 71L, DOCUMENT_NUMBER, OFFICE, DEPARTMENT,
                 SALARY, START_DATE, ACTIVE, TELEPHONE, EMAIL);
     }
-    //ducumenty number
+    //ducument number
     public ColaboradorRequestDTO returnsCollaboratorWithDocumentNumberNull() {
         return new ColaboradorRequestDTO(NAME_COLLABORATOR, AGE_COLLABORATOR, COLLABORATOR_BIRTH_DATE,
                 ID_DOCUMENT_TYPE, null, OFFICE, DEPARTMENT,
@@ -171,7 +171,7 @@ public class ColaboradorControllerTest {
                 ID_DOCUMENT_TYPE, DOCUMENT_NUMBER, OFFICE, null,
                 SALARY, START_DATE, ACTIVE, TELEPHONE, EMAIL);
     }
-    //usalary
+    //salary
 
     public ColaboradorRequestDTO returnsCollaboratorWithSalaryMin() {
         return new ColaboradorRequestDTO(NAME_COLLABORATOR, AGE_COLLABORATOR, COLLABORATOR_BIRTH_DATE,
@@ -290,7 +290,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //birth_date
+    //date
     @Test
     public void saveCollaboratorWithBirthDateNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -440,7 +440,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //telefophone
+    //telephone
     @Test
     public void saveCollaboratorWithTelephoneMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -487,7 +487,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //Update
+    //update
     @Test
     public void upadeCollaboratorMustReturnOk() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -543,7 +543,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //birth_date
+    //date
     @Test
     public void upadeCollaboratorWithBirthDateNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -553,7 +553,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //document
+    //document Type
     @Test
     public void upadeCollaboratorWithDocumentTypeNullMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -694,7 +694,7 @@ public class ColaboradorControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    //telefophone
+    //telephone
     @Test
     public void upadeCollaboratorWithTelephoneMinMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
