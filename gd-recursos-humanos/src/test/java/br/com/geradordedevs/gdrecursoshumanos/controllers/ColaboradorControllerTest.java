@@ -742,13 +742,13 @@ public class ColaboradorControllerTest {
     }
 
     @Test
-    public void findByIdCargoDeveRetornarOk() throws Exception{
+    public void findByIdCollaboratorDeveRetornarOk() throws Exception{
         mockMvc.perform(delete(COLLABORATOR_ROUTE_PARAMETER))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void popularbank() throws Exception{
+    public void popularBanckCollaboratorMustReturnOk() throws Exception{
         mockMvc.perform(get(COLLABORATOR_POPULAR_ROUTE))
                 .andExpect(status().isOk());
     }
