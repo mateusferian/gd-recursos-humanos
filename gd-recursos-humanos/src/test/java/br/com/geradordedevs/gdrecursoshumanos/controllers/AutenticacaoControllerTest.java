@@ -1,6 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
+import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.facades.TokenFacade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -29,41 +30,61 @@ public class AutenticacaoControllerTest {
     @MockBean
     private TokenFacade tokenFacede;
 
-    private final String ROTA_AUTENTICACAO = "/autenticacoes";
+    private final String ROUTE_AUTHENTICATION = "/autenticacoes";
+
+    private  final String EMAIL_AUTHENTICATION = "mateus.jose@gmail.com";
+
+    private  final String PASSWORD_AUTHENTICATION = "mateus.jose@gmail.com";
+
+    public AutenticacaoRequestDTO returnCorrectAuthentication() {
+        return new AutenticacaoRequestDTO(EMAIL_AUTHENTICATION,PASSWORD_AUTHENTICATION);
+    }
+
+    public AutenticacaoRequestDTO returnsCollaboratorWithEmailNull() {
+        return new AutenticacaoRequestDTO(null, PASSWORD_AUTHENTICATION);
+    }
+
+    public AutenticacaoRequestDTO returnAuthenticationWithEmailInvalid() {
+        return new AutenticacaoRequestDTO("mateus.jose",PASSWORD_AUTHENTICATION);
+    }
+
+    public AutenticacaoRequestDTO returnAuthenticationWithPassawordInvalid() {
+        return new AutenticacaoRequestDTO(EMAIL_AUTHENTICATION," ");
+    }
 
     @Test
-    public void gerandoTokenJWTDeveRetornarOk() throws Exception {
+    public void generatingTokenJWTDeveRetornarOk() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROTA_AUTENTICACAO)
+        mockMvc.perform(post(ROUTE_AUTHENTICATION)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(new AutenticacaoRequestDTO("mateus.jose@gmail.com", "12345678901234567890")))
+                .content(ow.writeValueAsString(returnCorrectAuthentication()))
         ).andExpect(status().isOk());
     }
 
     @Test
-    public void gerandoTokenJWTComEmailInvalidoDeveRetornarBadRequest() throws Exception {
+    public void generatingTokenJWTWithInvalidEmailMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROTA_AUTENTICACAO)
+        mockMvc.perform(post(ROUTE_AUTHENTICATION)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(new AutenticacaoRequestDTO("mateus.jose", "12345678901234567890")))
+                .content(ow.writeValueAsString(returnAuthenticationWithEmailInvalid()))
         ).andExpect(status().isBadRequest());
     }
 
     @Test
-    public void gerandoTokenJWTComEmailVazioDeveRetornarBadRequest() throws Exception {
+    public void generatingTokenJWTWithEmailEmptyMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROTA_AUTENTICACAO)
+        mockMvc.perform(post(ROUTE_AUTHENTICATION)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(new AutenticacaoRequestDTO("","12345678901234567890")))
+                .content(ow.writeValueAsString(returnAuthenticationWithEmailInvalid()))
         ).andExpect(status().isBadRequest());
     }
 
     @Test
-    public void gerandoTokenJWTComSenhaInvalidoDeveRetornarBadRequest() throws Exception {
+    public void generatingTokenJWTWithInvalidPasswordMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        mockMvc.perform(post(ROTA_AUTENTICACAO)
+        mockMvc.perform(post(ROUTE_AUTHENTICATION)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(new AutenticacaoRequestDTO("mateus.jose@gmail.com", "")))
+                .content(ow.writeValueAsString(returnAuthenticationWithPassawordInvalid()))
         ).andExpect(status().isBadRequest());
     }
 }

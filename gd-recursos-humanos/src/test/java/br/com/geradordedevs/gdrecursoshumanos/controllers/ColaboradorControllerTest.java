@@ -208,7 +208,7 @@ public class ColaboradorControllerTest {
     public ColaboradorRequestDTO returnsCollaboratorWithTelephoneNull() {
         return new ColaboradorRequestDTO(NAME_COLLABORATOR, AGE_COLLABORATOR, COLLABORATOR_BIRTH_DATE,
                 ID_DOCUMENT_TYPE, DOCUMENT_NUMBER, OFFICE, DEPARTMENT,
-                SALARY, START_DATE, ACTIVE, "null", EMAIL);
+                SALARY, START_DATE, ACTIVE, null, EMAIL);
     }
 
     //email
