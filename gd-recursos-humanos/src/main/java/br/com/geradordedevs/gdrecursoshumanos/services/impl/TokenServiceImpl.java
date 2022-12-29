@@ -39,7 +39,7 @@ public class TokenServiceImpl implements TokenService {
 
         } catch (JWTCreationException exception) {
             log.warn("error when trying to generate jwt token");
-            throw new TokenException(TokenEnum.TOKEN_INVALIDO);
+            throw new TokenException(TokenEnum.INVALID_TOKEN);
         }
     }
 
@@ -48,7 +48,7 @@ public class TokenServiceImpl implements TokenService {
         
         if (token == null) {
             log.warn("token not sent");
-            throw new TokenException(TokenEnum.TOKEN_OBRIGATORIO);
+            throw new TokenException(TokenEnum.MANDATORY_TOKEN);
         }
 
         log.info("validating the token: {}", token);
@@ -61,7 +61,7 @@ public class TokenServiceImpl implements TokenService {
 
         } catch (JWTVerificationException exception) {
             log.warn("token verification error: {}", token);
-            throw new TokenException(TokenEnum.TOKEN_INVALIDO);
+            throw new TokenException(TokenEnum.INVALID_TOKEN);
         }
     }
 }

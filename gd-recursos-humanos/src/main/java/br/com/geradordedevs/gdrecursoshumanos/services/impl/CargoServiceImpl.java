@@ -31,7 +31,7 @@ public class CargoServiceImpl implements CargoService {
     @Override
     public CargoEntity findById(Long id) {
         log.info("getting job information {}", id);
-        return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.CARGO_NAO_ENCONTRADO));
+        return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.POSITION_NOT_FOUND));
     }
 
     @Override

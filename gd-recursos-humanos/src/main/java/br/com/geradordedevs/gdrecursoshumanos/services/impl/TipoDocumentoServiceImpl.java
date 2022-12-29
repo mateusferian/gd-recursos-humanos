@@ -31,7 +31,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Override
     public TipoDocumentoEntity findById(Long id) {
         log.info("getting document type information {}", id);
-        return tipoDocumentoRepository.findById(id).orElseThrow(() -> new TipoDocumentoException(TipoDocumentoEnum.TIPO_DOCUMENTO_NAO_ENCONTRADO));
+        return tipoDocumentoRepository.findById(id).orElseThrow(() -> new TipoDocumentoException(TipoDocumentoEnum.TYPE_DOCUMENT_NOT_FUND));
     }
 
     @Override

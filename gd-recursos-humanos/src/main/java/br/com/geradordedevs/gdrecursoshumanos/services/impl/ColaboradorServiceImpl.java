@@ -35,7 +35,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     @Override
     public ColaboradorEntity findById(Long id) {
         log.info("getting employee information {}", id);
-        return colaboradorRepository.findById(id).orElseThrow(() -> new ColaboradorException(ColaboradorEnum.COLABORADOR_NAO_ENCONTRADO));
+        return colaboradorRepository.findById(id).orElseThrow(() -> new ColaboradorException(ColaboradorEnum.EMPLOYEE_NOT_FOUND));
     }
 
     @Override

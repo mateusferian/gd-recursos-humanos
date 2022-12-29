@@ -33,7 +33,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     @Override
     public AtestadoEntity findById(Long id) {
         log.info("getting attestation information {}", id);
-        return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.ATESTADO_NAO_ENCONTRADO));
+        return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.CERTIFICATE_NOT_FUND));
     }
 
     @Override

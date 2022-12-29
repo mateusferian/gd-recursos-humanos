@@ -44,7 +44,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
     @Override
     public UsuarioEntity findById(Long id) {
         log.info("getting user information {}",id);
-        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
+        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USER_NOT_FOUND));
     }
 
     @Override
@@ -77,7 +77,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
         if (usuarioEntity == null ||
         !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
             log.warn("email username or password {} is invalid",request.getEmail());
-            throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
+            throw  new UsuarioException(UsuarioEnum.INVALID_USERNAME_OR_PASSWORD);
         }
     }
 }
