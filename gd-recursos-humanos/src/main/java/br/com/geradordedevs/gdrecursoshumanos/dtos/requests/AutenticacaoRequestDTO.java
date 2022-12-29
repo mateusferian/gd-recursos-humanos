@@ -13,12 +13,10 @@ import javax.validation.constraints.Size;
 @Getter
 @AllArgsConstructor
 public class AutenticacaoRequestDTO {
-    @NotNull(message = "{campo.nulo}")
-    @Size(min = 3,max = 40, message = "{tamanho.invalido}")
+    @NotBlank(message = "{campo.em.branco}")
     @Email(message = "{email.invalido}")
     private  String email;
 
     @NotBlank(message = "{campo.em.branco}")
-    @Size(min = 8,max = 20, message = "{tamanho.invalido}")
     private  String senha;
 }
