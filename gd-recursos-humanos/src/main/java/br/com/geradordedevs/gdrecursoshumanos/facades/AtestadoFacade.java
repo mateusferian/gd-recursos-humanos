@@ -6,10 +6,10 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO
 import java.util.List;
 
 public interface AtestadoFacade {
-    List<AtestadoResponseDTO> listar(String token);
-    AtestadoResponseDTO consultar(Long id,String token );
-    AtestadoResponseDTO cadastrar(AtestadoRequestDTO request,String token);
-    AtestadoResponseDTO alterar ( Long id,  AtestadoRequestDTO request,String token);
-    void remover ( Long id,String token);
+    List<AtestadoResponseDTO> findAll(String token);
+    AtestadoResponseDTO findById(Long id,String token );
+    AtestadoResponseDTO save(AtestadoRequestDTO request,String token);
+    AtestadoResponseDTO updateById ( Long id,  AtestadoRequestDTO request,String token);
+    void deleteById ( Long id,String token);
     void popular(String token);
 }

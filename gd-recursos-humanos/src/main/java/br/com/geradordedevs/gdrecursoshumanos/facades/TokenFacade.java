@@ -4,5 +4,5 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestD
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
 
 public interface TokenFacade {
-    AutenticacaoResponseDTO autenticacao(AutenticacaoRequestDTO requestD);
+    AutenticacaoResponseDTO authentication(AutenticacaoRequestDTO requestD);
 }
