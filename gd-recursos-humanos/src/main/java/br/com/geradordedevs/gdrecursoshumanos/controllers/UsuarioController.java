@@ -32,8 +32,8 @@ public class UsuarioController {
     }
 
     @PutMapping ("/{id}")
-    public  UsuarioResponseDTO updateById(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return  usuarioFacede.updateById(id, request,token);
+    public  UsuarioResponseDTO update(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.update(id, request,token);
     }
 
     @DeleteMapping("/{id}")

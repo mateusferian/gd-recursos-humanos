@@ -32,8 +32,8 @@ public class AtestadoController {
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO updateById (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-            return  atestadoFacede.updateById(id, request,token);
+        public AtestadoResponseDTO update (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+            return  atestadoFacede.update(id, request,token);
         }
 
         @DeleteMapping ("/{id}")

@@ -32,8 +32,8 @@ public class CargoController {
     }
 
     @PutMapping ("/{id}")
-    public CargoResponseDTO updateById (@PathVariable Long id,@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
-        return cargoFacede.updateById(id, request,token);
+    public CargoResponseDTO update (@PathVariable Long id,@Valid @RequestBody CargoRequestDTO request,@RequestHeader(required = false, value = "token") String token){
+        return cargoFacede.update(id, request,token);
     }
 
     @DeleteMapping ("/{id}")

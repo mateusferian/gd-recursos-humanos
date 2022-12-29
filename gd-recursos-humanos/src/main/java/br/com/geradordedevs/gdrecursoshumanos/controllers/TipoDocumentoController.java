@@ -32,8 +32,8 @@ public class TipoDocumentoController {
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO updateById (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.updateById(id, request,token);
+    public TipoDocumentoResponseDTO update (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.update(id, request,token);
     }
 
     @DeleteMapping ("/{id}")

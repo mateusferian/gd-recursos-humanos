@@ -32,8 +32,8 @@ public class DepartamentoController {
     }
 
     @PutMapping("/{id}")
-    public DepartamentoResponseDTO updateById(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.updateById(id,request,token);
+    public DepartamentoResponseDTO update(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.update(id,request,token);
     }
 
     @DeleteMapping("/{id}")

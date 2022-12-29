@@ -33,8 +33,8 @@ public class ColaboradorController {
     }
 
     @PutMapping ("/{id}")
-    public ColaboradorResponseDTO updateById (@PathVariable Long id,@Valid @RequestBody ColaboradorRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return  colaboradorFacede.updateById(id, request,token);
+    public ColaboradorResponseDTO update (@PathVariable Long id,@Valid @RequestBody ColaboradorRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return  colaboradorFacede.update(id, request,token);
     }
 
     @DeleteMapping ("/{id}")
