@@ -31,7 +31,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     @Override
     public DepartamentoEntity findById(Long id) {
         log.info("getting department information {}", id);
-        return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTMENT_NOT_FUND));
+        return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTMENT_NOT_FOUND));
     }
 
     @Override
