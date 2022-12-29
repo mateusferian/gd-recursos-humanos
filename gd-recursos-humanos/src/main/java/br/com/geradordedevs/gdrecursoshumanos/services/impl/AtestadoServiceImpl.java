@@ -58,7 +58,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     }
 
     @Override
-    public void popular() {
+    public void populating() {
         log.info("populating the attestation database for testing");
         atestadoRepository.save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
     }

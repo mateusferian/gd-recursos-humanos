@@ -56,7 +56,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
 
     @Override
-    public void popular() {
+    public void populating() {
         log.info("populating the document type database for testing");
         tipoDocumentoRepository.save((new TipoDocumentoEntity("RG")));
         tipoDocumentoRepository.save((new TipoDocumentoEntity("CPF")));

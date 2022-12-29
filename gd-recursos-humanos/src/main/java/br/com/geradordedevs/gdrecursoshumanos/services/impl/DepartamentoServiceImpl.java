@@ -56,7 +56,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
 
     @Override
-    public void popular() {
+    public void populating() {
         log.info("populating the departments database for testing");
         departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
         departamentoRepository.save((new DepartamentoEntity("vendas")));
