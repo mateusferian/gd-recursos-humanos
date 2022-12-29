@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacade;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ColaboradorFacedeImpl implements ColaboradorFacede {
+public class ColaboradorFacedeImpl implements ColaboradorFacade {
 
     @Autowired
     private ColaboradorMapper mapper;

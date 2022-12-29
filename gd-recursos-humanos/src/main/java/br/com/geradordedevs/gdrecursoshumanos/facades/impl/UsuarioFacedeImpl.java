@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.UsuarioFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.UsuarioFacade;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.UsuarioMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public class UsuarioFacedeImpl implements UsuarioFacede {
+public class UsuarioFacedeImpl implements UsuarioFacade {
 
     @Autowired
     private UsuarioService usuarioService;

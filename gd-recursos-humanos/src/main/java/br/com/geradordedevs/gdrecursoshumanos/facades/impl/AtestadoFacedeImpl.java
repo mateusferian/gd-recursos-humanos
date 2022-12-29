@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacade;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public class AtestadoFacedeImpl implements AtestadoFacede {
+public class AtestadoFacedeImpl implements AtestadoFacade {
 
     @Autowired
     private AtestadoMapper mapper;

@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class AtestadoController {
 
         @Autowired
-        private AtestadoFacede atestadoFacede;
+        private AtestadoFacade atestadoFacede;
 
         @GetMapping
         public List<AtestadoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){

@@ -5,7 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoRespons
 
 import java.util.List;
 
-public interface DepartamentoFacede {
+public interface DepartamentoFacade {
     List<DepartamentoResponseDTO> listar(String token);
     DepartamentoResponseDTO consultar(Long id,String token);
     DepartamentoResponseDTO cadastrar(DepartamentoRequestDTO request,String token);

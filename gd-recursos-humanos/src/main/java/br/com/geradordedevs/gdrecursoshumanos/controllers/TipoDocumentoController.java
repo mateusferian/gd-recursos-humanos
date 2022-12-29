@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.TipoDocumentoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TipoDocumentoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class TipoDocumentoController {
 
     @Autowired
-    private TipoDocumentoFacede tipoDocumentoFacede;
+    private TipoDocumentoFacade tipoDocumentoFacede;
 
     @GetMapping
     public List<TipoDocumentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){

@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.DepartamentoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.DepartamentoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class DepartamentoController {
 
     @Autowired
-    private DepartamentoFacede departamentoFacede;
+    private DepartamentoFacade departamentoFacede;
 
     @GetMapping
     public List<DepartamentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token) {

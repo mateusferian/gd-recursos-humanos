@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.CargoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.CargoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class CargoController {
 
     @Autowired
-    private CargoFacede cargoFacede;
+    private CargoFacade cargoFacede;
 
     @GetMapping
     public List<CargoResponseDTO> listar(@RequestHeader(required = false, value = "token") String token){

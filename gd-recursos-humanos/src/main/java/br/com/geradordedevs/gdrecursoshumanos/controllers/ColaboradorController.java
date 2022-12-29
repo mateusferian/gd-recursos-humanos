@@ -3,7 +3,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class ColaboradorController {
 
     @Autowired
-    private ColaboradorFacede colaboradorFacede;
+    private ColaboradorFacade colaboradorFacede;
 
     @GetMapping
     public List<ColaboradorResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){

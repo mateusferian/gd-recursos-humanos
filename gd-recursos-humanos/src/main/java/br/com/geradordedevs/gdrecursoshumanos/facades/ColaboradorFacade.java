@@ -5,7 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponse
 
 import java.util.List;
 
-public interface ColaboradorFacede {
+public interface ColaboradorFacade {
     List<ColaboradorResponseDTO> listar(String token);
     ColaboradorResponseDTO consultar(Long id,String token );
     ColaboradorResponseDTO cadastrar( ColaboradorRequestDTO request,String token);

@@ -5,7 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
 
 import java.util.List;
 
-public interface UsuarioFacede {
+public interface UsuarioFacade {
     List<UsuarioResponseDTO> listar(String token);
     UsuarioResponseDTO consultar(Long id ,String token);
     UsuarioResponseDTO cadastrar( UsuarioRequestDTO request);

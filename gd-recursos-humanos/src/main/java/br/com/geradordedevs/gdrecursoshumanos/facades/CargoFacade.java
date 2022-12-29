@@ -5,7 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 
 import java.util.List;
 
-public interface CargoFacede {
+public interface CargoFacade {
     List<CargoResponseDTO> listar(String token);
     CargoResponseDTO consultar(Long id,String token);
     CargoResponseDTO cadastrar(CargoRequestDTO request,String token);

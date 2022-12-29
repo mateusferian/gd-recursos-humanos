@@ -5,7 +5,7 @@ import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoRespon
 
 import java.util.List;
 
-public interface TipoDocumentoFacede {
+public interface TipoDocumentoFacade {
     List<TipoDocumentoResponseDTO> listar(String token);
     TipoDocumentoResponseDTO consultar(Long id,String token);
     TipoDocumentoResponseDTO cadastrar( TipoDocumentoRequestDTO request,String token);
