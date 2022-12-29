@@ -1,8 +1,6 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes;
+package br.com.geradordedevs.gdrecursoshumanos.facades;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.TokenFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TokenFacede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -2,18 +2,12 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.AtestadoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/atestados")

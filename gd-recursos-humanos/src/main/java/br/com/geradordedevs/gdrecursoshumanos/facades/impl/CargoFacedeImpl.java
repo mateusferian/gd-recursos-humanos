@@ -1,8 +1,8 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes.impl;
+package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.CargoFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.CargoFacede;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;

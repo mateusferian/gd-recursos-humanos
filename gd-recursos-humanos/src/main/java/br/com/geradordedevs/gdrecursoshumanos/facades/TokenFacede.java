@@ -1,4 +1,4 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes;
+package br.com.geradordedevs.gdrecursoshumanos.facades;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;

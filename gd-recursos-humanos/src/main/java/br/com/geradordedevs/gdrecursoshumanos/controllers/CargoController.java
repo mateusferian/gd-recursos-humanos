@@ -2,18 +2,12 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.CargoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.CargoFacede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cargos")

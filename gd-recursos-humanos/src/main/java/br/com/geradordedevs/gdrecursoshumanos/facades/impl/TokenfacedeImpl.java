@@ -1,8 +1,8 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes.impl;
+package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.TokenFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TokenFacede;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

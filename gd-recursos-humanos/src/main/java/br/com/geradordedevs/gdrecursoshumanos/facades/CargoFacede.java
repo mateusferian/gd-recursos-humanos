@@ -1,9 +1,7 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes;
+package br.com.geradordedevs.gdrecursoshumanos.facades;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 
 import java.util.List;
 

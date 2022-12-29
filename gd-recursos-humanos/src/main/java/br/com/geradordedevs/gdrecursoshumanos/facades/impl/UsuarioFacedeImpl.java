@@ -1,10 +1,8 @@
-package br.com.geradordedevs.gdrecursoshumanos.facedes.impl;
+package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.UsuarioFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.UsuarioFacede;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.UsuarioMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;

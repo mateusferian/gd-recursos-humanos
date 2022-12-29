@@ -2,18 +2,12 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.TipoDocumentoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TipoDocumentoFacede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/tipo-de-documentos")

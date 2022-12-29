@@ -3,19 +3,12 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.ColaboradorFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
-import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
-import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacede;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/colaboradores")
