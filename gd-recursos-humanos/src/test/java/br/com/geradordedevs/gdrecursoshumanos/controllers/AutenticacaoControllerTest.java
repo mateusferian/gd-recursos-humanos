@@ -34,13 +34,13 @@ public class AutenticacaoControllerTest {
 
     private  final String EMAIL_AUTHENTICATION = "mateus.jose@gmail.com";
 
-    private  final String PASSWORD_AUTHENTICATION = "mateus.jose@gmail.com";
+    private  final String PASSWORD_AUTHENTICATION = "123456789";
 
     public AutenticacaoRequestDTO returnCorrectAuthentication() {
         return new AutenticacaoRequestDTO(EMAIL_AUTHENTICATION,PASSWORD_AUTHENTICATION);
     }
 
-    public AutenticacaoRequestDTO returnsCollaboratorWithEmailNull() {
+    public AutenticacaoRequestDTO returnsAuthenticationWithEmailNull() {
         return new AutenticacaoRequestDTO(null, PASSWORD_AUTHENTICATION);
     }
 
@@ -69,7 +69,6 @@ public class AutenticacaoControllerTest {
                 .content(ow.writeValueAsString(returnAuthenticationWithEmailInvalid()))
         ).andExpect(status().isBadRequest());
     }
-
     @Test
     public void generatingTokenJWTWithEmailEmptyMustReturnBadRequest() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
