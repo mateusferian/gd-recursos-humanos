@@ -1,5 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.dtos.requests;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @NoArgsConstructor
 @Getter
+@AllArgsConstructor
 public class AutenticacaoRequestDTO {
     @NotNull(message = "{campo.nulo}")
     @Size(min = 3,max = 40, message = "{tamanho.invalido}")
