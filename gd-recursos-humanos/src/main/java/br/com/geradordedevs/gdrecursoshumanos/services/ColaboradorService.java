@@ -14,5 +14,5 @@ public interface ColaboradorService {
     ColaboradorEntity save( ColaboradorEntity entity);
     ColaboradorEntity update( Long id,  ColaboradorEntity entity);
     void deleteById ( Long id);
-    void popular();
+    void populating();
 }

@@ -15,5 +15,5 @@ public interface DepartamentoService {
     DepartamentoEntity save(DepartamentoEntity entity);
     DepartamentoEntity update(Long id, DepartamentoEntity entity);
     void deleteById( Long id);
-    void popular();
+    void populating();
 }

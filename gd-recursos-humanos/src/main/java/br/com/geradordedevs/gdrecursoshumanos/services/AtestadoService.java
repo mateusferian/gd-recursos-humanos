@@ -14,5 +14,5 @@ public interface AtestadoService {
     AtestadoEntity save(AtestadoEntity entity);
     AtestadoEntity update ( long id,  AtestadoEntity entity);
     void deleteById ( Long id);
-    void popular();
+    void populating();
 }

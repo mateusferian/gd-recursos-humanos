@@ -14,5 +14,5 @@ public interface TipoDocumentoService {
     TipoDocumentoEntity save( TipoDocumentoEntity entity);
     TipoDocumentoEntity update ( Long id,  TipoDocumentoEntity entity);
     void  deleteById(  Long id);
-    void popular();
+    void populating();
 }

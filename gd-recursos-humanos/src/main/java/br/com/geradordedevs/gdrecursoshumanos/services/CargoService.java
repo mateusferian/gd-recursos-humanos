@@ -12,5 +12,5 @@ public interface CargoService {
     CargoEntity save(CargoEntity entity);
     CargoEntity update(Long id, CargoEntity entity);
     void deleteById(Long id);
-    void popular();
+    void populating();
 }
