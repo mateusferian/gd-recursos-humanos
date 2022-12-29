@@ -58,8 +58,8 @@ public class AtestadoFacedeImpl implements AtestadoFacade {
     }
 
     @Override
-    public void popular(String token) {
+    public void populating(String token) {
         tokenService.validate(token);
-        atestadoService.popular();
+        atestadoService.populating();
     }
 }

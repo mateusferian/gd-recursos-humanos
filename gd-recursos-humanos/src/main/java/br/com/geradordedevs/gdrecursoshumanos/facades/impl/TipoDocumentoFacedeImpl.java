@@ -54,8 +54,8 @@ public class TipoDocumentoFacedeImpl implements TipoDocumentoFacade {
     }
 
     @Override
-    public void popular(String token) {
+    public void populating(String token) {
         tokenService.validate(token);
-        tipoDocumentoService.popular();
+        tipoDocumentoService.populating();
     }
 }

@@ -54,8 +54,8 @@ public class CargoFacedeImpl implements CargoFacade {
     }
 
     @Override
-    public void popular(String token) {
+    public void populating(String token) {
         tokenService.validate(token);
-        cargoService.popular();
+        cargoService.populating();
     }
 }

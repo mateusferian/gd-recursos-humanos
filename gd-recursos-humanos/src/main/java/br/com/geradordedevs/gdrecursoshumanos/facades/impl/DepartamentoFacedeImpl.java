@@ -53,8 +53,8 @@ public class DepartamentoFacedeImpl implements DepartamentoFacade {
     }
 
     @Override
-    public void popular(String token) {
+    public void populating(String token) {
         tokenService.validate(token);
-        departamentoService.popular();
+        departamentoService.populating();
     }
 }

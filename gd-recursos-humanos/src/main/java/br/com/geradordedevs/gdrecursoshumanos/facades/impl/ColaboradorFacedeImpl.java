@@ -72,8 +72,8 @@ public class ColaboradorFacedeImpl implements ColaboradorFacade {
     }
 
     @Override
-    public void popular(String token) {
+    public void populating(String token) {
         tokenService.validate(token);
-        colaboradorService.popular();
+        colaboradorService.populating();
     }
 }
