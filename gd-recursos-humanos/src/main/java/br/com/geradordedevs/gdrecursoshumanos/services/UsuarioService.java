@@ -14,7 +14,7 @@ public interface UsuarioService {
     Iterable<UsuarioEntity> findAll();
     UsuarioEntity findById(Long id );
     UsuarioEntity save( UsuarioEntity entity);
-    UsuarioEntity updateById ( Long id, UsuarioEntity entity);
+    UsuarioEntity update( Long id, UsuarioEntity entity);
     void deleteById(  Long id);
     void validateUserPassword(AutenticacaoRequestDTO request);
 }

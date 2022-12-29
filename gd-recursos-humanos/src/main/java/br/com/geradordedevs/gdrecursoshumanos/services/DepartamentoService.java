@@ -13,7 +13,7 @@ public interface DepartamentoService {
     Iterable<DepartamentoEntity> findAll();
     DepartamentoEntity findById(Long id);
     DepartamentoEntity save(DepartamentoEntity entity);
-    DepartamentoEntity updateById(Long id, DepartamentoEntity entity);
+    DepartamentoEntity update(Long id, DepartamentoEntity entity);
     void deleteById( Long id);
     void popular();
 }

@@ -12,7 +12,7 @@ public interface AtestadoService {
     Iterable<AtestadoEntity> findAll();
     AtestadoEntity findById(Long id );
     AtestadoEntity save(AtestadoEntity entity);
-    AtestadoEntity updateById ( long id,  AtestadoEntity entity);
+    AtestadoEntity update ( long id,  AtestadoEntity entity);
     void deleteById ( Long id);
     void popular();
 }

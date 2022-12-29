@@ -12,7 +12,7 @@ public interface ColaboradorService {
     Iterable<ColaboradorEntity> findAll();
     ColaboradorEntity findById(Long id );
     ColaboradorEntity save( ColaboradorEntity entity);
-    ColaboradorEntity updateById ( Long id,  ColaboradorEntity entity);
+    ColaboradorEntity update( Long id,  ColaboradorEntity entity);
     void deleteById ( Long id);
     void popular();
 }
