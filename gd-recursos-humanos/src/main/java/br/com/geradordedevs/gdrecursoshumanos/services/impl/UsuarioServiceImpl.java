@@ -55,7 +55,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
     }
 
     @Override
-    public UsuarioEntity updateById(Long id, UsuarioEntity entity) {
+    public UsuarioEntity update(Long id, UsuarioEntity entity) {
         log.info("changing user id {} with new information: {}",id,entity);
         findById(id);
         entity.setId(id);

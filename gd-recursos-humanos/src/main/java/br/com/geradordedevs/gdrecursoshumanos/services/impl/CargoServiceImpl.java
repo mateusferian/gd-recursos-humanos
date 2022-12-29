@@ -41,7 +41,7 @@ public class CargoServiceImpl implements CargoService {
     }
 
     @Override
-    public CargoEntity updateById(Long id, CargoEntity entity) {
+    public CargoEntity update(Long id, CargoEntity entity) {
         log.info("changing the position of id {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);

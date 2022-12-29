@@ -45,7 +45,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     }
 
     @Override
-    public ColaboradorEntity updateById(Long id, ColaboradorEntity entity) {
+    public ColaboradorEntity update(Long id, ColaboradorEntity entity) {
         log.info("changing the id {} contributor with new information: {}", id, entity);
         findById(id);
         entity.setId(id);

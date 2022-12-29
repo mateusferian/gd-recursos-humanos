@@ -41,7 +41,7 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     }
 
     @Override
-    public TipoDocumentoEntity updateById(Long id, TipoDocumentoEntity entity) {
+    public TipoDocumentoEntity update(Long id, TipoDocumentoEntity entity) {
         log.info("changing the document type of id {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);

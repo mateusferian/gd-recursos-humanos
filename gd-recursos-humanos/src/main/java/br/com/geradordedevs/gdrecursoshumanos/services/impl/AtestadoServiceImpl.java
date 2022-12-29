@@ -43,7 +43,7 @@ public class AtestadoServiceImpl implements AtestadoService {
     }
 
     @Override
-    public AtestadoEntity updateById(long id, AtestadoEntity entity) {
+    public AtestadoEntity update(long id, AtestadoEntity entity) {
         log.info("changing the id {} attestation with new information: {}", id, entity);
         findById(id);
         entity.setId(id);

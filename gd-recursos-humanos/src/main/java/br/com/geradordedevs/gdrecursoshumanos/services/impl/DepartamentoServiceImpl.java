@@ -41,7 +41,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
 
     @Override
-    public DepartamentoEntity updateById(Long id, DepartamentoEntity entity) {
+    public DepartamentoEntity update(Long id, DepartamentoEntity entity) {
         log.info("changing the id department {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);
