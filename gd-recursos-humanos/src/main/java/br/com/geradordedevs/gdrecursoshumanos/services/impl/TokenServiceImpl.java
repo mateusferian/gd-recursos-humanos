@@ -26,7 +26,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public String generateToken(String email) {
-        log.info("gerando token jwt para o email {}", email);
+        log.info("generating jwt token for email {}", email);
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
@@ -38,7 +38,7 @@ public class TokenServiceImpl implements TokenService {
                     .sign(algorithm);
 
         } catch (JWTCreationException exception) {
-            log.warn("erro ao tentar gerar o token jwt");
+            log.warn("error when trying to generate jwt token");
             throw new TokenException(TokenEnum.TOKEN_INVALIDO);
         }
     }
@@ -47,11 +47,11 @@ public class TokenServiceImpl implements TokenService {
     public void validate(String token) {
         
         if (token == null) {
-            log.warn("token nao enviado");
+            log.warn("token not sent");
             throw new TokenException(TokenEnum.TOKEN_OBRIGATORIO);
         }
 
-        log.info("validando o token: {}", token);
+        log.info("validating the token: {}", token);
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
             JWTVerifier verifier = JWT.require(algorithm)
@@ -60,7 +60,7 @@ public class TokenServiceImpl implements TokenService {
             DecodedJWT jwt = verifier.verify(token);
 
         } catch (JWTVerificationException exception) {
-            log.warn("erro na verificacao do token: {}", token);
+            log.warn("token verification error: {}", token);
             throw new TokenException(TokenEnum.TOKEN_INVALIDO);
         }
     }

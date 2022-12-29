@@ -24,25 +24,25 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
 
     @Override
     public Iterable<TipoDocumentoEntity> findAll() {
-        log.info("listando tipo de documentos");
+        log.info("listing type of documents");
         return tipoDocumentoRepository.findAll();
     }
 
     @Override
     public TipoDocumentoEntity findById(Long id) {
-        log.info("obtendo informacoes de tipo de documento {}", id);
+        log.info("getting document type information {}", id);
         return tipoDocumentoRepository.findById(id).orElseThrow(() -> new TipoDocumentoException(TipoDocumentoEnum.TIPO_DOCUMENTO_NAO_ENCONTRADO));
     }
 
     @Override
     public TipoDocumentoEntity save(TipoDocumentoEntity entity) {
-        log.info("cadastrando um novo tipo de documento {}",entity);
+        log.info("registering a new type of document {}",entity);
         return  tipoDocumentoRepository.save(entity);
     }
 
     @Override
     public TipoDocumentoEntity updateById(Long id, TipoDocumentoEntity entity) {
-        log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, entity);
+        log.info("changing the document type of id {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);
         return  tipoDocumentoRepository.save(entity);
@@ -51,13 +51,13 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     @Override
     public void deleteById(Long id) {
         findById(id);
-        log.info("removendo o tipo de documento de id {}", id);
+        log.info("removing the document type from id {}", id);
        tipoDocumentoRepository.deleteById(id);
     }
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de tipo de documentos para teste");
+        log.info("populating the document type database for testing");
         tipoDocumentoRepository.save((new TipoDocumentoEntity("RG")));
         tipoDocumentoRepository.save((new TipoDocumentoEntity("CPF")));
         tipoDocumentoRepository.save((new TipoDocumentoEntity("CNJP")));

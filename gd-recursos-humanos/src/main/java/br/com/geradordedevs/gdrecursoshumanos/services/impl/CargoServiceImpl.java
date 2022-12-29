@@ -24,25 +24,25 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public Iterable<CargoEntity> findAll() {
-        log.info("listando cargos");
+        log.info("listing positions");
         return cargoRepository.findAll();
     }
 
     @Override
     public CargoEntity findById(Long id) {
-        log.info("obtendo informacoes de cargo {}", id);
+        log.info("getting job information {}", id);
         return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.CARGO_NAO_ENCONTRADO));
     }
 
     @Override
     public CargoEntity save(CargoEntity entity){
-        log.info("cadastrando um novo cargo {}", entity);
+        log.info("registering a new position {}", entity);
         return cargoRepository.save(entity);
     }
 
     @Override
     public CargoEntity updateById(Long id, CargoEntity entity) {
-        log.info("alterando o cargo de id {} com novas informacoes: {}", id, entity);
+        log.info("changing the position of id {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);
         return cargoRepository.save(entity);
@@ -50,14 +50,14 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void deleteById(Long id) {
-        log.info("removendo o cargo de id {}", id);
+        log.info("removing the id charge {}", id);
         findById(id);
         cargoRepository.deleteById(id);
     }
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de cargos para teste");
+        log.info("populating job database for testing");
         cargoRepository.save((new CargoEntity("administrador")));
         cargoRepository.save((new CargoEntity("vendedor")));
         cargoRepository.save((new CargoEntity("entregador")));

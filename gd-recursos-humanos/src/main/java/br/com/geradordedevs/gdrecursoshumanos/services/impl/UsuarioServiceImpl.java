@@ -37,26 +37,26 @@ public class UsuarioServiceImpl  implements UsuarioService {
 
     @Override
     public Iterable<UsuarioEntity> findAll() {
-        log.info("listando usuarios");
+        log.info("listing users");
         return usuarioRepository.findAll();
     }
 
     @Override
     public UsuarioEntity findById(Long id) {
-        log.info("obtendo informacoes de usuario {}",id);
+        log.info("getting user information {}",id);
         return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
     }
 
     @Override
     public UsuarioEntity save(UsuarioEntity entity) {
-        log.info("cadastrando um novo usuario {}",entity);
+        log.info("registering a new user {}",entity);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
     }
 
     @Override
     public UsuarioEntity updateById(Long id, UsuarioEntity entity) {
-        log.info("alterando usuario de id {} com novas informacoes: {}",id,entity);
+        log.info("changing user id {} with new information: {}",id,entity);
         findById(id);
         entity.setId(id);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
@@ -65,18 +65,18 @@ public class UsuarioServiceImpl  implements UsuarioService {
 
     @Override
     public void deleteById(Long id) {
-        log.info("removendo o usuario de id {}",id);
+        log.info("removing user from id {}",id);
         findById(id);
         usuarioRepository.deleteById(id);
     }
 
     @Override
     public void validateUserPassword(AutenticacaoRequestDTO request) {
-        log.info("validando usuario e senha do email: {}",request.getEmail());
+        log.info("validating email username and password: {}",request.getEmail());
         UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
         if (usuarioEntity == null ||
         !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
-            log.warn("usuario ou senha do email {} e invalido",request.getEmail());
+            log.warn("email username or password {} is invalid",request.getEmail());
             throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
         }
     }

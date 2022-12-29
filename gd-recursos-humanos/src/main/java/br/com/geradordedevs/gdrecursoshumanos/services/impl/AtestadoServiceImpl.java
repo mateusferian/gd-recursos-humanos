@@ -26,25 +26,25 @@ public class AtestadoServiceImpl implements AtestadoService {
 
     @Override
     public Iterable<AtestadoEntity> findAll() {
-        log.info("listando atestados");
+        log.info("listing certificates");
         return atestadoRepository.findAll();
     }
 
     @Override
     public AtestadoEntity findById(Long id) {
-        log.info("obtendo informacoes de atestado {}", id);
+        log.info("getting attestation information {}", id);
         return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.ATESTADO_NAO_ENCONTRADO));
     }
 
     @Override
     public AtestadoEntity save(AtestadoEntity entity) {
-        log.info("cadastrando um novo atestado {}", entity);
+        log.info("registering a new certificate {}", entity);
         return atestadoRepository.save(entity);
     }
 
     @Override
     public AtestadoEntity updateById(long id, AtestadoEntity entity) {
-        log.info("alterando o atestado de id {} com novas informacoes: {}", id, entity);
+        log.info("changing the id {} attestation with new information: {}", id, entity);
         findById(id);
         entity.setId(id);
         return atestadoRepository.save(entity);
@@ -52,14 +52,14 @@ public class AtestadoServiceImpl implements AtestadoService {
 
     @Override
     public void deleteById(Long id) {
-        log.info("removendo o atestado de id {}", id);
+        log.info("removing id attestation {}", id);
         findById(id);
         atestadoRepository.deleteById(id);
     }
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de atestados para teste");
+        log.info("populating the attestation database for testing");
         atestadoRepository.save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
     }
 }

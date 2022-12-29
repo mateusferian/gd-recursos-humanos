@@ -24,25 +24,25 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public Iterable<DepartamentoEntity> findAll() {
-        log.info("listando departamentos");
+        log.info("listing departments");
         return departamentoRepository.findAll();
     }
 
     @Override
     public DepartamentoEntity findById(Long id) {
-        log.info("obtendo informacoes de departamento {}", id);
+        log.info("getting department information {}", id);
         return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTAMENTO_NAO_ENCONTRADO));
     }
 
     @Override
     public DepartamentoEntity save(DepartamentoEntity entity) {
-        log.info("cadastrando um novo departamento {}", entity);
+        log.info("registering a new department {}", entity);
         return departamentoRepository.save(entity);
     }
 
     @Override
     public DepartamentoEntity updateById(Long id, DepartamentoEntity entity) {
-        log.info("alterando o departamento de id {} com novas informacoes: {}", id, entity);
+        log.info("changing the id department {} with new information: {}", id, entity);
         findById(id);
         entity.setId(id);
         return departamentoRepository.save(entity);
@@ -50,14 +50,14 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public void deleteById(Long id) {
-        log.info("removendo o departamento de id {}", id);
+        log.info("removing the id department {}", id);
         findById(id);
         departamentoRepository.deleteById(id);
     }
 
     @Override
     public void popular() {
-        log.info("populando o banco de dados de departamentos para teste");
+        log.info("populating the departments database for testing");
         departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
         departamentoRepository.save((new DepartamentoEntity("vendas")));
         departamentoRepository.save((new DepartamentoEntity("entregas")));
