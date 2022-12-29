@@ -36,42 +36,42 @@ public class UsuarioServiceImpl  implements UsuarioService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public Iterable<UsuarioEntity> listar() {
+    public Iterable<UsuarioEntity> findAll() {
         log.info("listando usuarios");
         return usuarioRepository.findAll();
     }
 
     @Override
-    public UsuarioEntity consultar(Long id) {
+    public UsuarioEntity findById(Long id) {
         log.info("obtendo informacoes de usuario {}",id);
         return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
     }
 
     @Override
-    public UsuarioEntity cadastrar(UsuarioEntity entity) {
+    public UsuarioEntity save(UsuarioEntity entity) {
         log.info("cadastrando um novo usuario {}",entity);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
     }
 
     @Override
-    public UsuarioEntity alterar(Long id, UsuarioEntity entity) {
+    public UsuarioEntity updateById(Long id, UsuarioEntity entity) {
         log.info("alterando usuario de id {} com novas informacoes: {}",id,entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
+    public void deleteById(Long id) {
         log.info("removendo o usuario de id {}",id);
-        consultar(id);
+        findById(id);
         usuarioRepository.deleteById(id);
     }
 
     @Override
-    public void validarUsuarioSenha(AutenticacaoRequestDTO request) {
+    public void validateUserPassword(AutenticacaoRequestDTO request) {
         log.info("validando usuario e senha do email: {}",request.getEmail());
         UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
         if (usuarioEntity == null ||

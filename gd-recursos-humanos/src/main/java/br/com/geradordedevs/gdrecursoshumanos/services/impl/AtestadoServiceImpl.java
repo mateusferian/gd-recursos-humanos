@@ -25,35 +25,35 @@ public class AtestadoServiceImpl implements AtestadoService {
     public AtestadoRepository atestadoRepository;
 
     @Override
-    public Iterable<AtestadoEntity> listar() {
+    public Iterable<AtestadoEntity> findAll() {
         log.info("listando atestados");
         return atestadoRepository.findAll();
     }
 
     @Override
-    public AtestadoEntity consultar(Long id) {
+    public AtestadoEntity findById(Long id) {
         log.info("obtendo informacoes de atestado {}", id);
         return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.ATESTADO_NAO_ENCONTRADO));
     }
 
     @Override
-    public AtestadoEntity cadastrar(AtestadoEntity entity) {
+    public AtestadoEntity save(AtestadoEntity entity) {
         log.info("cadastrando um novo atestado {}", entity);
         return atestadoRepository.save(entity);
     }
 
     @Override
-    public AtestadoEntity alterar(long id, AtestadoEntity entity) {
+    public AtestadoEntity updateById(long id, AtestadoEntity entity) {
         log.info("alterando o atestado de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         return atestadoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
+    public void deleteById(Long id) {
         log.info("removendo o atestado de id {}", id);
-        consultar(id);
+        findById(id);
         atestadoRepository.deleteById(id);
     }
 

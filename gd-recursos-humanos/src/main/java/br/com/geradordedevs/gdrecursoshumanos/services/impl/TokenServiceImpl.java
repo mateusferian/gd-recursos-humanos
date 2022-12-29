@@ -25,7 +25,7 @@ public class TokenServiceImpl implements TokenService {
     private final String JWT_ISSUER = "gd-recursos-humanos";
 
     @Override
-    public String gerarToken(String email) {
+    public String generateToken(String email) {
         log.info("gerando token jwt para o email {}", email);
 
         try {
@@ -44,7 +44,7 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public void validar(String token) {
+    public void validate(String token) {
         
         if (token == null) {
             log.warn("token nao enviado");

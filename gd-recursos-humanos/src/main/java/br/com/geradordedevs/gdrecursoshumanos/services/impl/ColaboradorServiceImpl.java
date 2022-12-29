@@ -27,35 +27,35 @@ public class ColaboradorServiceImpl implements ColaboradorService {
     private ColaboradorRepository colaboradorRepository;
 
     @Override
-    public Iterable<ColaboradorEntity> listar() {
+    public Iterable<ColaboradorEntity> findAll() {
         log.info("listando colaboradores");
         return colaboradorRepository.findAll();
     }
 
     @Override
-    public ColaboradorEntity consultar(Long id) {
+    public ColaboradorEntity findById(Long id) {
         log.info("obtendo informacoes de colaborador {}", id);
         return colaboradorRepository.findById(id).orElseThrow(() -> new ColaboradorException(ColaboradorEnum.COLABORADOR_NAO_ENCONTRADO));
     }
 
     @Override
-    public ColaboradorEntity cadastrar(ColaboradorEntity entity) {
+    public ColaboradorEntity save(ColaboradorEntity entity) {
         log.info("cadastrando um novo colaborador {}", entity);
         return colaboradorRepository.save(entity);
     }
 
     @Override
-    public ColaboradorEntity alterar(Long id, ColaboradorEntity entity) {
+    public ColaboradorEntity updateById(Long id, ColaboradorEntity entity) {
         log.info("alterando o colaborador de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         return colaboradorRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
+    public void deleteById(Long id) {
         log.info("removendo o colaborador de id {}", id);
-        consultar(id);
+        findById(id);
         colaboradorRepository.deleteById(id);
     }
 

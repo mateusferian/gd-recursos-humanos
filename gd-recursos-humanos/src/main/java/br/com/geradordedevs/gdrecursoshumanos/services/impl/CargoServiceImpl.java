@@ -23,35 +23,35 @@ public class CargoServiceImpl implements CargoService {
     private CargoRepository cargoRepository;
 
     @Override
-    public Iterable<CargoEntity> listar() {
+    public Iterable<CargoEntity> findAll() {
         log.info("listando cargos");
         return cargoRepository.findAll();
     }
 
     @Override
-    public CargoEntity consultar(Long id) {
+    public CargoEntity findById(Long id) {
         log.info("obtendo informacoes de cargo {}", id);
         return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.CARGO_NAO_ENCONTRADO));
     }
 
     @Override
-    public CargoEntity cadastrar(CargoEntity entity){
+    public CargoEntity save(CargoEntity entity){
         log.info("cadastrando um novo cargo {}", entity);
         return cargoRepository.save(entity);
     }
 
     @Override
-    public CargoEntity alterar(Long id, CargoEntity entity) {
+    public CargoEntity updateById(Long id, CargoEntity entity) {
         log.info("alterando o cargo de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         return cargoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
+    public void deleteById(Long id) {
         log.info("removendo o cargo de id {}", id);
-        consultar(id);
+        findById(id);
         cargoRepository.deleteById(id);
     }
 

@@ -23,35 +23,35 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     private DepartamentoRepository departamentoRepository;
 
     @Override
-    public Iterable<DepartamentoEntity> listar() {
+    public Iterable<DepartamentoEntity> findAll() {
         log.info("listando departamentos");
         return departamentoRepository.findAll();
     }
 
     @Override
-    public DepartamentoEntity consultar(Long id) {
+    public DepartamentoEntity findById(Long id) {
         log.info("obtendo informacoes de departamento {}", id);
         return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTAMENTO_NAO_ENCONTRADO));
     }
 
     @Override
-    public DepartamentoEntity cadastrar(DepartamentoEntity entity) {
+    public DepartamentoEntity save(DepartamentoEntity entity) {
         log.info("cadastrando um novo departamento {}", entity);
         return departamentoRepository.save(entity);
     }
 
     @Override
-    public DepartamentoEntity alterar(Long id, DepartamentoEntity entity) {
+    public DepartamentoEntity updateById(Long id, DepartamentoEntity entity) {
         log.info("alterando o departamento de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         return departamentoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
+    public void deleteById(Long id) {
         log.info("removendo o departamento de id {}", id);
-        consultar(id);
+        findById(id);
         departamentoRepository.deleteById(id);
     }
 

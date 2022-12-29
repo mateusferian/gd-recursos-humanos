@@ -23,34 +23,34 @@ public class TipoDocumentoServiceImpl implements TipoDocumentoService {
     private TipoDocumentoRepository tipoDocumentoRepository;
 
     @Override
-    public Iterable<TipoDocumentoEntity> listar() {
+    public Iterable<TipoDocumentoEntity> findAll() {
         log.info("listando tipo de documentos");
         return tipoDocumentoRepository.findAll();
     }
 
     @Override
-    public TipoDocumentoEntity consultar(Long id) {
+    public TipoDocumentoEntity findById(Long id) {
         log.info("obtendo informacoes de tipo de documento {}", id);
         return tipoDocumentoRepository.findById(id).orElseThrow(() -> new TipoDocumentoException(TipoDocumentoEnum.TIPO_DOCUMENTO_NAO_ENCONTRADO));
     }
 
     @Override
-    public TipoDocumentoEntity cadastrar(TipoDocumentoEntity entity) {
+    public TipoDocumentoEntity save(TipoDocumentoEntity entity) {
         log.info("cadastrando um novo tipo de documento {}",entity);
         return  tipoDocumentoRepository.save(entity);
     }
 
     @Override
-    public TipoDocumentoEntity alterar(Long id, TipoDocumentoEntity entity) {
+    public TipoDocumentoEntity updateById(Long id, TipoDocumentoEntity entity) {
         log.info("alterando o tipo de documento de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+        findById(id);
         entity.setId(id);
         return  tipoDocumentoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
-        consultar(id);
+    public void deleteById(Long id) {
+        findById(id);
         log.info("removendo o tipo de documento de id {}", id);
        tipoDocumentoRepository.deleteById(id);
     }
