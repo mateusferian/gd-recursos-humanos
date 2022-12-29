@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoDocumentoRequestDTO {
+
     @NotBlank(message = "{campo.em.branco}")
     @Size(min = 2,max = 6, message = "{tamanho.invalido}")
     private String nome;
