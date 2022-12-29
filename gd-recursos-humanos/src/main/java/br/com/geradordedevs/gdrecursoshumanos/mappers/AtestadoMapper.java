@@ -28,12 +28,12 @@ public class AtestadoMapper {
     private ColaboradorRepository colaboradorRepository;
 
     public AtestadoResponseDTO toDto(AtestadoEntity entity){
-        log.info("convertendo entidade {} para dto", entity);
+        log.info("converting entity{} to dto", entity);
         return   mapper.map(entity, AtestadoResponseDTO.class);
     }
 
     public AtestadoEntity toEntity(AtestadoRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+        log.info("converting dto{} to entity", request);
 
         AtestadoEntity atestadoEntity = mapper.map(request, AtestadoEntity.class);
         atestadoEntity.setColaborador(colaboradorRepository.findById(request.getColaborador()).orElse(new ColaboradorEntity()));
@@ -42,7 +42,7 @@ public class AtestadoMapper {
     }
 
     public List<AtestadoResponseDTO> toDtoList(Iterable<AtestadoEntity> lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+        log.info("converting entity list{} to dto list", lista);
         List<AtestadoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()

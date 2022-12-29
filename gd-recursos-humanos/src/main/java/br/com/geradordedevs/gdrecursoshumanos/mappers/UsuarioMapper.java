@@ -24,17 +24,17 @@ public class UsuarioMapper {
     private final ModelMapper mapper;
 
     public UsuarioResponseDTO toDto(UsuarioEntity entity){
-        log.info("convertendo entidade {} para dto", entity);
+        log.info("converting entity{} to dto", entity);
         return  mapper.map(entity, UsuarioResponseDTO.class);
     }
 
     public UsuarioEntity toEntity(UsuarioRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+        log.info("converting dto{} to entity", request);
         return  mapper.map(request, UsuarioEntity.class);
     }
 
     public List<UsuarioResponseDTO> toDtoList(Iterable<UsuarioEntity> lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+        log.info("converting entity list{} to dto list", lista);
         List<UsuarioEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()

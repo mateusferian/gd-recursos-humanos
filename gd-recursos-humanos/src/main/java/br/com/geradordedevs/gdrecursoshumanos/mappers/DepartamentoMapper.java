@@ -22,17 +22,17 @@ public class DepartamentoMapper {
     private final ModelMapper mapper;
 
     public DepartamentoResponseDTO toDto(DepartamentoEntity entity){
-        log.info("convertendo entidade {} para dto", entity);
+        log.info("converting entity{} to dto", entity);
         return  mapper.map(entity, DepartamentoResponseDTO.class);
     }
 
     public DepartamentoEntity toEntity(DepartamentoRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+        log.info("converting dto{} to entity", request);
         return  mapper.map(request, DepartamentoEntity.class);
     }
 
     public List<DepartamentoResponseDTO> toDtoList(Iterable<DepartamentoEntity> lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+        log.info("converting entity list{} to dto list", lista);
         List<DepartamentoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()

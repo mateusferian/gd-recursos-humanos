@@ -37,12 +37,12 @@ public class ColaboradorMapper {
     private TipoDocumentoRepository tipoDocumentoRepository;
 
     public ColaboradorResponseDTO toDto(ColaboradorEntity entity){
-        log.info("convertendo entidade {} para dto", entity);
+        log.info("converting entity{} to dto", entity);
         return  mapper.map(entity, ColaboradorResponseDTO.class);
     }
 
     public ColaboradorEntity  toEntity(ColaboradorRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+        log.info("converting dto{} to entity", request);
 
         ColaboradorEntity colaboradorEntity =mapper.map(request,ColaboradorEntity.class);
         colaboradorEntity.setDepartamento(departamentoRepository.findById(request.getDepartamento()).orElse(new DepartamentoEntity()));
@@ -54,7 +54,7 @@ public class ColaboradorMapper {
     }
 
     public List<ColaboradorResponseDTO> toDtoList(Iterable<ColaboradorEntity > lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+        log.info("converting entity list{} to dto list", lista);
         List<ColaboradorEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()

@@ -22,17 +22,17 @@ public class CargoMapper {
     private final ModelMapper mapper;
 
     public CargoResponseDTO toDto(CargoEntity entity){
-        log.info("convertendo entidade {} para dto", entity);
+        log.info("converting entity{} to dto", entity);
         return  mapper.map(entity, CargoResponseDTO.class);
     }
 
     public CargoEntity toEntity(CargoRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+        log.info("converting dto{} to entity", request);
         return  mapper.map(request, CargoEntity.class);
     }
 
     public List<CargoResponseDTO> toDtoList(Iterable<CargoEntity> lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+        log.info("converting entity list{} to dto list", lista);
         List<CargoEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
