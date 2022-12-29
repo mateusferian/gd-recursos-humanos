@@ -43,6 +43,6 @@ public class CargoController {
 
     @GetMapping("/popular")
     public void popularbank(@RequestHeader(required = false, value = "token") String token){
-        cargoFacede.popular(token);
+        cargoFacede.populating(token);
     }
 }

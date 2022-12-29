@@ -43,6 +43,6 @@ public class TipoDocumentoController {
 
     @GetMapping("/popular")
     public void popularbank(@RequestHeader(required = false,value = "token")String token){
-        tipoDocumentoFacede.popular(token);
+        tipoDocumentoFacede.populating(token);
     }
 }

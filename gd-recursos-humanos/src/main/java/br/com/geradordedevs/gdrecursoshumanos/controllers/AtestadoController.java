@@ -43,6 +43,6 @@ public class AtestadoController {
 
          @GetMapping("/popular")
         public void popularbank(@RequestHeader(required = false,value = "token")String token){
-             atestadoFacede.popular(token);
+             atestadoFacede.populating(token);
     }
 }

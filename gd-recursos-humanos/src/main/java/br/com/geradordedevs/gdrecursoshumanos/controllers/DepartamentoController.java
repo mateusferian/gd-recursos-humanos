@@ -43,6 +43,6 @@ public class DepartamentoController {
 
     @GetMapping("/popular")
     public void popularbank(@RequestHeader(required = false,value = "token")String token){
-        departamentoFacede.popular(token);
+        departamentoFacede.populating(token);
     }
 }

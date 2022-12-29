@@ -44,7 +44,7 @@ public class ColaboradorController {
 
     @GetMapping("/popular")
     public void popularbank(@RequestHeader(required = false,value = "token")String token){
-        colaboradorFacede.popular(token);
+        colaboradorFacede.populating(token);
     }
 }
 
