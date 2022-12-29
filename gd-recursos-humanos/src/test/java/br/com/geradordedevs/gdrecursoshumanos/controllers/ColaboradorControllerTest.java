@@ -224,7 +224,11 @@ public class ColaboradorControllerTest {
                 SALARY, null, ACTIVE, TELEPHONE, "carlos.jose");
     }
 
-
+    @Test
+    public void findAllCollaboratorMustReturnOk() throws Exception{
+        mockMvc.perform(get(ROUTE_COLLABORATOR))
+                .andExpect(status().isOk());
+    }
     @Test
     public void  findByIdRegisterCollaboratorMustReturnOk() throws Exception {
         mockMvc.perform(get(COLLABORATOR_ROUTE_PARAMETER))
