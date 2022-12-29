@@ -55,14 +55,14 @@ public class ColaboradorFacedeImpl implements ColaboradorFacade {
     }
 
     @Override
-    public ColaboradorResponseDTO updateById(Long id, ColaboradorRequestDTO request,String token) {
+    public ColaboradorResponseDTO update(Long id, ColaboradorRequestDTO request,String token) {
 
         tokenService.validate(token);
         cargoService.findById(request.getCargo());
         departamentoService.findById(request.getDepartamento());
         tipoDocumentoService.findById(request.getTipoDocumento());
 
-        return mapper.toDto(colaboradorService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(colaboradorService.update(id,mapper.toEntity(request)));
     }
 
     @Override

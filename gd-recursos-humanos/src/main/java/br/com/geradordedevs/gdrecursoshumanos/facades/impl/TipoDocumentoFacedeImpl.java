@@ -42,9 +42,9 @@ public class TipoDocumentoFacedeImpl implements TipoDocumentoFacade {
     }
 
     @Override
-    public TipoDocumentoResponseDTO updateById(Long id, TipoDocumentoRequestDTO request,String token) {
+    public TipoDocumentoResponseDTO update(Long id, TipoDocumentoRequestDTO request,String token) {
         tokenService.validate(token);
-        return mapper.toDto(tipoDocumentoService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(tipoDocumentoService.update(id,mapper.toEntity(request)));
     }
 
     @Override

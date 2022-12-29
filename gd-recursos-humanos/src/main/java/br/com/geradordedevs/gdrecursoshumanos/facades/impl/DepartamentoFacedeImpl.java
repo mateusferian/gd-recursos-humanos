@@ -41,9 +41,9 @@ public class DepartamentoFacedeImpl implements DepartamentoFacade {
     }
 
     @Override
-    public DepartamentoResponseDTO updateById(Long id, DepartamentoRequestDTO request,String token) {
+    public DepartamentoResponseDTO update(Long id, DepartamentoRequestDTO request,String token) {
         tokenService.validate(token);
-        return mapper.toDto(departamentoService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(departamentoService.update(id,mapper.toEntity(request)));
     }
 
     @Override

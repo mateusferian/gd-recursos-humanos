@@ -46,9 +46,9 @@ public class AtestadoFacedeImpl implements AtestadoFacade {
     }
 
     @Override
-    public AtestadoResponseDTO updateById(Long id, AtestadoRequestDTO request,String token) {
+    public AtestadoResponseDTO update(Long id, AtestadoRequestDTO request,String token) {
         tokenService.validate(token);
-        return mapper.toDto(atestadoService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(atestadoService.update(id,mapper.toEntity(request)));
     }
 
     @Override

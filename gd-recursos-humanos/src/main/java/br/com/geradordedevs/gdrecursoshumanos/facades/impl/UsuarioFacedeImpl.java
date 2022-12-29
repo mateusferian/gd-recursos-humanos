@@ -40,9 +40,9 @@ public class UsuarioFacedeImpl implements UsuarioFacade {
     }
 
     @Override
-    public UsuarioResponseDTO updateById(Long id, UsuarioRequestDTO request,String token) {
+    public UsuarioResponseDTO update(Long id, UsuarioRequestDTO request,String token) {
         tokenService.validate(token);
-        return mapper.toDto(usuarioService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(usuarioService.update(id,mapper.toEntity(request)));
     }
 
     @Override

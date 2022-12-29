@@ -42,9 +42,9 @@ public class CargoFacedeImpl implements CargoFacade {
     }
 
     @Override
-    public CargoResponseDTO updateById(Long id, CargoRequestDTO request,String token) {
+    public CargoResponseDTO update(Long id, CargoRequestDTO request,String token) {
         tokenService.validate(token);
-        return mapper.toDto(cargoService.updateById(id,mapper.toEntity(request)));
+        return mapper.toDto(cargoService.update(id,mapper.toEntity(request)));
     }
 
     @Override
