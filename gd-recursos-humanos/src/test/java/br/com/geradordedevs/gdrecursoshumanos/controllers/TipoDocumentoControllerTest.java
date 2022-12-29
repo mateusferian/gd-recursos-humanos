@@ -60,7 +60,7 @@ public class TipoDocumentoControllerTest {
 
     @Test
     public void findByIdDocumentTypeMustReturnOk() throws Exception{
-        mockMvc.perform(get(ROUTE_DOCUMENT_TYPE))
+        mockMvc.perform(get(DOCUMENT_TYPE_ROUTE_PARAMETER))
                 .andExpect(status().isOk());
     }
 
