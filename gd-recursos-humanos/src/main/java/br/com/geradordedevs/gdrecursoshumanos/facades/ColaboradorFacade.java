@@ -11,5 +11,5 @@ public interface ColaboradorFacade {
     ColaboradorResponseDTO save( ColaboradorRequestDTO request,String token);
     ColaboradorResponseDTO update ( Long id,  ColaboradorRequestDTO request,String token);
     void deleteById ( Long id,String token);
-    void popular(String token);
+    void populating(String token);
 }

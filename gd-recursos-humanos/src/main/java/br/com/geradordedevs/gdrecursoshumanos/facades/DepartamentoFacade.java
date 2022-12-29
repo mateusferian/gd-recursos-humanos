@@ -11,5 +11,5 @@ public interface DepartamentoFacade {
     DepartamentoResponseDTO save(DepartamentoRequestDTO request,String token);
     DepartamentoResponseDTO update(Long id, DepartamentoRequestDTO request,String token);
     void deleteById( Long id,String token);
-    void popular(String token);
+    void populating(String token);
 }

@@ -11,5 +11,5 @@ public interface AtestadoFacade {
     AtestadoResponseDTO save(AtestadoRequestDTO request,String token);
     AtestadoResponseDTO update ( Long id,  AtestadoRequestDTO request,String token);
     void deleteById ( Long id,String token);
-    void popular(String token);
+    void populating(String token);
 }

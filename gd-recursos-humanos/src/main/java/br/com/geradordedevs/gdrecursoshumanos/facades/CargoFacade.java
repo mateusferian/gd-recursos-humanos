@@ -11,5 +11,5 @@ public interface CargoFacade {
     CargoResponseDTO save(CargoRequestDTO request,String token);
     CargoResponseDTO update(Long id, CargoRequestDTO request,String token);
     void deleteById(Long id,String token);
-    void popular(String token);
+    void populating(String token);
 }

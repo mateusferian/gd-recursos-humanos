@@ -11,5 +11,5 @@ public interface TipoDocumentoFacade {
     TipoDocumentoResponseDTO save( TipoDocumentoRequestDTO request,String token);
     TipoDocumentoResponseDTO update ( Long id,  TipoDocumentoRequestDTO request,String token);
     void  deleteById(  Long id,String token);
-    void popular(String token);
+    void populating(String token);
 }
