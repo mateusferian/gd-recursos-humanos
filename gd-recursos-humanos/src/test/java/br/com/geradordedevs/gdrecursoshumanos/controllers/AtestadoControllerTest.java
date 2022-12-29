@@ -62,11 +62,11 @@ public class AtestadoControllerTest {
         return  new AtestadoRequestDTO(CERTIFIED_NAME,null,ID_COLLABORATOR);
     }
 
-    private  AtestadoRequestDTO returnCollaboratorWithIdCollaboratornNought(){
+    private  AtestadoRequestDTO returnAttestationWithIdCollaboratornNought(){
         return  new AtestadoRequestDTO(CERTIFIED_NAME,DATA_CERTIFICATE,0L);
     }
 
-    private  AtestadoRequestDTO returnCollaboratorWithIdCollaboratornNull(){
+    private  AtestadoRequestDTO returnAttestationWithIdCollaboratornNull(){
         return  new AtestadoRequestDTO(CERTIFIED_NAME,DATA_CERTIFICATE,null);
     }
 
@@ -134,7 +134,7 @@ public class AtestadoControllerTest {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(post(ROUTE_CERTIFICATE)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(returnCollaboratorWithIdCollaboratornNought()))
+                .content(ow.writeValueAsString(returnAttestationWithIdCollaboratornNought()))
         ).andExpect(status().isBadRequest());
     }
 
@@ -143,7 +143,7 @@ public class AtestadoControllerTest {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(post(ROUTE_CERTIFICATE)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString((returnCollaboratorWithIdCollaboratornNull())))
+                .content(ow.writeValueAsString((returnAttestationWithIdCollaboratornNull())))
         ).andExpect(status().isBadRequest());
     }
 
@@ -191,7 +191,7 @@ public class AtestadoControllerTest {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString(returnCollaboratorWithIdCollaboratornNought()))
+                .content(ow.writeValueAsString(returnAttestationWithIdCollaboratornNought()))
         ).andExpect(status().isBadRequest());
     }
 
@@ -200,7 +200,7 @@ public class AtestadoControllerTest {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         mockMvc.perform(put(CERTIFICATE_ROUTE_PARAMETER)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(ow.writeValueAsString((returnCollaboratorWithIdCollaboratornNull())))
+                .content(ow.writeValueAsString((returnAttestationWithIdCollaboratornNull())))
         ).andExpect(status().isBadRequest());
     }
 
