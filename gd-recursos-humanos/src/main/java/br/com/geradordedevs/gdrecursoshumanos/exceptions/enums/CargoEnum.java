@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum CargoEnum {
 
-    CARGO_NAO_ENCONTRADO("CARGO_NAO_ENCONTRADO", "Cargo não encontrado", 404);
+    POSITION_NOT_FOUND("POSITION_NOT_FOUND", "Cargo não encontrado", 404);
 
     private String code;
     private String message;

@@ -25,8 +25,8 @@ public class TokenServiceImpl implements TokenService {
     private final String JWT_ISSUER = "gd-recursos-humanos";
 
     @Override
-    public String gerarToken(String email) {
-        log.info("gerando token jwt para o email {}", email);
+    public String generateToken(String email) {
+        log.info("generating jwt token for email {}", email);
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
@@ -38,20 +38,20 @@ public class TokenServiceImpl implements TokenService {
                     .sign(algorithm);
 
         } catch (JWTCreationException exception) {
-            log.warn("erro ao tentar gerar o token jwt");
-            throw new TokenException(TokenEnum.TOKEN_INVALIDO);
+            log.warn("error when trying to generate jwt token");
+            throw new TokenException(TokenEnum.INVALID_TOKEN);
         }
     }
 
     @Override
-    public void validar(String token) {
+    public void validate(String token) {
         
         if (token == null) {
-            log.warn("token nao enviado");
-            throw new TokenException(TokenEnum.TOKEN_OBRIGATORIO);
+            log.warn("token not sent");
+            throw new TokenException(TokenEnum.MANDATORY_TOKEN);
         }
 
-        log.info("validando o token: {}", token);
+        log.info("validating the token: {}", token);
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
             JWTVerifier verifier = JWT.require(algorithm)
@@ -60,8 +60,8 @@ public class TokenServiceImpl implements TokenService {
             DecodedJWT jwt = verifier.verify(token);
 
         } catch (JWTVerificationException exception) {
-            log.warn("erro na verificacao do token: {}", token);
-            throw new TokenException(TokenEnum.TOKEN_INVALIDO);
+            log.warn("token verification error: {}", token);
+            throw new TokenException(TokenEnum.INVALID_TOKEN);
         }
     }
 }

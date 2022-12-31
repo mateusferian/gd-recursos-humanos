@@ -2,54 +2,47 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.DepartamentoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.DepartamentoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/departamentos")
 public class DepartamentoController {
 
     @Autowired
-    private DepartamentoFacede departamentoFacede;
+    private DepartamentoFacade departamentoFacede;
 
     @GetMapping
-    public List<DepartamentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.listar(token);
+    public List<DepartamentoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.findAll(token);
     }
 
     @GetMapping("/{id}")
-    public DepartamentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.consultar(id,token);
+    public DepartamentoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.findById(id,token);
     }
 
     @PostMapping
-    public DepartamentoResponseDTO cadastrar(@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.cadastrar(request,token);
+    public DepartamentoResponseDTO save(@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.save(request,token);
     }
 
     @PutMapping("/{id}")
-    public DepartamentoResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
-        return departamentoFacede.alterar(id,request,token);
+    public DepartamentoResponseDTO update(@PathVariable Long id,@Valid @RequestBody DepartamentoRequestDTO request,@RequestHeader(required = false,value = "token")String token) {
+        return departamentoFacede.update(id,request,token);
     }
 
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
-        departamentoFacede.remover(id,token);
+    public void deleteById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token) {
+        departamentoFacede.deleteById(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
-        departamentoFacede.popular(token);
+    public void popularbank(@RequestHeader(required = false,value = "token")String token){
+        departamentoFacede.populating(token);
     }
 }

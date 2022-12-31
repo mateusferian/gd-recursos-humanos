@@ -16,7 +16,6 @@ public class AtestadoRequestDTO {
     @Size(min = 3,max = 40, message = "{tamanho.invalido}")
     private String nome;
 
-    @PastOrPresent(message = "{data.inicio.invalida}")
     @NotNull(message = "{campo.nulo}")
     private Date data;
 

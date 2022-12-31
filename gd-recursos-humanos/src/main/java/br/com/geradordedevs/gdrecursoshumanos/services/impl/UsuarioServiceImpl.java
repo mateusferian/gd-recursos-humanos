@@ -36,48 +36,48 @@ public class UsuarioServiceImpl  implements UsuarioService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public Iterable<UsuarioEntity> listar() {
-        log.info("listando usuarios");
+    public Iterable<UsuarioEntity> findAll() {
+        log.info("listing users");
         return usuarioRepository.findAll();
     }
 
     @Override
-    public UsuarioEntity consultar(Long id) {
-        log.info("obtendo informacoes de usuario {}",id);
-        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USUARIO_NAO_ENCONTRADO));
+    public UsuarioEntity findById(Long id) {
+        log.info("getting user information {}",id);
+        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException(UsuarioEnum.USER_NOT_FOUND));
     }
 
     @Override
-    public UsuarioEntity cadastrar(UsuarioEntity entity) {
-        log.info("cadastrando um novo usuario {}",entity);
+    public UsuarioEntity save(UsuarioEntity entity) {
+        log.info("registering a new user {}",entity);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
     }
 
     @Override
-    public UsuarioEntity alterar(Long id, UsuarioEntity entity) {
-        log.info("alterando usuario de id {} com novas informacoes: {}",id,entity);
-        consultar(id);
+    public UsuarioEntity update(Long id, UsuarioEntity entity) {
+        log.info("changing user id {} with new information: {}",id,entity);
+        findById(id);
         entity.setId(id);
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
         return usuarioRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
-        log.info("removendo o usuario de id {}",id);
-        consultar(id);
+    public void deleteById(Long id) {
+        log.info("removing user from id {}",id);
+        findById(id);
         usuarioRepository.deleteById(id);
     }
 
     @Override
-    public void validarUsuarioSenha(AutenticacaoRequestDTO request) {
-        log.info("validando usuario e senha do email: {}",request.getEmail());
+    public void validateUserPassword(AutenticacaoRequestDTO request) {
+        log.info("validating email username and password: {}",request.getEmail());
         UsuarioEntity usuarioEntity = usuarioRepository.findByEmail(request.getEmail());
         if (usuarioEntity == null ||
         !passwordEncoder.matches(request.getSenha(),usuarioEntity.getSenha())){
-            log.warn("usuario ou senha do email {} e invalido",request.getEmail());
-            throw  new UsuarioException(UsuarioEnum.USUARIO_OU_SENHA_INVALIDOS);
+            log.warn("email username or password {} is invalid",request.getEmail());
+            throw  new UsuarioException(UsuarioEnum.INVALID_USERNAME_OR_PASSWORD);
         }
     }
 }

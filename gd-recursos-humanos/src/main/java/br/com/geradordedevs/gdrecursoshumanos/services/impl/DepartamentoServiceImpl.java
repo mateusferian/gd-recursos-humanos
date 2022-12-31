@@ -23,41 +23,41 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     private DepartamentoRepository departamentoRepository;
 
     @Override
-    public Iterable<DepartamentoEntity> listar() {
-        log.info("listando departamentos");
+    public Iterable<DepartamentoEntity> findAll() {
+        log.info("listing departments");
         return departamentoRepository.findAll();
     }
 
     @Override
-    public DepartamentoEntity consultar(Long id) {
-        log.info("obtendo informacoes de departamento {}", id);
-        return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTAMENTO_NAO_ENCONTRADO));
+    public DepartamentoEntity findById(Long id) {
+        log.info("getting department information {}", id);
+        return  departamentoRepository.findById(id).orElseThrow(() -> new DepartamentoException(DepartamentoEnum.DEPARTMENT_NOT_FOUND));
     }
 
     @Override
-    public DepartamentoEntity cadastrar(DepartamentoEntity entity) {
-        log.info("cadastrando um novo departamento {}", entity);
+    public DepartamentoEntity save(DepartamentoEntity entity) {
+        log.info("registering a new department {}", entity);
         return departamentoRepository.save(entity);
     }
 
     @Override
-    public DepartamentoEntity alterar(Long id, DepartamentoEntity entity) {
-        log.info("alterando o departamento de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+    public DepartamentoEntity update(Long id, DepartamentoEntity entity) {
+        log.info("changing the id department {} with new information: {}", id, entity);
+        findById(id);
         entity.setId(id);
         return departamentoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
-        log.info("removendo o departamento de id {}", id);
-        consultar(id);
+    public void deleteById(Long id) {
+        log.info("removing the id department {}", id);
+        findById(id);
         departamentoRepository.deleteById(id);
     }
 
     @Override
-    public void popular() {
-        log.info("populando o banco de dados de departamentos para teste");
+    public void populating() {
+        log.info("populating the departments database for testing");
         departamentoRepository.save((new DepartamentoEntity("adiministrativo")));
         departamentoRepository.save((new DepartamentoEntity("vendas")));
         departamentoRepository.save((new DepartamentoEntity("entregas")));

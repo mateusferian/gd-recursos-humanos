@@ -2,7 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AutenticacaoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.TokenFacede;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TokenFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +16,10 @@ import javax.validation.Valid;
 public class AutenticacaoController {
 
     @Autowired
-    private TokenFacede tokenFacede;
+    private TokenFacade tokenFacede;
 
     @PostMapping
-    public AutenticacaoResponseDTO autenticacao(@Valid @RequestBody AutenticacaoRequestDTO request){
-      return tokenFacede.autenticacao(request);
+    public AutenticacaoResponseDTO authentication(@Valid @RequestBody AutenticacaoRequestDTO request){
+      return tokenFacede.authentication(request);
     }
 }
