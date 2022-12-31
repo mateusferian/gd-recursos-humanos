@@ -51,7 +51,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void findAllDocumentTypeMustReturnOk(){
+    public void findAllUsersMustReturnOk(){
         assertEquals(returnlistUsersEntity(),usuarioService.findAll());
     }
 
@@ -66,7 +66,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void updateDocumentTypeMustReturnOk() {
+    public void updateUsersMustReturnOk() {
         assertEquals(returnObjectUsersEntityWithEncryptedPassword(), usuarioService.update(ID_USERS,returnObjectUsersEntity()));
     }
 
