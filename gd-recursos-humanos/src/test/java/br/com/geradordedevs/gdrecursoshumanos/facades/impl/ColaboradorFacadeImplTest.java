@@ -1,4 +1,4 @@
-package br.com.geradordedevs.gdrecursoshumanos.Facade.Impl;
+package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
