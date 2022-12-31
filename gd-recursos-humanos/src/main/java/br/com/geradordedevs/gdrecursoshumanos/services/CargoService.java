@@ -7,10 +7,10 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import java.util.List;
 
 public interface CargoService {
-    Iterable<CargoEntity> listar();
-    CargoEntity consultar(Long id);
-    CargoEntity cadastrar(CargoEntity entity);
-    CargoEntity alterar(Long id, CargoEntity entity);
-    void remover(Long id);
-    void popular();
+    Iterable<CargoEntity> findAll();
+    CargoEntity findById(Long id);
+    CargoEntity save(CargoEntity entity);
+    CargoEntity update(Long id, CargoEntity entity);
+    void deleteById(Long id);
+    void populating();
 }

@@ -2,8 +2,7 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.UsuarioFacede;
-import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.UsuarioFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,30 +14,30 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    UsuarioFacede usuarioFacede;
+    UsuarioFacade usuarioFacede;
 
     @GetMapping
-    public List<UsuarioResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-        return usuarioFacede.listar(token);
+    public List<UsuarioResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+        return usuarioFacede.findAll(token);
     }
 
     @GetMapping ("/{id}")
-    public UsuarioResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-        return  usuarioFacede.consultar(id,token);
+    public UsuarioResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.findById(id,token);
     }
     
     @PostMapping
-    public  UsuarioResponseDTO cadastrar(@Valid @RequestBody UsuarioRequestDTO request){
-        return  usuarioFacede.cadastrar(request);
+    public  UsuarioResponseDTO save(@Valid @RequestBody UsuarioRequestDTO request){
+        return  usuarioFacede.save(request);
     }
 
     @PutMapping ("/{id}")
-    public  UsuarioResponseDTO alterar(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return  usuarioFacede.alterar(id, request,token);
+    public  UsuarioResponseDTO update(@PathVariable Long id,@Valid @RequestBody UsuarioRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return  usuarioFacede.update(id, request,token);
     }
 
     @DeleteMapping("/{id}")
-    public  void  remover(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-        usuarioFacede.remover(id,token);
+    public  void  deleteById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+        usuarioFacede.deleteById(id,token);
     }
 }

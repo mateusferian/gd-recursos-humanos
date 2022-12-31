@@ -2,53 +2,47 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.AtestadoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/atestados")
 public class AtestadoController {
 
         @Autowired
-        private AtestadoFacede atestadoFacede;
+        private AtestadoFacade atestadoFacede;
 
         @GetMapping
-        public List<AtestadoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-            return atestadoFacede.listar(token);
+        public List<AtestadoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.findAll(token);
         }
 
         @GetMapping ("/{id}")
-        public AtestadoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
-            return atestadoFacede.consultar(id,token);
+        public AtestadoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+            return atestadoFacede.findById(id,token);
         }
 
         @PostMapping
-        public AtestadoResponseDTO cadastrar(@Valid @RequestBody AtestadoRequestDTO requesty,@RequestHeader(required = false,value = "token")String token){
-            return atestadoFacede.cadastrar(requesty,token);
+        public AtestadoResponseDTO save(@Valid @RequestBody AtestadoRequestDTO requesty,@RequestHeader(required = false,value = "token")String token){
+            return atestadoFacede.save(requesty,token);
         }
 
         @PutMapping ("/{id}")
-        public AtestadoResponseDTO alterar (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-            return  atestadoFacede.alterar(id, request,token);
+        public AtestadoResponseDTO update (@PathVariable long id,@Valid @RequestBody AtestadoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+            return  atestadoFacede.update(id, request,token);
         }
 
         @DeleteMapping ("/{id}")
-        public void remover (@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
-            atestadoFacede.remover(id,token);
+        public void deleteById (@PathVariable Long id,@RequestHeader(required = false,value = "token")String token){
+            atestadoFacede.deleteById(id,token);
         }
 
          @GetMapping("/popular")
-        public void popularBanco(@RequestHeader(required = false,value = "token")String token){
-             atestadoFacede.popular(token);
+        public void popularbank(@RequestHeader(required = false,value = "token")String token){
+             atestadoFacede.populating(token);
     }
 }

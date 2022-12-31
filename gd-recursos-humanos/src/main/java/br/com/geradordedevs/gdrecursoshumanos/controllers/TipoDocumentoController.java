@@ -2,53 +2,47 @@ package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
-import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
-import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facedes.TipoDocumentoFacede;
-import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.TipoDocumentoService;
+import br.com.geradordedevs.gdrecursoshumanos.facades.TipoDocumentoFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/tipo-de-documentos")
 public class TipoDocumentoController {
 
     @Autowired
-    private TipoDocumentoFacede tipoDocumentoFacede;
+    private TipoDocumentoFacade tipoDocumentoFacede;
 
     @GetMapping
-    public List<TipoDocumentoResponseDTO> listar(@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.listar(token);
+    public List<TipoDocumentoResponseDTO> findAll(@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.findAll(token);
     }
 
     @GetMapping ("/{id}")
-    public TipoDocumentoResponseDTO consultar(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
-        return tipoDocumentoFacede.consultar(id,token);
+    public TipoDocumentoResponseDTO findById(@PathVariable Long id,@RequestHeader(required = false,value = "token")String token ){
+        return tipoDocumentoFacede.findById(id,token);
     }
 
     @PostMapping
-    public TipoDocumentoResponseDTO cadastrar(@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.cadastrar(request,token);
+    public TipoDocumentoResponseDTO save(@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.save(request,token);
     }
 
     @PutMapping ("/{id}")
-    public TipoDocumentoResponseDTO alterar (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
-        return tipoDocumentoFacede.alterar(id, request,token);
+    public TipoDocumentoResponseDTO update (@PathVariable Long id,@Valid @RequestBody TipoDocumentoRequestDTO request,@RequestHeader(required = false,value = "token")String token){
+        return tipoDocumentoFacede.update(id, request,token);
     }
 
     @DeleteMapping ("/{id}")
-    public void  remover(@PathVariable  Long id,@RequestHeader(required = false,value = "token")String token) {
-        tipoDocumentoFacede.remover(id,token);
+    public void  deleteById(@PathVariable  Long id,@RequestHeader(required = false,value = "token")String token) {
+        tipoDocumentoFacede.deleteById(id,token);
     }
 
     @GetMapping("/popular")
-    public void popularBanco(@RequestHeader(required = false,value = "token")String token){
-        tipoDocumentoFacede.popular(token);
+    public void popularbank(@RequestHeader(required = false,value = "token")String token){
+        tipoDocumentoFacede.populating(token);
     }
 }

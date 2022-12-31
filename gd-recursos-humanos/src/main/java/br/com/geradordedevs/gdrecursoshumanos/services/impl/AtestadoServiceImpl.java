@@ -25,41 +25,41 @@ public class AtestadoServiceImpl implements AtestadoService {
     public AtestadoRepository atestadoRepository;
 
     @Override
-    public Iterable<AtestadoEntity> listar() {
-        log.info("listando atestados");
+    public Iterable<AtestadoEntity> findAll() {
+        log.info("listing certificates");
         return atestadoRepository.findAll();
     }
 
     @Override
-    public AtestadoEntity consultar(Long id) {
-        log.info("obtendo informacoes de atestado {}", id);
-        return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.ATESTADO_NAO_ENCONTRADO));
+    public AtestadoEntity findById(Long id) {
+        log.info("getting attestation information {}", id);
+        return atestadoRepository.findById(id).orElseThrow(() -> new  AtestadoException(AtestadoEnum.CERTIFICATE_NOT_FOUND));
     }
 
     @Override
-    public AtestadoEntity cadastrar(AtestadoEntity entity) {
-        log.info("cadastrando um novo atestado {}", entity);
+    public AtestadoEntity save(AtestadoEntity entity) {
+        log.info("registering a new certificate {}", entity);
         return atestadoRepository.save(entity);
     }
 
     @Override
-    public AtestadoEntity alterar(long id, AtestadoEntity entity) {
-        log.info("alterando o atestado de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+    public AtestadoEntity update(long id, AtestadoEntity entity) {
+        log.info("changing the id {} attestation with new information: {}", id, entity);
+        findById(id);
         entity.setId(id);
         return atestadoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
-        log.info("removendo o atestado de id {}", id);
-        consultar(id);
+    public void deleteById(Long id) {
+        log.info("removing id attestation {}", id);
+        findById(id);
         atestadoRepository.deleteById(id);
     }
 
     @Override
-    public void popular() {
-        log.info("populando o banco de dados de atestados para teste");
+    public void populating() {
+        log.info("populating the attestation database for testing");
         atestadoRepository.save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
     }
 }

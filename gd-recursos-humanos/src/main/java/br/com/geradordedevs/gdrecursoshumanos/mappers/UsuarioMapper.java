@@ -23,22 +23,22 @@ public class UsuarioMapper {
     @Autowired
     private final ModelMapper mapper;
 
-    public UsuarioResponseDTO paraDto(UsuarioEntity entidade){
-        log.info("convertendo entidade {} para dto", entidade);
-        return  mapper.map(entidade, UsuarioResponseDTO.class);
+    public UsuarioResponseDTO toDto(UsuarioEntity entity){
+        log.info("converting entity{} to dto", entity);
+        return  mapper.map(entity, UsuarioResponseDTO.class);
     }
 
-    public UsuarioEntity paraEntidade(UsuarioRequestDTO request){
-        log.info("convertendo dto {} para entidade", request);
+    public UsuarioEntity toEntity(UsuarioRequestDTO request){
+        log.info("converting dto{} to entity", request);
         return  mapper.map(request, UsuarioEntity.class);
     }
 
-    public List<UsuarioResponseDTO> paraListaDto(Iterable<UsuarioEntity> lista){
-        log.info("convertendo lista de entidade {} para lista de dto", lista);
+    public List<UsuarioResponseDTO> toDtoList(Iterable<UsuarioEntity> lista){
+        log.info("converting entity list{} to dto list", lista);
         List<UsuarioEntity> resultado = new ArrayList<>();
         lista.forEach(resultado::add);
         return  resultado.stream()
-                .map(this::paraDto)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 }

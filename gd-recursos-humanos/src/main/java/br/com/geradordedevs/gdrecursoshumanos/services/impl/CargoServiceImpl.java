@@ -23,41 +23,41 @@ public class CargoServiceImpl implements CargoService {
     private CargoRepository cargoRepository;
 
     @Override
-    public Iterable<CargoEntity> listar() {
-        log.info("listando cargos");
+    public Iterable<CargoEntity> findAll() {
+        log.info("listing positions");
         return cargoRepository.findAll();
     }
 
     @Override
-    public CargoEntity consultar(Long id) {
-        log.info("obtendo informacoes de cargo {}", id);
-        return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.CARGO_NAO_ENCONTRADO));
+    public CargoEntity findById(Long id) {
+        log.info("getting job information {}", id);
+        return cargoRepository.findById(id).orElseThrow(() -> new CargoException(CargoEnum.POSITION_NOT_FOUND));
     }
 
     @Override
-    public CargoEntity cadastrar(CargoEntity entity){
-        log.info("cadastrando um novo cargo {}", entity);
+    public CargoEntity save(CargoEntity entity){
+        log.info("registering a new position {}", entity);
         return cargoRepository.save(entity);
     }
 
     @Override
-    public CargoEntity alterar(Long id, CargoEntity entity) {
-        log.info("alterando o cargo de id {} com novas informacoes: {}", id, entity);
-        consultar(id);
+    public CargoEntity update(Long id, CargoEntity entity) {
+        log.info("changing the position of id {} with new information: {}", id, entity);
+        findById(id);
         entity.setId(id);
         return cargoRepository.save(entity);
     }
 
     @Override
-    public void remover(Long id) {
-        log.info("removendo o cargo de id {}", id);
-        consultar(id);
+    public void deleteById(Long id) {
+        log.info("removing the id charge {}", id);
+        findById(id);
         cargoRepository.deleteById(id);
     }
 
     @Override
-    public void popular() {
-        log.info("populando o banco de dados de cargos para teste");
+    public void populating() {
+        log.info("populating job database for testing");
         cargoRepository.save((new CargoEntity("administrador")));
         cargoRepository.save((new CargoEntity("vendedor")));
         cargoRepository.save((new CargoEntity("entregador")));

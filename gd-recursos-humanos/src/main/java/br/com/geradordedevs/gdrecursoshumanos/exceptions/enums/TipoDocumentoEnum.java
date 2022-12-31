@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum TipoDocumentoEnum {
 
-    TIPO_DOCUMENTO_NAO_ENCONTRADO("TIPO_DOCUMENTO_NAO_ENCONTRADO", "Tipo de documento não encontrado", 404);
+    DOCUMENT_TYPE_NOT_FOUND("DOCUMENT_TYPE_NOT_FOUND", "Tipo de documento não encontrado", 404);
 
     private String code;
     private String message;
