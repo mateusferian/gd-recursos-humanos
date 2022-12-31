@@ -1,4 +1,4 @@
-package br.com.geradordedevs.gdrecursoshumanos.Services.impl;
+package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.UsuarioRepository;
