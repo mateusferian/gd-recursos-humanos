@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.UsuarioRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.UsuarioServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

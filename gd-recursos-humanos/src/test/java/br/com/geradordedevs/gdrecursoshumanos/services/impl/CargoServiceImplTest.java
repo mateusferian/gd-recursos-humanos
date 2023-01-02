@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.CargoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

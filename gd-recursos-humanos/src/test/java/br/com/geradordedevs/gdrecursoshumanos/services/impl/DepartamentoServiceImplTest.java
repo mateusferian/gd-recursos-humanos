@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.DepartamentoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
