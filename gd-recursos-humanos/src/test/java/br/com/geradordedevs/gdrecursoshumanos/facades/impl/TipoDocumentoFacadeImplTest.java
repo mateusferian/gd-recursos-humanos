@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-public class TipoDocumentoImplTest {
+public class TipoDocumentoFacadeImplTest {
 
     @InjectMocks
     private TipoDocumentoFacedeImpl tipoDocumentoFacede;
