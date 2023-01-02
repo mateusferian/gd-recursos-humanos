@@ -1,6 +1,5 @@
 package br.com.geradordedevs.gdrecursoshumanos.exceptions;
 
-import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.CargoEnum;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.UsuarioEnum;
 import lombok.Builder;
 import lombok.Data;
