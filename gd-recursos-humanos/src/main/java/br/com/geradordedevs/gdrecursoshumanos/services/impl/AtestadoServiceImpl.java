@@ -1,21 +1,16 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.AtestadoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.AtestadoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.AtestadoException;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.AtestadoEnum;
-import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Service
 @Slf4j

@@ -1,19 +1,13 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.CargoException;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.CargoEnum;
-import br.com.geradordedevs.gdrecursoshumanos.mappers.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Slf4j
