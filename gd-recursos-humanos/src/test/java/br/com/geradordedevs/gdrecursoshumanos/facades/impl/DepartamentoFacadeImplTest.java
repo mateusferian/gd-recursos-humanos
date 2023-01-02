@@ -4,7 +4,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.DepartamentoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.DepartamentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;

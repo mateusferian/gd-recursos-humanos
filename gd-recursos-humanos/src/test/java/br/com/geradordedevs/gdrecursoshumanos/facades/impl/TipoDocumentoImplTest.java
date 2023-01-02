@@ -3,7 +3,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.TipoDocumentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.TipoDocumentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.TipoDocumentoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.TipoDocumentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.impl.TipoDocumentoServiceImpl;

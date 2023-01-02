@@ -3,7 +3,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.CargoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;

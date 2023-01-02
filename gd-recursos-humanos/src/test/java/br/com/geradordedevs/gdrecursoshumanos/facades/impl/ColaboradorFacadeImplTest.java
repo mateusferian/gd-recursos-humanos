@@ -9,7 +9,6 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.ColaboradorFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.*;
 import org.junit.Before;

@@ -4,7 +4,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.UsuarioRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.UsuarioResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.UsuarioFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.UsuarioMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
 import br.com.geradordedevs.gdrecursoshumanos.services.UsuarioService;

@@ -3,7 +3,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.*;
 import br.com.geradordedevs.gdrecursoshumanos.entities.*;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.AtestadoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
