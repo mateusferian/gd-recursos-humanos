@@ -37,7 +37,6 @@ public class CargoServiceImplTest {
         when(cargoRepository.findById(MOCK_ID_OFFICE)).thenReturn(java.util.Optional.of(returnObjectOfficeEntityWithId()));
         when(cargoRepository.save(returnObjectOfficeEntity())).thenReturn(returnObjectOfficeEntity());
         when(cargoRepository.save(returnObjectOfficeEntityWithId())).thenReturn(returnObjectOfficeEntityWithId());
-
     }
 
     @Test
@@ -61,7 +60,7 @@ public class CargoServiceImplTest {
     }
 
     @Test
-    public  void deleteByIdOfficeMustReturnOk() throws  Exception{
+    public void deleteByIdOfficeMustReturnOk() throws  Exception{
         cargoService.deleteById(MOCK_ID_OFFICE);
         verify(cargoRepository,timeout(1)).deleteById(MOCK_ID_OFFICE);
     }
@@ -72,11 +71,11 @@ public class CargoServiceImplTest {
         return  findAll;
     }
 
-    private  CargoEntity returnObjectOfficeEntity(){
+    private CargoEntity returnObjectOfficeEntity(){
         return new CargoEntity(MOCK_NAME_OFFICE);
     }
 
-    private  CargoEntity returnObjectOfficeEntityWithId(){
+    private CargoEntity returnObjectOfficeEntityWithId(){
         return new CargoEntity(MOCK_ID_OFFICE,MOCK_NAME_OFFICE);
     }
 }
