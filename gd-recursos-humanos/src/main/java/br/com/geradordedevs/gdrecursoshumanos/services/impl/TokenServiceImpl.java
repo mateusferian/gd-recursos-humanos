@@ -10,6 +10,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -19,20 +20,22 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 public class TokenServiceImpl implements TokenService {
+    @Value("${jwt.secret}")
+    private  String secret;
 
-    private final String JWT_SECRET = "v4SA91O=WuM5i)ap3ErJ";
-
-    private final String JWT_ISSUER = "gd-recursos-humanos";
+    @Value("{jwt.issuer}")
+    private  String issuer;
+    public DecodedJWT jwt;
 
     @Override
     public String generateToken(String email) {
         log.info("generating jwt token for email {}", email);
 
         try {
-            Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
 
             return JWT.create()
-                    .withIssuer(JWT_ISSUER)
+                    .withIssuer(issuer)
                     .withClaim("sub", email)
                     .withExpiresAt(new Date(Instant.now().toEpochMilli() + TimeUnit.HOURS.toMillis(1)))//1h
                     .sign(algorithm);
@@ -53,9 +56,9 @@ public class TokenServiceImpl implements TokenService {
 
         log.info("validating the token: {}", token);
         try {
-            Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
             JWTVerifier verifier = JWT.require(algorithm)
-                    .withIssuer(JWT_ISSUER)
+                    .withIssuer(issuer)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
 
