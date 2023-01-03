@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -67,6 +67,13 @@ public class UsuarioServiceImplTest {
     @Test
     public void updateUsersMustReturnOk() {
         assertEquals(returnObjectUsersEntityWithEncryptedPassword(), usuarioService.update(ID_USERS,returnObjectUsersEntity()));
+    }
+
+    @Test
+    public void deleteUsersMustReturnOk() {
+        usuarioService.deleteById(ID_USERS);
+        verify(usuarioRepository,timeout(1)).deleteById(ID_USERS);
+
     }
 
     private List<UsuarioEntity> returnlistUsersEntity(){

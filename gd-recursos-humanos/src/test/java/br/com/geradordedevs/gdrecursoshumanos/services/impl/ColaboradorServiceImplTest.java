@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -76,6 +76,12 @@ public class ColaboradorServiceImplTest {
     @Test
     public void updateCollaboratorMustReturnOk(){
         assertEquals(returnObjectCollaboratorEntityWithId(),colaboradorService.update(MOCK_ID_COLLABORATOR,returnObjectCollaboratorEntity()));
+    }
+
+    @Test
+    public void deleteByIdCollaboratorMustReturnOk(){
+        colaboradorService.deleteById(MOCK_ID_COLLABORATOR);
+        verify(colaboradorRepository,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
     }
 
     private List<ColaboradorEntity> returnlistCollaboratorEntity(){

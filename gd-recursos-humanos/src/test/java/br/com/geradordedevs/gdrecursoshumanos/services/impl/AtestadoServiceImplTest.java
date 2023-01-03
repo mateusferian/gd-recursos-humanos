@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -78,6 +78,12 @@ public class AtestadoServiceImplTest {
     @Test
     public void updateAttestationMustReturnOk(){
         assertEquals(returnObjectAttestationEntityWithId(),atestadoService.update(MOCK_ID_COLLABORATOR,returnObjectAttestationEntity()));
+    }
+
+    @Test
+    public void deleteByIdAttestationMustReturnOk(){
+        atestadoService.deleteById(MOCK_ID_DEPARTMENT);
+        verify(atestadoRepository,timeout(1)).deleteById(MOCK_ID_DEPARTMENT);
     }
 
     private List<AtestadoEntity> returnlistAttestationEntity(){

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -60,6 +60,12 @@ public class CargoServiceImplTest {
     @Test
     public void updateOfficeMustReturnOk(){
         assertEquals(returnObjectOfficeEntityWithId(),cargoService.update(MOCK_ID_OFFICE,returnObjectOfficeEntity()));
+    }
+
+    @Test
+    public  void deleteByIdOfficeMustReturnOk() throws  Exception{
+        cargoService.deleteById(MOCK_ID_OFFICE);
+        verify(cargoRepository,timeout(1)).deleteById(MOCK_ID_OFFICE);
     }
 
     private List<CargoEntity> returnlistOfficeEntity(){

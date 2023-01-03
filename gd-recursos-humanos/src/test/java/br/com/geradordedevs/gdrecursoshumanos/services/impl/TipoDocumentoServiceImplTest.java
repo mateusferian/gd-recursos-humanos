@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -57,6 +57,12 @@ public class TipoDocumentoServiceImplTest {
     @Test
     public void updateDocumentTypeMustReturnOk(){
         assertEquals(returnObjectDocumentTypeEntityWithId(),TipoDocumentoService.update(MOCK_ID_DOCUMENT_TYPE,returnObjectDocumentTypeEntity()));
+    }
+
+    @Test
+    public void deleteDocumentTypeMustReturnOk(){
+        TipoDocumentoService.deleteById(MOCK_ID_DOCUMENT_TYPE);
+        verify(tipoDocumentoRepository,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
     }
 
     private List<TipoDocumentoEntity> returnlistDocumentTypeEntity(){
