@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -95,6 +95,12 @@ public class ColaboradorFacadeImplTest {
     @Test
     public void updateCollaboratorMustReturnOk() throws Exception{
         assertEquals(returnObjectCollaboratorResponseDTO(),colaboradorFacade.update(MOCK_ID_COLLABORATOR,returnObjectCollaboratorRequestDTO(),MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdCollaboratorMustReturnOk() throws Exception{
+        colaboradorFacade.deleteById(MOCK_ID_COLLABORATOR,MOCK_TOKEN);
+        verify(colaboradorService,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
     }
 
     List<ColaboradorResponseDTO> returnListCollaboratorResponseDTO(){

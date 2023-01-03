@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -74,6 +74,12 @@ public class DepartamentoFacadeImplTest {
     @Test
     public void updateDepartmentMustReturnOk() throws Exception{
         assertEquals(returnObjectDepartmentResponseDTO(),departamentoFacade.update(MOCK_ID_DEPARTAMENT,returnObjectDepartmentRequestDTO(),MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdDepartmentMustReturnOk() throws Exception{
+       departamentoFacade.deleteById(MOCK_ID_DEPARTAMENT,MOCK_TOKEN);
+       verify(departamentoService,timeout(1)).deleteById(MOCK_ID_DEPARTAMENT);
     }
 
     List<DepartamentoResponseDTO> returnListDepartmentResponseDTO(){

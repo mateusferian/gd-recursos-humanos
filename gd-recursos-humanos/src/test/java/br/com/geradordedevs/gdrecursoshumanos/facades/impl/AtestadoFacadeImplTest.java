@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -94,6 +94,11 @@ public class AtestadoFacadeImplTest {
         assertEquals(returnObjectAttestationResponseDTO(), atestadoFacede.update(MOCK_ID_COLLABORATOR, returnObjectAttestationRequestDTO(), MOCK_TOKEN));
     }
 
+    @Test
+    public void deleteByIdAttestationMustReturnOk() throws Exception {
+       atestadoFacede.deleteById(MOCK_ID_CCERTIFIED,MOCK_TOKEN);
+       verify(atestadoService,timeout(1)).deleteById(MOCK_ID_CCERTIFIED);
+    }
     List<AtestadoResponseDTO> returnListAttestationResponseDTO() {
         List<AtestadoResponseDTO> list = new ArrayList<>();
         list.add(returnObjectAttestationResponseDTO());

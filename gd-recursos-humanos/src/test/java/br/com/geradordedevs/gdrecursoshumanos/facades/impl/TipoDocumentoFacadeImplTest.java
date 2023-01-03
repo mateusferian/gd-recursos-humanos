@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -73,6 +73,12 @@ public class TipoDocumentoFacadeImplTest {
     @Test
     public void updateDocumentTypeMustReturnOk() throws Exception{
         assertEquals(returnObjectDocumentTypeResponseDTO(),tipoDocumentoFacede.update(MOCK_ID_DOCUMENT_TYPE,returnObjectDocumentTypeRequestDTO(),MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdDocumentTypeMustReturnOk() throws Exception{
+        tipoDocumentoFacede.deleteById(MOCK_ID_DOCUMENT_TYPE,MOCK_TOKEN);
+       verify(tipoDocumentoService,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
     }
 
     List<TipoDocumentoResponseDTO> returnListDocumentTypeResponseDTO(){
