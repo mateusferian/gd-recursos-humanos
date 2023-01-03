@@ -70,7 +70,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void deleteUsersMustReturnOk() {
+    public void deleteByIdUsersMustReturnOk() {
         usuarioService.deleteById(ID_USERS);
         verify(usuarioRepository,timeout(1)).deleteById(ID_USERS);
 

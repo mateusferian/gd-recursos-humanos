@@ -60,7 +60,7 @@ public class DepartamentoServiceImplTest {
     }
 
     @Test
-    public void deleteDepartmentMustReturnOk(){
+    public void deleteByIdDepartmentMustReturnOk(){
         departamentoService.deleteById(MOCK_ID_DEPARTMENT);
         verify(departamentoRepository,timeout(1)).deleteById(MOCK_ID_DEPARTMENT);
     }

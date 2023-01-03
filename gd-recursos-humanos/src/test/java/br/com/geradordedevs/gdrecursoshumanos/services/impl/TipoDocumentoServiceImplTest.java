@@ -60,7 +60,7 @@ public class TipoDocumentoServiceImplTest {
     }
 
     @Test
-    public void deleteDocumentTypeMustReturnOk(){
+    public void deleteByIdDocumentTypeMustReturnOk(){
         TipoDocumentoService.deleteById(MOCK_ID_DOCUMENT_TYPE);
         verify(tipoDocumentoRepository,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
     }
