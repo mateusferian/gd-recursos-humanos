@@ -26,7 +26,6 @@ public class TokenServiceImpl implements TokenService {
 
     @Value("{jwt.issuer}")
     private String issuer;
-    public DecodedJWT jwt;
 
     @Override
     public String generateToken(String email) {
