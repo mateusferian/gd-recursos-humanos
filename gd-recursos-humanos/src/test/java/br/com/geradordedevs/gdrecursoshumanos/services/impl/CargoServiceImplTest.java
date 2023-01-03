@@ -40,8 +40,6 @@ public class CargoServiceImplTest {
 
     }
 
-
-
     @Test
     public void findAllOfficeMustReturnOk(){
         assertEquals(returnlistOfficeEntity(),cargoService.findAll());
