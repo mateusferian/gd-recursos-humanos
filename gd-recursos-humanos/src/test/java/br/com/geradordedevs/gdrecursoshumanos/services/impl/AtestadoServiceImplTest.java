@@ -29,7 +29,7 @@ public class AtestadoServiceImplTest {
     private AtestadoRepository atestadoRepository;
 
 
-    private final Long MOCK_ID_CCERTIFIED = 1L;
+    private final Long MOCK_ID_CERTIFIED = 1L;
     private  final String MOCK_CERTIFIED_NAME="covid";
     private  final  Date MOCK_DATE_CERTIFICATE=new Date(121,10,17);
 
@@ -54,7 +54,7 @@ public class AtestadoServiceImplTest {
     public void setupMock(){
         MockitoAnnotations.openMocks(this);
         when(atestadoRepository.findAll()).thenReturn(returnlistAttestationEntity());
-        when(atestadoRepository.findById(MOCK_ID_DEPARTMENT)).thenReturn(java.util.Optional.of(returnObjectAttestationEntityWithId()));
+        when(atestadoRepository.findById(MOCK_ID_CERTIFIED)).thenReturn(java.util.Optional.of(returnObjectAttestationEntityWithId()));
         when(atestadoRepository.save(returnObjectAttestationEntity())).thenReturn(returnObjectAttestationEntity());
         when(atestadoRepository.save(returnObjectAttestationEntityWithId())).thenReturn(returnObjectAttestationEntityWithId());
     }
@@ -67,7 +67,7 @@ public class AtestadoServiceImplTest {
 
     @Test
     public void findByIdAttestationMustReturnOk (){
-        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.findById(MOCK_ID_COLLABORATOR));
+        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.findById(MOCK_ID_CERTIFIED));
     }
 
     @Test
@@ -77,13 +77,13 @@ public class AtestadoServiceImplTest {
 
     @Test
     public void updateAttestationMustReturnOk(){
-        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.update(MOCK_ID_COLLABORATOR,returnObjectAttestationEntity()));
+        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.update(MOCK_ID_CERTIFIED,returnObjectAttestationEntity()));
     }
 
     @Test
     public void deleteByIdAttestationMustReturnOk(){
-        atestadoService.deleteById(MOCK_ID_DEPARTMENT);
-        verify(atestadoRepository,timeout(1)).deleteById(MOCK_ID_DEPARTMENT);
+        atestadoService.deleteById(MOCK_ID_CERTIFIED);
+        verify(atestadoRepository,timeout(1)).deleteById(MOCK_ID_CERTIFIED);
     }
 
     private List<AtestadoEntity> returnlistAttestationEntity(){
@@ -97,7 +97,7 @@ public class AtestadoServiceImplTest {
     }
 
     private AtestadoEntity returnObjectAttestationEntityWithId(){
-        return new AtestadoEntity(MOCK_ID_CCERTIFIED,MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
+        return new AtestadoEntity(MOCK_ID_CERTIFIED,MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
     }
 
     private  ColaboradorEntity returnObjectCollaboratorEntityWithId(){
