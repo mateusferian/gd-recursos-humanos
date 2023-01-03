@@ -59,7 +59,6 @@ public class AtestadoServiceImplTest {
         when(atestadoRepository.save(returnObjectAttestationEntityWithId())).thenReturn(returnObjectAttestationEntityWithId());
     }
 
-
     @Test
     public void findAllAttestationMustReturnOk(){
         assertEquals(returnlistAttestationEntity(),atestadoService.findAll());

@@ -45,7 +45,6 @@ public class UsuarioServiceImplTest {
         when(usuarioRepository.findById(ID_USERS)).thenReturn(Optional.of(returnObjectUsersEntity()));
         when(usuarioRepository.save(returnObjectUsersEntityWithEncryptedPassword())).thenReturn(returnObjectUsersEntityWithEncryptedPassword());
 
-
         when(passwordEncoder.encode(MOCK_PASSWORD_USERS)).thenReturn(ENCRYPTED_PASSWORD);
     }
 
@@ -73,7 +72,6 @@ public class UsuarioServiceImplTest {
     public void deleteByIdUsersMustReturnOk() {
         usuarioService.deleteById(ID_USERS);
         verify(usuarioRepository,timeout(1)).deleteById(ID_USERS);
-
     }
 
     private List<UsuarioEntity> returnlistUsersEntity(){

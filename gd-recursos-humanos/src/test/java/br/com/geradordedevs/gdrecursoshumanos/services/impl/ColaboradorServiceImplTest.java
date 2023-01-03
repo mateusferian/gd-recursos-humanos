@@ -55,7 +55,6 @@ public class ColaboradorServiceImplTest {
         when(colaboradorRepository.findById(MOCK_ID_COLLABORATOR)).thenReturn(java.util.Optional.of(returnObjectCollaboratorEntityWithId()));
         when(colaboradorRepository.save(returnObjectCollaboratorEntity())).thenReturn(returnObjectCollaboratorEntity());
         when(colaboradorRepository.save(returnObjectCollaboratorEntityWithId())).thenReturn(returnObjectCollaboratorEntityWithId());
-
     }
 
     @Test
