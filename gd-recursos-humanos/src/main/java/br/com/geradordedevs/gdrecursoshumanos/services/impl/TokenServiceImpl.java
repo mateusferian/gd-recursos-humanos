@@ -1,5 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
+import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.JwtResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.TokenException;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.TokenEnum;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
@@ -21,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class TokenServiceImpl implements TokenService {
     @Value("${jwt.secret}")
-    private  String secret;
+    private String secret;
 
     @Value("{jwt.issuer}")
-    private  String issuer;
+    private String issuer;
     public DecodedJWT jwt;
 
     @Override
@@ -47,8 +48,8 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public void validate(String token) {
-        
+    public JwtResponseDTO validate(String token) {
+
         if (token == null) {
             log.warn("token not sent");
             throw new TokenException(TokenEnum.MANDATORY_TOKEN);
@@ -61,10 +62,22 @@ public class TokenServiceImpl implements TokenService {
                     .withIssuer(issuer)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
+            String email = jwt.getClaim("sub").asString();
+            Date dataExpiracao = jwt.getExpiresAt();
 
+            validaExpiracaoToken(token, dataExpiracao);
+            return new JwtResponseDTO(email, dataExpiracao);
         } catch (JWTVerificationException exception) {
             log.warn("token verification error: {}", token);
             throw new TokenException(TokenEnum.INVALID_TOKEN);
+        }
+    }
+
+    private void validaExpiracaoToken(String token, Date expiresAt) {
+        log.info("verificando expiracao do token {}", token);
+        if (expiresAt.before(new Date())) {
+            log.warn("O token {} esta expirado", token);
+            throw new TokenException(TokenEnum.EXPIRED_TOKEN);
         }
     }
 }
