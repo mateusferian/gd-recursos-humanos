@@ -81,6 +81,12 @@ public class TipoDocumentoFacadeImplTest {
        verify(tipoDocumentoService,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
     }
 
+    @Test
+    public void populatingDocumentTypeMustReturnOk() throws Exception{
+        tipoDocumentoFacede.populating(MOCK_TOKEN);
+        verify(tipoDocumentoService,timeout(1)).populating();
+    }
+
     List<TipoDocumentoResponseDTO> returnListDocumentTypeResponseDTO(){
         List<TipoDocumentoResponseDTO> list = new ArrayList<>();
             list.add(returnObjectDocumentTypeResponseDTO());

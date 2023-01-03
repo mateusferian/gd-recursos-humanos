@@ -103,6 +103,12 @@ public class ColaboradorFacadeImplTest {
         verify(colaboradorService,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
     }
 
+    @Test
+    public void populatingCollaboratorMustReturnOk() throws Exception{
+        colaboradorFacade.populating(MOCK_TOKEN);
+        verify(colaboradorService,timeout(1)).populating();
+    }
+
     List<ColaboradorResponseDTO> returnListCollaboratorResponseDTO(){
         List<ColaboradorResponseDTO> list = new ArrayList<>();
             list.add(returnObjectCollaboratorResponseDTO());

@@ -99,6 +99,13 @@ public class AtestadoFacadeImplTest {
        atestadoFacede.deleteById(MOCK_ID_CCERTIFIED,MOCK_TOKEN);
        verify(atestadoService,timeout(1)).deleteById(MOCK_ID_CCERTIFIED);
     }
+
+    @Test
+    public void populatingAttestationMustReturnOk() throws Exception {
+        atestadoFacede.populating(MOCK_TOKEN);
+        verify(atestadoService,timeout(1)).populating();
+    }
+
     List<AtestadoResponseDTO> returnListAttestationResponseDTO() {
         List<AtestadoResponseDTO> list = new ArrayList<>();
         list.add(returnObjectAttestationResponseDTO());

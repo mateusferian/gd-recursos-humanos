@@ -78,7 +78,12 @@ public class CargoFacadeImplTest {
     public  void deleteByIdOfficeMustReturnOk() throws  Exception{
         cargoFacede.deleteById(MOCK_ID_OFFICE,MOCK_TOKEN);
         verify(cargoService,timeout(1)).deleteById(MOCK_ID_OFFICE);
+    }
 
+    @Test
+    public void populatingOfficeMustReturnOk() throws  Exception{
+        cargoFacede.populating(MOCK_TOKEN);
+        verify(cargoService,timeout(1)).populating();
     }
 
     List<CargoResponseDTO> returnListOfficeResponseDTO(){

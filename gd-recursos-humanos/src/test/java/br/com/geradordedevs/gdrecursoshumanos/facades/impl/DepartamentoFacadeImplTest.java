@@ -82,6 +82,12 @@ public class DepartamentoFacadeImplTest {
        verify(departamentoService,timeout(1)).deleteById(MOCK_ID_DEPARTAMENT);
     }
 
+    @Test
+    public void populatingDepartmentMustReturnOk() throws Exception{
+        departamentoFacade.populating(MOCK_TOKEN);
+        verify(departamentoService,timeout(1)).populating();
+    }
+
     List<DepartamentoResponseDTO> returnListDepartmentResponseDTO(){
         List<DepartamentoResponseDTO> list = new ArrayList<>();
             list.add(returnObjectDepartmentResponseDTO());
