@@ -25,7 +25,6 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-
 public class UsuarioFacedeImplTest {
 
     @InjectMocks

@@ -29,12 +29,16 @@ public class AtestadoFacadeImplTest {
 
     @InjectMocks
     private AtestadoFacedeImpl atestadoFacede;
+
     @Mock
     private AtestadoService atestadoService;
+
     @Mock
     private ColaboradorService colaboradorService;
+
     @Mock
     private TokenService tokenService;
+
     @Mock
     private AtestadoMapper mapper;
 

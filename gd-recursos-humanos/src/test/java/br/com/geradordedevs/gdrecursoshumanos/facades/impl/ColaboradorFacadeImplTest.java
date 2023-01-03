@@ -33,16 +33,22 @@ public class ColaboradorFacadeImplTest {
 
     @InjectMocks
     private ColaboradorFacedeImpl colaboradorFacade;
+
     @Mock
     private ColaboradorService colaboradorService;
+
     @Mock
     private TipoDocumentoService documentoService;
+
     @Mock
     private CargoService cargoService;
+
     @Mock
     private DepartamentoService departamentoService;
+
     @Mock
     private TokenService tokenService;
+
     @Mock
     private ColaboradorMapper mapper;
 
