@@ -85,6 +85,12 @@ public class AtestadoServiceImplTest {
         verify(atestadoRepository,timeout(1)).deleteById(MOCK_ID_CERTIFIED);
     }
 
+    @Test
+    public void populatingAttestationMustReturnOk(){
+        atestadoService.populating();
+        returnObjectAttestationEntityVerify();
+    }
+
     private List<AtestadoEntity> returnlistAttestationEntity(){
         List<AtestadoEntity> findAll = new ArrayList<>();
         findAll.add(returnObjectAttestationEntity());
@@ -93,6 +99,16 @@ public class AtestadoServiceImplTest {
 
     private AtestadoEntity returnObjectAttestationEntity(){
         return new AtestadoEntity(MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
+    }
+
+    private void returnObjectAttestationEntityVerify(){
+       verify(atestadoRepository,timeout(1)).save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
+    }
+
+    private  ColaboradorEntity returnObjectCollaboratorEntityPassingIdWithEverythingNull(){
+        return new ColaboradorEntity(MOCK_ID_COLLABORATOR,null,0,null,
+                returnObjectDocumentTypeEntity(),null, null,null,
+                0,null,false,null,null);
     }
 
     private AtestadoEntity returnObjectAttestationEntityWithId(){

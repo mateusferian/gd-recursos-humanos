@@ -65,10 +65,22 @@ public class DepartamentoServiceImplTest {
         verify(departamentoRepository,timeout(1)).deleteById(MOCK_ID_DEPARTMENT);
     }
 
+    @Test
+    public void populatingDepartmentMustReturnOk(){
+        departamentoService.populating();
+        returnObjectDepartmentEntityVerify();
+    }
+
     private List<DepartamentoEntity> returnlistDepartmentEntity(){
         List<DepartamentoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectDepartmentEntity());
         return  findAll;
+    }
+
+    private  void returnObjectDepartmentEntityVerify(){
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("adiministrativo")));
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("vendas")));
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("entregas")));
     }
 
     private  DepartamentoEntity returnObjectDepartmentEntity(){

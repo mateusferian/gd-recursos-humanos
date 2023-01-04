@@ -83,10 +83,22 @@ public class ColaboradorServiceImplTest {
         verify(colaboradorRepository,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
     }
 
+    @Test
+    public void populatingCollaboratorMustReturnOk(){
+        colaboradorService.populating();
+        returnObjectCollaboratorEntityVerify();
+    }
+
     private List<ColaboradorEntity> returnlistCollaboratorEntity(){
         List<ColaboradorEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectCollaboratorEntity());
         return  findAll;
+    }
+
+    private  void returnObjectCollaboratorEntityVerify(){
+        verify(colaboradorRepository,timeout(1)).save(new ColaboradorEntity("jose",29,new Date(93,11,22),new TipoDocumentoEntity(1L),"44.909.686-5",new CargoEntity(1L),new DepartamentoEntity(1L),4000,new Date(117,10,10),true,"(11) 2152-1919","josepaulo@gmail.com"));
+        verify( colaboradorRepository,timeout(1)).save(new ColaboradorEntity("Maria",31,new Date(91,9,21),new TipoDocumentoEntity(2L),"145.201.330-68",new CargoEntity(2L),new DepartamentoEntity(2L),2000,new Date(118,11,10),true,"(11) 2133-1919","maria@gmail.com"));
+        verify(colaboradorRepository,timeout(1)).save(new ColaboradorEntity("Carlos",30,new Date(92,10,15),new TipoDocumentoEntity(3L),"00.886.436/0001-20",new CargoEntity(3L),new DepartamentoEntity(3L),1000,new Date(119,11,10),true,"(11) 2154-1919","carlos@gmail.com"));
     }
 
     private  ColaboradorEntity returnObjectCollaboratorEntity(){

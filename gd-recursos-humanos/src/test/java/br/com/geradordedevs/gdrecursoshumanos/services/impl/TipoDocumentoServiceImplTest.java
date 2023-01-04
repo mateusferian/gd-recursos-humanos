@@ -65,10 +65,22 @@ public class TipoDocumentoServiceImplTest {
         verify(tipoDocumentoRepository,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
     }
 
+    @Test
+    public void populatingDocumentTypeMustReturnOk(){
+        TipoDocumentoService.populating();
+        returnObjectDocumentTypeEntityVerify();
+    }
+
     private List<TipoDocumentoEntity> returnlistDocumentTypeEntity(){
         List<TipoDocumentoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectDocumentTypeEntity());
         return  findAll;
+    }
+
+    private  void returnObjectDocumentTypeEntityVerify(){
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("RG")));
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("CPF")));
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("CNJP")));
     }
 
     private  TipoDocumentoEntity returnObjectDocumentTypeEntity(){

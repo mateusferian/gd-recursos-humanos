@@ -65,10 +65,22 @@ public class CargoServiceImplTest {
         verify(cargoRepository,timeout(1)).deleteById(MOCK_ID_OFFICE);
     }
 
+    @Test
+    public void populatingOfficeMustReturnOk() throws  Exception{
+        cargoService.populating();
+        returnObjectOfficeEntityVerify();
+    }
+
     private List<CargoEntity> returnlistOfficeEntity(){
         List<CargoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectOfficeEntity());
         return  findAll;
+    }
+
+    private void returnObjectOfficeEntityVerify(){
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("administrador")));
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("vendedor")));
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("entregador")));
     }
 
     private CargoEntity returnObjectOfficeEntity(){
