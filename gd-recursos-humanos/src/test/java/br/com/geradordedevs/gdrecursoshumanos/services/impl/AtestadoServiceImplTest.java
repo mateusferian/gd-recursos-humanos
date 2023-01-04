@@ -34,7 +34,7 @@ public class AtestadoServiceImplTest {
     private  final  Date MOCK_DATE_CERTIFICATE=new Date(121,10,17);
 
     private final Long MOCK_ID_COLLABORATOR = 1L;
-    private final String MOCK_NAME_COLLABORATOR = "covid";
+    private final String MOCK_NAME_COLLABORATOR = "jose";
     private final int MOCK_AGE_COLLABORATOR = 19;
     private final Date MOCK_COLLABORATOR_BIRTH_DATE = new Date(93, 10, 17);
     private final Long MOCK_ID_DOCUMENT_TYPE = 1l;
