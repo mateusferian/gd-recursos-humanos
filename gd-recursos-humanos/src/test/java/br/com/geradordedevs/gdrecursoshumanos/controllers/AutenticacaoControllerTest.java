@@ -1,7 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.facades.TokenFacade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -15,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

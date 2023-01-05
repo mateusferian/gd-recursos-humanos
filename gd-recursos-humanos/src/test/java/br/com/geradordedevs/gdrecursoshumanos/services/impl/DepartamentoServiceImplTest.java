@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.DepartamentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.DepartamentoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -60,10 +59,28 @@ public class DepartamentoServiceImplTest {
         assertEquals(returnObjectDepartmentEntityWithId(),departamentoService.update(MOCK_ID_DEPARTMENT,returnObjectDepartmentEntity()));
     }
 
+    @Test
+    public void deleteByIdDepartmentMustReturnOk(){
+        departamentoService.deleteById(MOCK_ID_DEPARTMENT);
+        verify(departamentoRepository,timeout(1)).deleteById(MOCK_ID_DEPARTMENT);
+    }
+
+    @Test
+    public void populatingDepartmentMustReturnOk(){
+        departamentoService.populating();
+        returnObjectDepartmentEntityVerify();
+    }
+
     private List<DepartamentoEntity> returnlistDepartmentEntity(){
         List<DepartamentoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectDepartmentEntity());
         return  findAll;
+    }
+
+    private  void returnObjectDepartmentEntityVerify(){
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("adiministrativo")));
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("vendas")));
+        verify(departamentoRepository,timeout(1)).save((new DepartamentoEntity("entregas")));
     }
 
     private  DepartamentoEntity returnObjectDepartmentEntity(){

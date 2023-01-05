@@ -4,7 +4,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.DepartamentoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.DepartamentoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.DepartamentoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.DepartamentoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -75,6 +74,18 @@ public class DepartamentoFacadeImplTest {
     @Test
     public void updateDepartmentMustReturnOk() throws Exception{
         assertEquals(returnObjectDepartmentResponseDTO(),departamentoFacade.update(MOCK_ID_DEPARTAMENT,returnObjectDepartmentRequestDTO(),MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdDepartmentMustReturnOk() throws Exception{
+       departamentoFacade.deleteById(MOCK_ID_DEPARTAMENT,MOCK_TOKEN);
+       verify(departamentoService,timeout(1)).deleteById(MOCK_ID_DEPARTAMENT);
+    }
+
+    @Test
+    public void populatingDepartmentMustReturnOk() throws Exception{
+        departamentoFacade.populating(MOCK_TOKEN);
+        verify(departamentoService,timeout(1)).populating();
     }
 
     List<DepartamentoResponseDTO> returnListDepartmentResponseDTO(){

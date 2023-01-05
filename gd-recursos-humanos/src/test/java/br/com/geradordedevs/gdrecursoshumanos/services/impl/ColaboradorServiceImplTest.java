@@ -5,7 +5,6 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.ColaboradorServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -33,7 +32,7 @@ public class ColaboradorServiceImplTest {
     private ColaboradorRepository colaboradorRepository;
 
     private final Long MOCK_ID_COLLABORATOR = 1L;
-    private final String MOCK_NAME_COLLABORATOR = "covid";
+    private final String MOCK_NAME_COLLABORATOR = "jose";
     private final int MOCK_AGE_COLLABORATOR = 19;
     private final Date MOCK_COLLABORATOR_BIRTH_DATE = new Date(93, 10, 17);
     private final Long MOCK_ID_DOCUMENT_TYPE = 1l;
@@ -56,7 +55,6 @@ public class ColaboradorServiceImplTest {
         when(colaboradorRepository.findById(MOCK_ID_COLLABORATOR)).thenReturn(java.util.Optional.of(returnObjectCollaboratorEntityWithId()));
         when(colaboradorRepository.save(returnObjectCollaboratorEntity())).thenReturn(returnObjectCollaboratorEntity());
         when(colaboradorRepository.save(returnObjectCollaboratorEntityWithId())).thenReturn(returnObjectCollaboratorEntityWithId());
-
     }
 
     @Test
@@ -79,10 +77,28 @@ public class ColaboradorServiceImplTest {
         assertEquals(returnObjectCollaboratorEntityWithId(),colaboradorService.update(MOCK_ID_COLLABORATOR,returnObjectCollaboratorEntity()));
     }
 
+    @Test
+    public void deleteByIdCollaboratorMustReturnOk(){
+        colaboradorService.deleteById(MOCK_ID_COLLABORATOR);
+        verify(colaboradorRepository,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
+    }
+
+    @Test
+    public void populatingCollaboratorMustReturnOk(){
+        colaboradorService.populating();
+        returnObjectCollaboratorEntityVerify();
+    }
+
     private List<ColaboradorEntity> returnlistCollaboratorEntity(){
         List<ColaboradorEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectCollaboratorEntity());
         return  findAll;
+    }
+
+    private  void returnObjectCollaboratorEntityVerify(){
+        verify(colaboradorRepository,timeout(1)).save(new ColaboradorEntity("jose",29,new Date(93,11,22),new TipoDocumentoEntity(1L),"44.909.686-5",new CargoEntity(1L),new DepartamentoEntity(1L),4000,new Date(117,10,10),true,"(11) 2152-1919","josepaulo@gmail.com"));
+        verify( colaboradorRepository,timeout(1)).save(new ColaboradorEntity("Maria",31,new Date(91,9,21),new TipoDocumentoEntity(2L),"145.201.330-68",new CargoEntity(2L),new DepartamentoEntity(2L),2000,new Date(118,11,10),true,"(11) 2133-1919","maria@gmail.com"));
+        verify(colaboradorRepository,timeout(1)).save(new ColaboradorEntity("Carlos",30,new Date(92,10,15),new TipoDocumentoEntity(3L),"00.886.436/0001-20",new CargoEntity(3L),new DepartamentoEntity(3L),1000,new Date(119,11,10),true,"(11) 2154-1919","carlos@gmail.com"));
     }
 
     private  ColaboradorEntity returnObjectCollaboratorEntity(){

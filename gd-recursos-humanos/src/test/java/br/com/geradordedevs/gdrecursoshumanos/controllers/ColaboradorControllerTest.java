@@ -1,8 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AutenticacaoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacade;
 import br.com.geradordedevs.gdrecursoshumanos.facades.ColaboradorFacade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;

@@ -1,7 +1,6 @@
 package br.com.geradordedevs.gdrecursoshumanos.exceptions.enums;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,8 @@ import lombok.NoArgsConstructor;
 public enum TokenEnum {
 
     INVALID_TOKEN("INVALID_TOKEN", "Token inválido", 401),
-    MANDATORY_TOKEN("MANDATORY_TOKEN", "Token obrigatório", 401);
+    MANDATORY_TOKEN("MANDATORY_TOKEN", "Token obrigatório", 401),
+    EXPIRED_TOKEN("EXPIRED_TOKEN","Token expirado",401);
 
     private String code;
     private String message;

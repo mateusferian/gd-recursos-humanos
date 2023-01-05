@@ -1,10 +1,7 @@
 package br.com.geradordedevs.gdrecursoshumanos.controllers;
 
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.DepartamentoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.facades.AtestadoFacade;
-import br.com.geradordedevs.gdrecursoshumanos.facades.DepartamentoFacade;
-import br.com.geradordedevs.gdrecursoshumanos.facades.TipoDocumentoFacade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Test;

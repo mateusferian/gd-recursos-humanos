@@ -9,7 +9,6 @@ import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.ColaboradorFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.*;
 import org.junit.Before;
@@ -26,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -34,16 +33,22 @@ public class ColaboradorFacadeImplTest {
 
     @InjectMocks
     private ColaboradorFacedeImpl colaboradorFacade;
+
     @Mock
     private ColaboradorService colaboradorService;
+
     @Mock
     private TipoDocumentoService documentoService;
+
     @Mock
     private CargoService cargoService;
+
     @Mock
     private DepartamentoService departamentoService;
+
     @Mock
     private TokenService tokenService;
+
     @Mock
     private ColaboradorMapper mapper;
 
@@ -96,6 +101,18 @@ public class ColaboradorFacadeImplTest {
     @Test
     public void updateCollaboratorMustReturnOk() throws Exception{
         assertEquals(returnObjectCollaboratorResponseDTO(),colaboradorFacade.update(MOCK_ID_COLLABORATOR,returnObjectCollaboratorRequestDTO(),MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdCollaboratorMustReturnOk() throws Exception{
+        colaboradorFacade.deleteById(MOCK_ID_COLLABORATOR,MOCK_TOKEN);
+        verify(colaboradorService,timeout(1)).deleteById(MOCK_ID_COLLABORATOR);
+    }
+
+    @Test
+    public void populatingCollaboratorMustReturnOk() throws Exception{
+        colaboradorFacade.populating(MOCK_TOKEN);
+        verify(colaboradorService,timeout(1)).populating();
     }
 
     List<ColaboradorResponseDTO> returnListCollaboratorResponseDTO(){

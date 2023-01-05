@@ -3,7 +3,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.AtestadoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.*;
 import br.com.geradordedevs.gdrecursoshumanos.entities.*;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.AtestadoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.AtestadoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.AtestadoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
@@ -22,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -30,12 +29,16 @@ public class AtestadoFacadeImplTest {
 
     @InjectMocks
     private AtestadoFacedeImpl atestadoFacede;
+
     @Mock
     private AtestadoService atestadoService;
+
     @Mock
     private ColaboradorService colaboradorService;
+
     @Mock
     private TokenService tokenService;
+
     @Mock
     private AtestadoMapper mapper;
 
@@ -93,6 +96,18 @@ public class AtestadoFacadeImplTest {
     @Test
     public void updateAttestationMustReturnOk() throws Exception {
         assertEquals(returnObjectAttestationResponseDTO(), atestadoFacede.update(MOCK_ID_COLLABORATOR, returnObjectAttestationRequestDTO(), MOCK_TOKEN));
+    }
+
+    @Test
+    public void deleteByIdAttestationMustReturnOk() throws Exception {
+       atestadoFacede.deleteById(MOCK_ID_CCERTIFIED,MOCK_TOKEN);
+       verify(atestadoService,timeout(1)).deleteById(MOCK_ID_CCERTIFIED);
+    }
+
+    @Test
+    public void populatingAttestationMustReturnOk() throws Exception {
+        atestadoFacede.populating(MOCK_TOKEN);
+        verify(atestadoService,timeout(1)).populating();
     }
 
     List<AtestadoResponseDTO> returnListAttestationResponseDTO() {

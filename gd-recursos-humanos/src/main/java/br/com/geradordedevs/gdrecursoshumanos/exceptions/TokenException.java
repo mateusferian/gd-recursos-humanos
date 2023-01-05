@@ -1,6 +1,5 @@
 package br.com.geradordedevs.gdrecursoshumanos.exceptions;
 
-import antlr.Token;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.TokenEnum;
 import lombok.Builder;
 import lombok.Data;

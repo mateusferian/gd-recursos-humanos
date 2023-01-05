@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.CargoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.CargoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -38,10 +37,7 @@ public class CargoServiceImplTest {
         when(cargoRepository.findById(MOCK_ID_OFFICE)).thenReturn(java.util.Optional.of(returnObjectOfficeEntityWithId()));
         when(cargoRepository.save(returnObjectOfficeEntity())).thenReturn(returnObjectOfficeEntity());
         when(cargoRepository.save(returnObjectOfficeEntityWithId())).thenReturn(returnObjectOfficeEntityWithId());
-
     }
-
-
 
     @Test
     public void findAllOfficeMustReturnOk(){
@@ -63,17 +59,35 @@ public class CargoServiceImplTest {
         assertEquals(returnObjectOfficeEntityWithId(),cargoService.update(MOCK_ID_OFFICE,returnObjectOfficeEntity()));
     }
 
+    @Test
+    public void deleteByIdOfficeMustReturnOk() throws  Exception{
+        cargoService.deleteById(MOCK_ID_OFFICE);
+        verify(cargoRepository,timeout(1)).deleteById(MOCK_ID_OFFICE);
+    }
+
+    @Test
+    public void populatingOfficeMustReturnOk() throws  Exception{
+        cargoService.populating();
+        returnObjectOfficeEntityVerify();
+    }
+
     private List<CargoEntity> returnlistOfficeEntity(){
         List<CargoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectOfficeEntity());
         return  findAll;
     }
 
-    private  CargoEntity returnObjectOfficeEntity(){
+    private void returnObjectOfficeEntityVerify(){
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("administrador")));
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("vendedor")));
+        verify(cargoRepository,timeout(1)).save((new CargoEntity("entregador")));
+    }
+
+    private CargoEntity returnObjectOfficeEntity(){
         return new CargoEntity(MOCK_NAME_OFFICE);
     }
 
-    private  CargoEntity returnObjectOfficeEntityWithId(){
+    private CargoEntity returnObjectOfficeEntityWithId(){
         return new CargoEntity(MOCK_ID_OFFICE,MOCK_NAME_OFFICE);
     }
 }
