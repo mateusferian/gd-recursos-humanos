@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.TipoDocumentoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.TipoDocumentoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -60,10 +59,28 @@ public class TipoDocumentoServiceImplTest {
         assertEquals(returnObjectDocumentTypeEntityWithId(),TipoDocumentoService.update(MOCK_ID_DOCUMENT_TYPE,returnObjectDocumentTypeEntity()));
     }
 
+    @Test
+    public void deleteByIdDocumentTypeMustReturnOk(){
+        TipoDocumentoService.deleteById(MOCK_ID_DOCUMENT_TYPE);
+        verify(tipoDocumentoRepository,timeout(1)).deleteById(MOCK_ID_DOCUMENT_TYPE);
+    }
+
+    @Test
+    public void populatingDocumentTypeMustReturnOk(){
+        TipoDocumentoService.populating();
+        returnObjectDocumentTypeEntityVerify();
+    }
+
     private List<TipoDocumentoEntity> returnlistDocumentTypeEntity(){
         List<TipoDocumentoEntity> findAll = new ArrayList<>();
             findAll.add(returnObjectDocumentTypeEntity());
         return  findAll;
+    }
+
+    private  void returnObjectDocumentTypeEntityVerify(){
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("RG")));
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("CPF")));
+        verify(tipoDocumentoRepository,timeout(1)).save((new TipoDocumentoEntity("CNJP")));
     }
 
     private  TipoDocumentoEntity returnObjectDocumentTypeEntity(){

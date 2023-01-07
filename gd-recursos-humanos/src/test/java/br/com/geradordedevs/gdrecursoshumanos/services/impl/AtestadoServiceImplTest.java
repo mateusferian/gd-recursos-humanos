@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.*;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.AtestadoRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.AtestadoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -30,12 +29,12 @@ public class AtestadoServiceImplTest {
     private AtestadoRepository atestadoRepository;
 
 
-    private final Long MOCK_ID_CCERTIFIED = 1L;
+    private final Long MOCK_ID_CERTIFIED = 1L;
     private  final String MOCK_CERTIFIED_NAME="covid";
     private  final  Date MOCK_DATE_CERTIFICATE=new Date(121,10,17);
 
     private final Long MOCK_ID_COLLABORATOR = 1L;
-    private final String MOCK_NAME_COLLABORATOR = "covid";
+    private final String MOCK_NAME_COLLABORATOR = "jose";
     private final int MOCK_AGE_COLLABORATOR = 19;
     private final Date MOCK_COLLABORATOR_BIRTH_DATE = new Date(93, 10, 17);
     private final Long MOCK_ID_DOCUMENT_TYPE = 1l;
@@ -55,11 +54,10 @@ public class AtestadoServiceImplTest {
     public void setupMock(){
         MockitoAnnotations.openMocks(this);
         when(atestadoRepository.findAll()).thenReturn(returnlistAttestationEntity());
-        when(atestadoRepository.findById(MOCK_ID_DEPARTMENT)).thenReturn(java.util.Optional.of(returnObjectAttestationEntityWithId()));
+        when(atestadoRepository.findById(MOCK_ID_CERTIFIED)).thenReturn(java.util.Optional.of(returnObjectAttestationEntityWithId()));
         when(atestadoRepository.save(returnObjectAttestationEntity())).thenReturn(returnObjectAttestationEntity());
         when(atestadoRepository.save(returnObjectAttestationEntityWithId())).thenReturn(returnObjectAttestationEntityWithId());
     }
-
 
     @Test
     public void findAllAttestationMustReturnOk(){
@@ -68,7 +66,7 @@ public class AtestadoServiceImplTest {
 
     @Test
     public void findByIdAttestationMustReturnOk (){
-        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.findById(MOCK_ID_COLLABORATOR));
+        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.findById(MOCK_ID_CERTIFIED));
     }
 
     @Test
@@ -78,7 +76,19 @@ public class AtestadoServiceImplTest {
 
     @Test
     public void updateAttestationMustReturnOk(){
-        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.update(MOCK_ID_COLLABORATOR,returnObjectAttestationEntity()));
+        assertEquals(returnObjectAttestationEntityWithId(),atestadoService.update(MOCK_ID_CERTIFIED,returnObjectAttestationEntity()));
+    }
+
+    @Test
+    public void deleteByIdAttestationMustReturnOk(){
+        atestadoService.deleteById(MOCK_ID_CERTIFIED);
+        verify(atestadoRepository,timeout(1)).deleteById(MOCK_ID_CERTIFIED);
+    }
+
+    @Test
+    public void populatingAttestationMustReturnOk(){
+        atestadoService.populating();
+        returnObjectAttestationEntityVerify();
     }
 
     private List<AtestadoEntity> returnlistAttestationEntity(){
@@ -91,8 +101,18 @@ public class AtestadoServiceImplTest {
         return new AtestadoEntity(MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
     }
 
+    private void returnObjectAttestationEntityVerify(){
+       verify(atestadoRepository,timeout(1)).save(new AtestadoEntity("COVID", new Date(121,10,17),new ColaboradorEntity(1L)));
+    }
+
+    private  ColaboradorEntity returnObjectCollaboratorEntityPassingIdWithEverythingNull(){
+        return new ColaboradorEntity(MOCK_ID_COLLABORATOR,null,0,null,
+                returnObjectDocumentTypeEntity(),null, null,null,
+                0,null,false,null,null);
+    }
+
     private AtestadoEntity returnObjectAttestationEntityWithId(){
-        return new AtestadoEntity(MOCK_ID_CCERTIFIED,MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
+        return new AtestadoEntity(MOCK_ID_CERTIFIED,MOCK_CERTIFIED_NAME,MOCK_DATE_CERTIFICATE,returnObjectCollaboratorEntityWithId());
     }
 
     private  ColaboradorEntity returnObjectCollaboratorEntityWithId(){

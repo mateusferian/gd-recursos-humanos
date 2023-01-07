@@ -2,7 +2,6 @@ package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
 import br.com.geradordedevs.gdrecursoshumanos.entities.UsuarioEntity;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.UsuarioRepository;
-import br.com.geradordedevs.gdrecursoshumanos.services.impl.UsuarioServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -46,7 +45,6 @@ public class UsuarioServiceImplTest {
         when(usuarioRepository.findById(ID_USERS)).thenReturn(Optional.of(returnObjectUsersEntity()));
         when(usuarioRepository.save(returnObjectUsersEntityWithEncryptedPassword())).thenReturn(returnObjectUsersEntityWithEncryptedPassword());
 
-
         when(passwordEncoder.encode(MOCK_PASSWORD_USERS)).thenReturn(ENCRYPTED_PASSWORD);
     }
 
@@ -68,6 +66,12 @@ public class UsuarioServiceImplTest {
     @Test
     public void updateUsersMustReturnOk() {
         assertEquals(returnObjectUsersEntityWithEncryptedPassword(), usuarioService.update(ID_USERS,returnObjectUsersEntity()));
+    }
+
+    @Test
+    public void deleteByIdUsersMustReturnOk() {
+        usuarioService.deleteById(ID_USERS);
+        verify(usuarioRepository,timeout(1)).deleteById(ID_USERS);
     }
 
     private List<UsuarioEntity> returnlistUsersEntity(){

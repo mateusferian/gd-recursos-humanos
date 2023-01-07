@@ -3,7 +3,6 @@ package br.com.geradordedevs.gdrecursoshumanos.facades.impl;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.CargoRequestDTO;
 import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.CargoResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
-import br.com.geradordedevs.gdrecursoshumanos.facades.impl.CargoFacedeImpl;
 import br.com.geradordedevs.gdrecursoshumanos.mappers.CargoMapper;
 import br.com.geradordedevs.gdrecursoshumanos.services.CargoService;
 import br.com.geradordedevs.gdrecursoshumanos.services.TokenService;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -74,6 +73,17 @@ public class CargoFacadeImplTest {
     @Test
     public void updateOfficeMustReturnOk() throws Exception{
         assertEquals(returnObjectOfficeResponseDTO(),cargoFacede.update(MOCK_ID_OFFICE,returnObjectOfficeRequestDTO(),MOCK_TOKEN));
+    }
+    @Test
+    public  void deleteByIdOfficeMustReturnOk() throws  Exception{
+        cargoFacede.deleteById(MOCK_ID_OFFICE,MOCK_TOKEN);
+        verify(cargoService,timeout(1)).deleteById(MOCK_ID_OFFICE);
+    }
+
+    @Test
+    public void populatingOfficeMustReturnOk() throws  Exception{
+        cargoFacede.populating(MOCK_TOKEN);
+        verify(cargoService,timeout(1)).populating();
     }
 
     List<CargoResponseDTO> returnListOfficeResponseDTO(){

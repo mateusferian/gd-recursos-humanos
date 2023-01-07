@@ -1,23 +1,18 @@
 package br.com.geradordedevs.gdrecursoshumanos.services.impl;
 
-import br.com.geradordedevs.gdrecursoshumanos.dtos.requests.ColaboradorRequestDTO;
-import br.com.geradordedevs.gdrecursoshumanos.dtos.responses.ColaboradorResponseDTO;
 import br.com.geradordedevs.gdrecursoshumanos.entities.CargoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.ColaboradorEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.DepartamentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.entities.TipoDocumentoEntity;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.ColaboradorException;
 import br.com.geradordedevs.gdrecursoshumanos.exceptions.enums.ColaboradorEnum;
-import br.com.geradordedevs.gdrecursoshumanos.mappers.ColaboradorMapper;
 import br.com.geradordedevs.gdrecursoshumanos.repositories.ColaboradorRepository;
 import br.com.geradordedevs.gdrecursoshumanos.services.ColaboradorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Service
 @Slf4j
